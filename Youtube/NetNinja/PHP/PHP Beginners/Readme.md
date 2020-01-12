@@ -75,3 +75,27 @@ Strings are sequence of characters enclose in `""` or `''`. They can be combined
 Strings are treated as indexed array (starting from 0) of characters which then can be acquired using the [ ] operator on the string.
 
 There are also a lot of inbuilt functions available with the strings.
+
+## Numbers
+
+Numbers are PHP can either be integers or floating point numbers (with decimal values).
+
+```php
+<?php
+    $int = 6;
+    $float = 7.990;
+?>
+```
+
+## Operators
+
+|   Operation    | Operator |
+| :------------: | :------: |
+|    Addition    |    +     |
+|  Subtraction   |    -     |
+| Multiplication |    \*    |
+|    Division    |    /     |
+|     Modulo     |    %     |
+|    Exponent    |   \*\*   |
+
+PHP follows BODMAS rule for proprity of operations in expression
