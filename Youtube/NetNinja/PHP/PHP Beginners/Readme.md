@@ -122,3 +122,7 @@ In PHP we have :
 1. for loop
 2. for each loop
 3. while loop
+
+## Booleans and Comparisons
+
+Booleans are the fundamental types representing true or false in PHP. They are for comparison and are the final results of a relation ecpression or comparison.
