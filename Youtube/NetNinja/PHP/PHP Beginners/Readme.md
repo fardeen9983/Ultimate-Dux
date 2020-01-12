@@ -1,10 +1,13 @@
-## PHP Tutorial (& MySQL)
+# PHP Tutorial (& MySQL)
+
 Hey gang, in this first PHP tutorial (with MySQL) I'll explain exactly why I'm creating this series as well as what you'll be making / learning as we progress. PHP is a server-side scripting language which can be used to create dynamic websites and is used all over the web today.
 
 ## Links
-[Youtube Link](https://www.youtube.com/watch?v=pWG7ajC_OVo&list=PL4cUxeGkcC9gksOX3Kd9KPo-O68ncT05o),  [Course files](https://www.youtube.com/redirect?q=https%3A%2F%2Fgithub.com%2Fiamshaunjp%2Fphp-mysql-tutorial&redir_token=9yrb5AY3tktZhygFn9oao4PAl9J8MTU3ODk0MjA2MEAxNTc4ODU1NjYw&event=video_description&v=pWG7ajC_OVo)
 
-## Get started:
+[Youtube Link](https://www.youtube.com/watch?v=pWG7ajC_OVo&list=PL4cUxeGkcC9gksOX3Kd9KPo-O68ncT05o), [Course files](https://www.youtube.com/redirect?q=https%3A%2F%2Fgithub.com%2Fiamshaunjp%2Fphp-mysql-tutorial&redir_token=9yrb5AY3tktZhygFn9oao4PAl9J8MTU3ODk0MjA2MEAxNTc4ODU1NjYw&event=video_description&v=pWG7ajC_OVo)
+
+## Get started
+
 PHP, acronym for Hypertext Preprocessor, is a server side scripting language that is highly compatible wtih HTML (the prime language on which the web is built)
 
 Unlike HTML, CSS and JS which all run on the clients browser, PHP runs on the server on which the website is hosted thus enabling a numerous features that are possible only to do so on the server side.
@@ -12,3 +15,42 @@ Unlike HTML, CSS and JS which all run on the clients browser, PHP runs on the se
 PHP cna manage sessions on the server, load dynamic web content and be embedded in the HTML files. Combined with AJAX and databases like MySQL, PHP can bring dynamic behaviour to static websites. PHP is also having OOP features.
 
 Though called a dead language, it is still very popular in legacy workflows and Laravel and Codeignitors are some very popular frameworks, a large number of websites still operate on.
+
+## Running PHP on your system
+
+Now PHP, as described earlier, requires server to run on. So for local PHP development we need to set up a few softwares
+
+1. A local server
+2. A database for storage
+
+For windows we can get all these in a single package called XAMPP, which contains an Apache server, a MySQL fork called MariaDB ad many other features like Perl language. It is available across all major platforms.
+
+We can start any of the services on certain ports on our local computer and are accessible through the broswer using a `localhost` or `127.0.0.1` followed by its specific port number. If you get an error, it simply means that the port to be used is already occupied and hence needs to be changed in the services .ini (config) file.
+
+The static pages served by the Apache server are stored in a folder `htdocs` in the xampp's installed directory
+
+## Hello World
+
+To create a PHP file create a new file with `.php` extension and all the php code has to be enclosed in special tags like this
+
+```php
+<?php
+
+    # All your PHP code
+
+?>
+```
+
+To print a string on to the string we use the echo function:
+
+```php
+<?php
+    echo "Hello World"
+?>
+```
+
+Now it is also possible to embed HTML code in a PHP file and vice versa. We can also use values exchange from both the languages pretty easily. The PHP files will return the HTML code with instructions to render it on the browser.
+
+## Variables
+
+We can create variables using the \$ notation. Variable types are automatically identified using the value they hold, so we dont need to provide them ourselves. Also we can assign differnert types of values to the same variable.
