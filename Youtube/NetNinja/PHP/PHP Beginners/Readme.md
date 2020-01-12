@@ -67,3 +67,11 @@ As mentioned earlier we can easily change the value assigned to a variable by re
     echo AGE.'  '.$name;
 ?>
 ```
+
+## Strings
+
+Strings are sequence of characters enclose in `""` or `''`. They can be combined together, searched for patterns, extract individual characters,etc. All these operations are called string manipulation.
+
+Strings are treated as indexed array (starting from 0) of characters which then can be acquired using the [ ] operator on the string.
+
+There are also a lot of inbuilt functions available with the strings.
