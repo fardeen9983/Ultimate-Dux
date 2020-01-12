@@ -97,5 +97,19 @@ Numbers are PHP can either be integers or floating point numbers (with decimal v
 |    Division    |    /     |
 |     Modulo     |    %     |
 |    Exponent    |   \*\*   |
+|    Incremet    |    ++    |
+|   Decrement    |    --    |
 
 PHP follows BODMAS rule for proprity of operations in expression
+
+## Arrays
+
+Arrays are bassically collections of variables which can be accessed by a single named variable.
+
+So there are 3 types of arrays :
+
+1. Single dimensional arrays
+2. Multi dimensional arrays
+3. Associate arrays
+
+All three are indexed, the first two by numbers and last with string keys. But we can combine multidimensional and associate arrays as well.
