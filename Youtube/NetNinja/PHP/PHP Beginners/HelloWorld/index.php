@@ -1,5 +1,7 @@
 <?php
     echo "Hello World";
+    $name = "Fardeen";
+    define('AGE', 30);
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +16,10 @@
 
 <body>
     <h1> <?php echo "Hello from the HTML/PHP";?>
+    </h1>
+    <h1> Name : <?php echo $name; ?>
+    </h1>
+    <h1>Age : <?php echo AGE;?>
     </h1>
 </body>
 

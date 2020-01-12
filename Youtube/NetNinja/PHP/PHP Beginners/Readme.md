@@ -54,3 +54,16 @@ Now it is also possible to embed HTML code in a PHP file and vice versa. We can 
 ## Variables
 
 We can create variables using the \$ notation. Variable types are automatically identified using the value they hold, so we dont need to provide them ourselves. Also we can assign differnert types of values to the same variable.
+
+It is important to note that we cannot use digits or special characters (exception : \_) as first letter of the variable name (identifier). We can still use digits thereafter. Also the convention is to use camel case, example: `$firstName`
+
+As mentioned earlier we can easily change the value assigned to a variable by reassignment. To avoid this we can use the function `define(name,value)`, to declare constants, which cannot be changed once assigned. The convention is to keep constant identifiers as capital cases with words seperated by underscore, example : `FIRST_NAME`
+
+```php
+
+<?php
+    define('AGE',30);
+    $name = 'Fardeen'
+    echo AGE.'  '.$name;
+?>
+```
