@@ -113,3 +113,12 @@ So there are 3 types of arrays :
 3. Associate arrays
 
 All three are indexed, the first two by numbers and last with string keys. But we can combine multidimensional and associate arrays as well.
+
+## Loops
+
+Loops allow us to repeat a set of instrutions depending on a test condition.
+In PHP we have :
+
+1. for loop
+2. for each loop
+3. while loop
