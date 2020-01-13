@@ -1,5 +1,7 @@
 # Kivy
 
+[YouTube link](https://www.youtube.com/watch?v=bMHK6NDVlCM&list=PLzMcBGfZo4-kSJVMyYeOQ8CXJ3z1k7gHn)
+
 A cross platform GUI kit in Python which supprts application development for Winodws, macOS, Linux, Android and iOS as well, making it a very useful framework to learn.
 
 Kivy's competitors are PyQT or QT with python, Tkinter and a few others, where QT with Python (formerly PySide 2) is the most widely used and popular framework of them all.
@@ -54,3 +56,17 @@ python kivy_venv\share\kivy-examples\demo\showcase\main.py
 ```
 
 All these dependencies will be available in the `Requirements.txt` file which you can use to directly install all above dependencies.
+
+You can also refer to this [documentation](https://kivy.org/doc/stable/installation/installation-windows.html) to install the developer version of Kivy with Visual C Build tools and MingwPY. Or you can build and edit Kivy from the source too, bu that is not required for simple development.
+
+## Getting started
+
+1. Start by creating a new python file in a folder and importing `kivy`
+2. Run the file and check for errors
+3. Import `App` class from `kivy.app` module
+4. Create a `derived class` of the imported App class and define the build method which basically returns a widget imported from the `uix` module of kivy
+5. Call the `run` method on the derived class's instance to render the application.
+6. Your first Kivy app is complete in a single file with a few lines of code
+7. Run it using python command
+
+The created window can be resized with internal layout adjusting itself, thus proving that it will adjust for any platform
