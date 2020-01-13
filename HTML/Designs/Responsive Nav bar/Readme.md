@@ -14,3 +14,6 @@ This piece of code is aimed at created a simple yet responsive Navigation bar th
 4. Create a nav style with `display : flex` to bring all the content together, and `justify : space-around` and finally `align-items : center`.
 5. Give some coloration and height to the nav bar
 6. Add google fonts Poppins family.
+7. Add logo styling
+8. Add styling to nav bar links and li, ul tags.
+9. The normal navbar view is conplete
