@@ -17,3 +17,7 @@ This piece of code is aimed at created a simple yet responsive Navigation bar th
 7. Add logo styling
 8. Add styling to nav bar links and li, ul tags.
 9. The normal navbar view is conplete
+10. Add a hamburger menu with 3 lines and disable it for non mobile views.
+11. Change the hamburger styling when max height is 768px (for mobile view) and add flex to nav-list to look like a hamburger
+12. Push the hamburger to 100% off screen and hide the scrolling behaviour
+13. Initially hide the li items until the drawer is visible and make the burger visible
