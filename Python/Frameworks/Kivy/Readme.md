@@ -70,3 +70,15 @@ You can also refer to this [documentation](https://kivy.org/doc/stable/installat
 7. Run it using python command
 
 The created window can be resized with internal layout adjusting itself, thus proving that it will adjust for any platform
+
+We can create complicated UI designs using layouts and combining them further. We can also bind event callbacks on widgets
+
+## KV design language
+
+KV is a design specification used for styling Kivy applications much like we usee CSS in HTML applications. Just like CSS we create a seperate `.kv` file which holds our design to be used in Kivy app. Important thing to note is that the name of the kv file has to be the same as the Kivy app class name with the App (if present), removed. So for `MyApp` class, kv file will have name `main.kv`.
+
+While using `kv` files, we need to make sure not use in-built widgets direclty like `Label/TextInput`. Instead we will use the generic parent of these classes, the `Widget` class; which will be actually styled in the `kv` file. 
+
+The beginning of the `kv` file should contain the line `# : kv !` where ! should be replaced by minimum supported `Kivy` version
+
+So whenever we need to style/customise a custom widget defined in the python file in the kv file, we refer to its class name enclosed in HTML like tags and use indented yaml like structure to define and add properties to it

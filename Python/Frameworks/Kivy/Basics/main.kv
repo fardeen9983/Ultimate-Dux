@@ -1,0 +1,26 @@
+#:kivy 1.1.1
+
+# Select a custom widget class to be edited
+<CustomGrid>
+    # Add properties and values
+    GridLayout:
+        cols:1
+        size : root.width - 200, root.height - 200
+        pos: 100 ,100 
+
+        GridLayout:
+            cols:2
+            
+            Label:
+                text : "Name:"
+            TextInput:
+                multiline: False
+            
+            Label:
+                text : "Email:"
+            TextInput:
+                multiline: False
+
+        Button:
+            text: "Submit"    
+            
