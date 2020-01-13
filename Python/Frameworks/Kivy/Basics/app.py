@@ -14,10 +14,10 @@ class CustomGrid(GridLayout):
     def __init__(self, **kwargs):
         # Call super class (GridLayout) constructor first
         super(CustomGrid, self).__init__(**kwargs)
-        self.cols =1        
+        self.cols = 1
         # Create an inner grid layout to house form fields and labels. (As colspan kind of thing is not available)
         self.inner = GridLayout()
-        
+
         # Set columns in GridLayout
         self.inner.cols = 2
 
@@ -41,8 +41,23 @@ class CustomGrid(GridLayout):
         self.add_widget(self.inner)
 
         # Create a submit button
-        self.submit = Button(text="Submit",font_size=40)
+        self.submit = Button(text="Submit", font_size=40)
+        # Bind the submit button event to a callback
+        self.submit.bind(on_press=self.submit_pressed)
         self.add_widget(self.submit)
+
+    # Callback for when the submit button is pressed
+    def submit_pressed(self, instance):
+        # Fetch enterd values
+        email = self.email.text
+        first = self.first_name.text
+        last = self.last_name.text
+
+        # Reset fields
+        self.email.text = ''
+        self.first_name.text = ''
+        self.last_name.text = ''
+
 
 # The main class that is our entire application
 class MyApp(App):
