@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>C_sharp_snippets</RootNamespace>
+    <StartupObject>C_sharp_snippets.Classes.Abstract</StartupObject>
+  </PropertyGroup>
+
+</Project>
