@@ -15,6 +15,9 @@ const navSlide = () => {
         link.style.animation = "";
       }
     });
+
+    //Rotate Hamburger
+    burger.classList.toggle('toggle');
   });
 };
 const app = () => {
