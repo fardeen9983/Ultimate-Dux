@@ -1,6 +1,6 @@
 # Kivy
 
-[YouTube link](https://www.youtube.com/watch?v=bMHK6NDVlCM&list=PLzMcBGfZo4-kSJVMyYeOQ8CXJ3z1k7gHn)
+[YouTube link - Tech with Tim](https://www.youtube.com/watch?v=bMHK6NDVlCM&list=PLzMcBGfZo4-kSJVMyYeOQ8CXJ3z1k7gHn)
 
 A cross platform GUI kit in Python which supprts application development for Winodws, macOS, Linux, Android and iOS as well, making it a very useful framework to learn.
 
@@ -56,7 +56,7 @@ pip install kivy_examples==1.11.1
 If you have installed the Kivy examples too, then you can directly run a Kivy example like this:
 
 ```bash
-python kivy_venv\share\kivy-examples\demo\showcase\main.py
+python venv\share\kivy-examples\demo\showcase\main.py
 ```
 
 All these dependencies will be available in the `Requirements.txt` file which you can use to directly install all above dependencies.
@@ -145,6 +145,22 @@ KV is a design specification used for styling Kivy applications much like we use
         size_hint : 0.3, 0.5
   ```
 
+## **Touch Input**
+
+All the widgets in the Kivy UI library are equipped with three methods to react to touch events such as :
+
+| Event | Callback      |
+| ----- | ------------- |
+| Move  | on_touch_move |
+| Down  | on_touch_down |
+| Up    | on_touch_up   |
+
+Each take a `self` and a `touch` param with information of touch position. If you are using a mouse pointer, then the events will covered under `MouseMotionEvent`.
+
+The `touch` param returns the position of the touch with `spos` giving relative and `pos` giving absolute position of the motion event
+
+**Note** : Not returning the super method in these callbacks would result in the default motion event action being disabled. But it also enables you to modify default behaviour too, like the change in color when button is pressed, etc
+
 ### **Notes**
 
 - **Coloring** :
@@ -165,3 +181,13 @@ KV is a design specification used for styling Kivy applications much like we use
   | ------ | -------------------- |
   | Normal | Not pressed/touched  |
   | Down   | Pressed down/clicked |
+
+- **Importing classes**
+
+  You must have noticed by now that while importing Kivy classed, the name of the final module in the module path/structure is basically the name of the Class in lowercase:
+
+  ```py
+  from kivy.uix.button import Button
+  ```
+
+  It simply means that all the classes are placed in individual modules of the same name.
