@@ -1,18 +1,18 @@
-# Typescript : The stricter sibling of JavaScript
+# Typescript: The stricter sibling of JavaScript
 
-Typescript, a language developed by Microsoft, is a fully typed language which starts and ends on Javascript much like it's sibling but is also friends with other languages like Java and C++, reminding you always to write code in good practises.
+Typescript, a language developed by Microsoft, is a fully typed language which starts and ends on Javascript much like it's sibling but is also friends with other languages like Java and C++, reminding you always to write code in good practices.
 
-> Always keep your types in check and dont forget your dose of semi-colons, or i might throw some errors your way
+> Always keep your types in check and don't forget your dose of semi-colons, or I might throw some errors your way
 
 ## Installation
 
 You can download the source code from TypeScript and build it locally on your system. It is available as a public repo on [Github](https://github.com/Microsoft/TypeScript)
 
-Or you can install Typescript as a package using `npm` or `yarn`. So it's a no-brainer that you have to first install Node.js itself.
+Or you can install Typescript as a package using `npm` or `yarn`. So it's a no-brainer that you have first to install Node.js itself.
 
-You can do so on Linux based platform from your terminal itself using your package manager. On Windows we are not fortunate enough to have a good package manager already installed. If you have `choco` installed, good for you.
+You can do so on Linux based platform from your terminal itself using your package manager. On Windows, we are not fortunate enough to have a good package manager already installed if you have `choco` installed, good for you.
 
-Or you can simply use the following [link](https://nodejs.org/en/download/) and select your OS and download option. My advice will be to go with the LTS version (mostly used in organisation for stability).
+Or you can use the following [link](https://nodejs.org/en/download/) and select your OS and download option. My advice will be to go with the LTS version (mostly used in organisation for stability).
 
 Using NPM :
 
@@ -26,7 +26,7 @@ Using Yarn :
 yarn global add typescript
 ```
 
-This will add typescript cli tools to your path and you will be able to compile typescript files straight from the terminal/cmd.
+This will add typescript CLI tools to your path, and you will be able to compile typescript files straight from the terminal/cmd.
 
 To install the typescript language locally, do the following:
 
@@ -44,7 +44,7 @@ yarn add typescript --dev
 
 ## Compile
 
-Typescript files end with the `.ts` extension and using the typescript cli command `tsc`.
+Typescript files end with the `.ts` extension and using the typescript CLI command `tsc`.
 
 Just point your terminal/cmd to the directory containing TypeScript files and do this:
 
@@ -54,9 +54,9 @@ tsc file.ts
 
 ## Project Setup
 
-Now you are ready to go with developing programs in TypeScript. There plently of applications where you can start using TS. Angular is by default using TS.
+Now you are ready to go with developing programs in TypeScript. There are plenty of applications where you can start using TS. Angular is by default using TS.
 
-You can also setup a pure TypeScript project locally using the TS node module/ cli tool `tsc`
+You can also set up a simple TypeScript project locally using the TS node module/ CLI tool `tsc`.
 
 ```bash
 # For global installations
@@ -73,9 +73,9 @@ npx tsc --init
 
 ## Using **tslint**
 
-**tslint** is a lint or a linter for TS language.
+**tslint** is lint or a linter for TS language.
 
-A linter is a tool that analyses the code as you write it and highlights syntax errors, issues, bad practises and pushes you as a programmer to write better code. You should always use a good linter whenever possible. Writing optimal code is the first step to good programming.
+A linter is a tool that analyses the code as you write it and highlights syntax errors, issues, bad practises and pushes you as a programmer to write better code. It would be best if you always used good linter whenever possible. Writing optimal code is the first step to good programming.
 
 > More details on "[Benefits of using a Linter](https://sourcelevel.io/blog/what-is-a-linter-and-why-your-team-should-use-it)"
 
