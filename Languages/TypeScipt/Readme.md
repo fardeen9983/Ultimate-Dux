@@ -69,7 +69,17 @@ tsc --init
 npx tsc --init
 ```
 
-> You can learn more about `npx` and how it is used right [here]()
+> You can learn more about `npx` and how it is used right [here](https://github.com/fardeen9983/Ultimate-Dux/tree/master/JavaScript/Tools/npx)
+
+## Using **tslint**
+
+**tslint** is a lint or a linter for TS language.
+
+A linter is a tool that analyses the code as you write it and highlights syntax errors, issues, bad practises and pushes you as a programmer to write better code. You should always use a good linter whenever possible. Writing optimal code is the first step to good programming.
+
+> More details on "[Benefits of using a Linter](https://sourcelevel.io/blog/what-is-a-linter-and-why-your-team-should-use-it)"
+
+Now TS has a
 
 ## References
 
@@ -79,3 +89,5 @@ npx tsc --init
    ](https://alligator.io/typescript/new-project/)
 
 3. [Typescript Official Page](https://www.typescriptlang.org)
+
+4. [What is a linter and why your team should use it?](https://sourcelevel.io/blog/what-is-a-linter-and-why-your-team-should-use-it)
