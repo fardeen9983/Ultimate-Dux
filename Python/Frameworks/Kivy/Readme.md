@@ -6,6 +6,10 @@ A cross platform GUI kit in Python which supprts application development for Win
 
 Kivy's competitors are PyQT or QT with python, Tkinter and a few others, where QT with Python (formerly PySide 2) is the most widely used and popular framework of them all.
 
+## Resources
+
+### [Official Documentation](https://kivy.org/doc/stable/gettingstarted/intro.html)
+
 ## Installation
 
 Kivy, being a Python library, leverages the benefit of being available on any system that supports python. You can find the installation instructions for your platform at this [link](https://kivy.org/#download).
@@ -73,16 +77,91 @@ The created window can be resized with internal layout adjusting itself, thus pr
 
 We can create complicated UI designs using layouts and combining them further. We can also bind event callbacks on widgets
 
-## KV design language
+## **KV design language**
 
-KV is a design specification used for styling Kivy applications much like we usee CSS in HTML applications. Just like CSS we create a seperate `.kv` file which holds our design to be used in Kivy app. Important thing to note is that the name of the kv file has to be the same as the Kivy app class name with the App (if present), removed. So for `MyApp` class, kv file will have name `main.kv`.
+KV is a design specification used for styling Kivy applications much like we usee CSS in HTML applications. Just like CSS we create a seperate `.kv` file which holds our design to be used in Kivy app.
 
-While using `kv` files, we need to make sure not use in-built widgets direclty like `Label/TextInput`. Instead we will use the generic parent of these classes, the `Widget` class; which will be actually styled in the `kv` file.
+- ### **File structure**
 
-The beginning of the `kv` file should contain the line `# : kv !` where ! should be replaced by minimum supported `Kivy` version
+  Important thing to note is that the name of the kv file has to be the same as the Kivy app class name with the App (if present), removed. So for `MyApp` class, kv file will have name `main.kv`.
 
-So whenever we need to style/customise a custom widget defined in the python file in the kv file, we refer to its class name enclosed in HTML like tags and use indented yaml like structure to define and add properties to it.
+  While using `kv` files, we need to make sure not use in-built widgets direclty like `Label/TextInput`. Instead we will use the generic parent of these classes, the `Widget` class; which will be actually styled in the `kv` file.
 
-Now to connect our design with logic, such as collecting data from the widgets, we cannot use the same methods we used in our python code. Instead we have create member variables inside the kv design and use their values. The variables will then point to ids which are associated with widgets like TextInput.
+- ### **kv basics**
 
-So the first step is to give IDs to widgets we wnat to connect our logic to and then define variables pointing to specific IDs. AFter this is done we can access the newly created properties from within the python file for our Kivy app using the `kivy.properties` module
+  The beginning of the `kv` file should contain the line `# : kv !` where ! should be replaced by minimum supported `Kivy` version
+
+  So whenever we need to style/customise a custom widget defined in the python file in the kv file, we refer to its class name enclosed in HTML like tags and use indented yaml like structure to define and add properties to it.
+
+- ### **Combining Design with Logic**
+
+  Now to connect our design with logic, such as collecting data from the widgets, we cannot use the same methods we used in our python code. Instead we have create member variables inside the kv design and use their values. The variables will then point to ids which are associated with widgets like TextInput.
+
+- ### **Properties in Kivy**
+
+  So the first step is to give IDs to widgets we want to connect our logic to and then define variables pointing to specific IDs. AFter this is done we can access the newly created properties from within the python file for our Kivy app using the `kivy.properties` module. This way you can bind the properties and events asscoiated with your widgets defined in the `kv` file with that in the `py` file.
+
+- ### **Global Styling**
+
+  Another thing to note down is, that just like CSS global styling of tags, we can also define global properties for custom elements like we did for specific CustomGrid. The point is that when we define this in our main kv file, all occurences of the widget modified in the style, will be applied everywhere it occurs, irrespective of their hierarchy.
+
+  So if you define some properties for the button tag like this:
+
+  ```kivy
+  <Button>
+      font_size : 40
+      color : -0.3,0.4,0.5,1
+  ```
+
+  ***
+
+  **Positioning** :
+
+  Using the `post_hint` we can easily define the global positioning of specific widgets.
+
+  It works on the following parameters each varying in a range of `0 to 1`:
+
+  `x, y, top, bottom, left, right`
+
+  Here (0,0) is the bottom left, so X and Y are refernece to the position of the widget with respect to the bottom left while top, bottom , left and right refer to the different sides of the widget.
+
+  Example :
+
+  ```kivy
+  <Button>
+        pos_hint : {"x":0.5,"top":1}
+  ```
+
+  ***
+
+  **Sizing** :
+
+  Now just like how the positioning is different for global styles, so is the size property. In order to define the size of widgets globally we use `size_hint` in place of `size`. It takes two values from 0 to 1 scaled to the size of the root window.
+
+  In this example, the button will have 30% width and 50% height of the root widget:
+
+  ```kivy
+  <Button>
+        size_hint : 0.3, 0.5
+  ```
+
+### **Notes**
+
+- **Coloring** :
+
+  Colors in Kivy widgets is based on RGBA scheme with values for Red, Green and Blue colors ranging between `-1.0 to 1.0`. For Alpha we have range `0 to 1`
+
+- **Positioning** :
+
+  It is important to note that while you can give specific positions in X and Y axis for widgets in your Layout, you cannot do the same for global styling. In that case we have to use `pos_hint` in place of `pos`
+
+- **States** :
+
+  Widgets like Button have states which can be accessed through the `state` property of the widget.
+
+  For Example : The Button widget has two states
+
+  | State  | Meaning              |
+  | ------ | -------------------- |
+  | Normal | Not pressed/touched  |
+  | Down   | Pressed down/clicked |

@@ -1,0 +1,15 @@
+#:kivy 1.1.1
+<Button>
+    font_size : 40
+    color : -0.3,0.4,0.5,1
+    size_hint : 0.3, 0.5
+
+<FloatLayout>
+    Button:
+        text: "Hello"
+        pos_hint : {"x":0.5,"top":1}
+
+    Button:
+        id : btn
+        text: "Pressed" if btn.state == "down" else "Normal"
+        background_color : 0.8,0.4,0.5,1 
