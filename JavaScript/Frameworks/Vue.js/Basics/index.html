@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vue.js Starter</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" @input="changeTitle" />
+        <p v-once>{{title}} - <a :href="link">Google</a></p>
+        <p>{{sayHello()}}</p>
+        <p>{{sayTitle()}}</p>
+        <hr />
+        <p>{{googleLink}}</p>
+        <p v-html="googleLink"></p>
+        <hr />
+        <button @click="increment(2,$event)">Click me</button>
+        <p>{{counter}}</p>
+        <hr />
+        <p @mousemove="updateCoordinates">
+            Coordinates : {{x}}/ {{y}} - <span @mousemove.stop>DEAD SPOT</span>
+        </p>
+        <hr />
+        <input type="text" @keyup.enter="alertMe" v-model="name" />
+        <p>{{name}}</p>
+        <hr />
+        <button @click="count++">Increase</button>
+        <button @click="count--">Decrease</button>
+        <button @click="secondCount++">Increase Second</button>
+        <p>{{result()}} | {{countOutput}}</p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                title: "Hello World",
+                link: "https://www.google.com",
+                googleLink: '<a href="https://www.google.com">Google Link</a>',
+                counter: 0,
+                x: 0,
+                y: 0,
+                name: "MAX",
+                count: 0,
+                secondCount: 0
+            },
+            computed: {
+                countOutput: function() {
+                    return this.count > 5 ? 'Greater than 5' : 'Smaller than 5';
+                }
+            },
+            watch: {
+                count: function(value) {
+                    const vm = this;
+                    setTimeout(() => {
+                        vm.count = 0;
+                    }, 2000);
+                }
+            },
+            methods: {
+                changeTitle: function(event) {
+                    this.title = event.target.value;
+                },
+                sayHello: function() {
+                    return "Hello";
+                },
+                sayTitle: function() {
+                    return this.title;
+                },
+                increment: function(i) {
+                    this.counter += i;
+                },
+                updateCoordinates: function(event) {
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                },
+                alertMe: () => {
+                    alert("Alert");
+                },
+                result: function() {
+                    return this.count > 5 ? 'Greater than 5' : 'Smaller than 5';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
