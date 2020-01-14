@@ -2,7 +2,12 @@
 
 # Select a custom widget class to be edited
 <CustomGrid>
+
     # Add properties and values
+    name : name
+    email : email
+
+    # Add child widgets and layouts
     GridLayout:
         cols:1
         size : root.width - 200, root.height - 200
@@ -14,13 +19,16 @@
             Label:
                 text : "Name:"
             TextInput:
+                id: name
                 multiline: False
             
             Label:
                 text : "Email:"
             TextInput:
+                id: email
                 multiline: False
 
         Button:
-            text: "Submit"    
-            
+            text: "Submit"   
+            # Event Binding
+            on_press : root.btn_pressed()    

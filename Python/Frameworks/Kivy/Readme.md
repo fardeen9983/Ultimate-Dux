@@ -77,8 +77,12 @@ We can create complicated UI designs using layouts and combining them further. W
 
 KV is a design specification used for styling Kivy applications much like we usee CSS in HTML applications. Just like CSS we create a seperate `.kv` file which holds our design to be used in Kivy app. Important thing to note is that the name of the kv file has to be the same as the Kivy app class name with the App (if present), removed. So for `MyApp` class, kv file will have name `main.kv`.
 
-While using `kv` files, we need to make sure not use in-built widgets direclty like `Label/TextInput`. Instead we will use the generic parent of these classes, the `Widget` class; which will be actually styled in the `kv` file. 
+While using `kv` files, we need to make sure not use in-built widgets direclty like `Label/TextInput`. Instead we will use the generic parent of these classes, the `Widget` class; which will be actually styled in the `kv` file.
 
 The beginning of the `kv` file should contain the line `# : kv !` where ! should be replaced by minimum supported `Kivy` version
 
-So whenever we need to style/customise a custom widget defined in the python file in the kv file, we refer to its class name enclosed in HTML like tags and use indented yaml like structure to define and add properties to it
+So whenever we need to style/customise a custom widget defined in the python file in the kv file, we refer to its class name enclosed in HTML like tags and use indented yaml like structure to define and add properties to it.
+
+Now to connect our design with logic, such as collecting data from the widgets, we cannot use the same methods we used in our python code. Instead we have create member variables inside the kv design and use their values. The variables will then point to ids which are associated with widgets like TextInput.
+
+So the first step is to give IDs to widgets we wnat to connect our logic to and then define variables pointing to specific IDs. AFter this is done we can access the newly created properties from within the python file for our Kivy app using the `kivy.properties` module
