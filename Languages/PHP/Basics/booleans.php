@@ -25,3 +25,4 @@
     echo 5 == '5'; # true
     # Strict comparison - checks for value and type
     echo 5 === '5'; # false
+?>

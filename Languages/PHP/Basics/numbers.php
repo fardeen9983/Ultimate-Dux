@@ -24,4 +24,7 @@
 
     # Inbuilt value for PI
     echo pi();
+
+    # There are many more methods available in the math library of PHP
+    # Will cover later on
 ?>

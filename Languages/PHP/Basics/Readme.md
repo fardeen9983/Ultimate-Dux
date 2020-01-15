@@ -130,3 +130,7 @@ Booleans are the fundamental types representing true or false in PHP. They are f
 ## Conditions
 
 Many a time in programming, we evaluate a condition or an expression to decide which course of action to go with forward. Conditionals in PHP allow us to implement this functionality by providing us concepts such as `switch` operator and `if-else` statements, ternary operator `?:`.
+
+So basically we perform one set of operation or another depending on the result of a condition. The condition can be a simple comparison or a complex query. Let us dive into the basics.
+
+After learning the basic conditional statements you can combine them together or with other element slike loop to implement your logic and so forth.
