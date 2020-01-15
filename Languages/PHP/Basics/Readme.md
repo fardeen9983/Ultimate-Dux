@@ -159,3 +159,13 @@ Main features of functions:
 
 1. They have names. You can execute them by calling their names
 2. They can take inputs and gove outputs. So that makes them dynamic too, suited for your data.
+
+## Scopes
+
+Each variable or function or class that we define inside our PHP code has a scope associated with it. In simple terms, it refers to the boundary within which we can use these elements.
+
+For example, if you have a variable $x defined in file **A.php** and try to use it in an entirely different file **B.php**, then you will get an error, because there is no $x in B.php. But what if there is a variable x in both files. Well they will be entirely different from each other. Changing the value or type of one wont effect the other.
+
+The elements we have defined in our PHP file at the topmost level, outside all blocks of code {}, are accessible throughout the file but not outside it. This is called ***global scope***.
+
+But what if you define a new variable within a code block {}, like that inside a function body. In that case that variable will only be available inside the function or code block you have defined it in. Not outside it or again not in any other file. This is called local scope. The scope is local to the code block the variable is defined in.
