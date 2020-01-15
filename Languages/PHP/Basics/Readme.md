@@ -131,7 +131,7 @@ In PHP, we have :
 
   - break
 
-    ***break*** keyword on the other hand allow us ignore remaining iterations of the loop and jump right out of it. This is very useful in nested loops or when you want to limit the number of iterations in a loop based on a condition
+    **_break_** keyword on the other hand allow us ignore remaining iterations of the loop and jump right out of it. This is very useful in nested loops or when you want to limit the number of iterations in a loop based on a condition
 
 ## Booleans and Comparisons
 
@@ -144,3 +144,18 @@ Many a time in programming, we evaluate a condition or an expression to decide w
 So basically we perform one set of operation or another depending on the result of a condition. The condition can be a simple comparison or a complex query. Let us dive into the basics.
 
 After learning the basic conditional statements you can combine them together or with other element slike loop to implement your logic and so forth.
+
+## Functions
+
+At many a times we wish to achieve the same functionalities such as adding a 100 numbers across (an example), across our application. If the frequency is low enough, then we can code that part again and again as needed. But with increasing size of our project and the number times we have to write the code, this task becomes too much to repeat.
+
+> Worry not, the functions are here
+
+Functions help reduce the burden, but how? Functions as the name suggest do some operation; something like the functionality we want to achieving (Adding those numbers). Once we have written a function, we can call it again and again, as many times we need, wherever we may need it. No need to write it again from scratch.
+
+> A function is a subprogram (a collection of code) that we wish to use any number of times from any where in our project
+
+Main features of functions:
+
+1. They have names. You can execute them by calling their names
+2. They can take inputs and gove outputs. So that makes them dynamic too, suited for your data.
