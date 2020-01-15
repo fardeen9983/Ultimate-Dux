@@ -166,6 +166,34 @@ Each variable or function or class that we define inside our PHP code has a scop
 
 For example, if you have a variable $x defined in file **A.php** and try to use it in an entirely different file **B.php**, then you will get an error, because there is no $x in B.php. But what if there is a variable x in both files. Well they will be entirely different from each other. Changing the value or type of one wont effect the other.
 
-The elements we have defined in our PHP file at the topmost level, outside all blocks of code {}, are accessible throughout the file but not outside it. This is called ***global scope***.
+The elements we have defined in our PHP file at the topmost level, outside all blocks of code {}, are accessible throughout the file but not outside it. This is called **_global scope_**.
 
 But what if you define a new variable within a code block {}, like that inside a function body. In that case that variable will only be available inside the function or code block you have defined it in. Not outside it or again not in any other file. This is called local scope. The scope is local to the code block the variable is defined in.
+
+## Importing files using include and require
+
+Now a PHP project of any scale wont be complete in just one file. That may not be a fact. But the important part is to cover inclusion and reusability of already written code available in a different PHP file than yours
+
+**include** and **require** are two such functions in PHP that enable you to import code from other PHP files. They essentially do the same thing but the difference is how they handle errors while importing code or while running that imported code.
+
+**include** will allow the execution of PHPcode even after error has occured maybe due to the imported code or due to file being missing. It will simply raise a warning and continue execution.
+
+Ont the other hand the **require** will raise a FATAL ERROR and immediately stop any execution. Hence require is more safe than include when it comes to error handling. But if that is not your concern then continue with usage of include only.
+
+Also many a times it may happen that a file is imported ia include/require more than once because of a complex import hierarchy. To prevent this and to load the code only once we have variants of iclude and require : **include_once** and **require_once**.
+
+For Example :
+
+```php
+<?php
+    # Include example
+    include "xyz.php";
+    # Include once
+    include_once 'abc.php';
+
+    # Require example
+    require 'xyzz.php';
+    # Require once
+    require_once "abcd.php";
+?>
+```
