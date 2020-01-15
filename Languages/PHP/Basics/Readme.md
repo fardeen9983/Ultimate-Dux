@@ -123,6 +123,16 @@ In PHP, we have :
 2. for each loop
 3. while loop
 
+- **Some Special Keywords**
+
+  - continue
+
+    In a loop, somwtimes depending on the condition we may want to skip executing the loop body and jump to the next iteration. This is achieved by simply placing the **_continue_** keyword against the condition
+
+  - break
+
+    ***break*** keyword on the other hand allow us ignore remaining iterations of the loop and jump right out of it. This is very useful in nested loops or when you want to limit the number of iterations in a loop based on a condition
+
 ## Booleans and Comparisons
 
 Booleans are the fundamental types representing true or false in PHP. They are for comparison and are the final results of a relational expression or comparison.
