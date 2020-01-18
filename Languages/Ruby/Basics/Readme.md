@@ -157,6 +157,10 @@ Hash is like arrays; another data structure where we store numerous values, but 
 
 Hence this also acts like a dictionary, where key value pairs are stored
 
+## File I/O
+
+Ruby has in-built features to read and write to file. We can read data from file as input and write data to files.
+
 ## References
 
 1. [Ruby Programming Language - Full Course](https://www.youtube.com/watch?v=t_ispmWmdjY)
