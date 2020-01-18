@@ -29,6 +29,7 @@ ruby file.rb
   ```rb
   puts "Hello World"
   ```
+
   An empty **puts** statement will simply print a newline
 
 ## Variables
@@ -97,6 +98,16 @@ We sometimes have to write the same piece of code again and again throughout our
 
 Hence we introduce functions. These are small blocks of code that are given a name and using that can be called and executed from anywhere and any number of time. They can take variables and input and return some output as well, but it's optional.
 
+In ruby we define a function with the **def** and **end** keywords
+
+```rb
+def name
+   # Function body
+end
+```
+
+When we call the fucntion using it's name we get the function of the body executed
+
 ## User Input
 
 Interacting with the a user is a very important aspect of programming. Whether that is too forward some information through **print** or instead ask for input from user and use that data for some operation.
@@ -110,6 +121,12 @@ Variables in ruby can store only one value, but we sometimes need to store multi
 You get the picture. But what if we can use just one name and an index value to refer to each of one these values. This is where **arrays** come
 
 > Array is a data structure which is basically collection of same or different data type values which are refered using the same name
+
+## Hash/Dicitionary
+
+Hash is like arrays; another data structure where we store numerous values, but instead of using indexes to access them we give them unique keys.
+
+Hence this also acts like a dictionary, where key value pairs are stored
 
 ## References
 
