@@ -103,6 +103,24 @@ The control statements are:
 1. **If Else**
 2. **Case Expression**
 
+## Loops
+
+Now imagine a scenario where you have to input 10 different values in an array, add them all and print their sum. Now you could definitely use a function for this but the point is how will we take care of the repeating task i.e, the 10 inputs we have to take and the sum we need to calculate.
+
+Now image that we have to do with not 10 but a 1000 numbers. And this is obviously going a very difficult path if we manually set to take that many inputs and add them.
+
+Instead of that, we use a concept called loops. A programming contruct that repeats a piece of code again and again until a set condition is satisfied.
+
+Types of loops in ruby
+
+1. While loop
+
+2. For loop
+
+3. Do While loop
+
+4. Until
+
 ## Functions
 
 We sometimes have to write the same piece of code again and again throughout our code because we have to implement the same functionality some where else. It is acceptable to repeat the mundane task for a few number of times but when the scale of our project increases this way of cding is not achievable.
