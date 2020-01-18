@@ -29,6 +29,7 @@ ruby file.rb
   ```rb
   puts "Hello World"
   ```
+  An empty **puts** statement will simply print a newline
 
 ## Variables
 
@@ -101,6 +102,14 @@ Hence we introduce functions. These are small blocks of code that are given a na
 Interacting with the a user is a very important aspect of programming. Whether that is too forward some information through **print** or instead ask for input from user and use that data for some operation.
 
 So we basically print a msg guiding the user of what information is needed and wait for him/her to enter it. This is achieved through the **gets** function
+
+## Arrays
+
+Variables in ruby can store only one value, but we sometimes need to store multiple items which are meant to be stored together to maintain their relavance. Like storing heights of 10 people. We can definitely create 10 variables for this purpose each with a different name, but imagine doing the same for a 100s or 1000s of people.
+
+You get the picture. But what if we can use just one name and an index value to refer to each of one these values. This is where **arrays** come
+
+> Array is a data structure which is basically collection of same or different data type values which are refered using the same name
 
 ## References
 
