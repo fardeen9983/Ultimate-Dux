@@ -4,6 +4,12 @@ Here are all the coding examples fully documented to guide you through learning 
 
 To create a ruby program we write code in a file with extension **.rb**. The naming convention of the file is to have all words in lowercase connected with **\_** (underscore character).
 
+To run the ruby file on your terminal you can use the **ruby** command gained through installation of Ruby and pass the file name to it.
+
+```bash
+ruby file.rb
+```
+
 ## Hello World
 
 - **print**
@@ -89,6 +95,12 @@ In programs we store data in variables which are named memory spaces. We can ass
 We sometimes have to write the same piece of code again and again throughout our code because we have to implement the same functionality some where else. It is acceptable to repeat the mundane task for a few number of times but when the scale of our project increases this way of cding is not achievable.
 
 Hence we introduce functions. These are small blocks of code that are given a name and using that can be called and executed from anywhere and any number of time. They can take variables and input and return some output as well, but it's optional.
+
+## User Input
+
+Interacting with the a user is a very important aspect of programming. Whether that is too forward some information through **print** or instead ask for input from user and use that data for some operation.
+
+So we basically print a msg guiding the user of what information is needed and wait for him/her to enter it. This is achieved through the **gets** function
 
 ## References
 

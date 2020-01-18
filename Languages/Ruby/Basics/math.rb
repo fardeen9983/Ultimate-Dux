@@ -26,6 +26,7 @@ puts "\nRounded off value of " + val.to_s + " : " + val.round().to_s
 puts "\nCeil value of " + val.to_s + " : " + val.ceil().to_s
 puts "\nFloor value of " + val.to_s + " : " + val.floor().to_s
 
+# Math is a class in Ruby (OOP concept) in  a package of the same name and has a number of sophisticated methods available
 val = 36
 # Square root
 puts "\nSquare root of " + val.to_s + " : " + Math.sqrt(val).to_s
