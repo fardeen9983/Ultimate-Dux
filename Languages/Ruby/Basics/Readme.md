@@ -92,6 +92,17 @@ In programs we store data in variables which are named memory spaces. We can ass
 
   For the purpose of type casting we have a set of methods we can apply on our variables. They return the converted value of the variable into another form but may return errors when incompatible.
 
+## Conditionals
+
+Many a time a decision we take depends upon some condition which can be simple comparison or the result of a complex operation.
+
+Then that result is used to decide which course of action is to be followed next. So Ruby provides us with control statements that evaluates some expressions (our condition) down to the boolean values and execute one set of code depending on the value obtained
+
+The control statements are:
+
+1. **If Else**
+2. **Case Expression**
+
 ## Functions
 
 We sometimes have to write the same piece of code again and again throughout our code because we have to implement the same functionality some where else. It is acceptable to repeat the mundane task for a few number of times but when the scale of our project increases this way of cding is not achievable.

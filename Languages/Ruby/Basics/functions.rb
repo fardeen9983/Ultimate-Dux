@@ -18,7 +18,7 @@ add(4, 6)
 
 # Default values of parameters incase none are passed
 def sayHello(name = "Karma")
-    puts "Hello " + name.to_s
+  puts "Hello " + name.to_s
 end
 
 # With parameter
@@ -27,18 +27,32 @@ sayHello("Roberto")
 sayHello()
 
 # Return some value
-def cube(num=1)
-    # Last line of function body is returned
-    num*num
-    4
-    num*num*num
+def cube(num = 1)
+  # Last line of function body is returned
+  num * num
+  4
+  num * num * num
 end
 
 puts "Cube of 5 : " + cube(5).to_s
 
 # Return keyword : Force which value to return
-def sqaure(num=1)
-    return "Square of " + num.to_s + " = " + (num*num).to_s
-    num * num
+def sqaure(num = 1)
+  return "Square of " + num.to_s + " = " + (num * num).to_s
+  num * num
 end
+
 puts sqaure(10)
+
+# Find maximum of three
+def max(a, b, c)
+  if a >= b and a >= c
+    return a
+  elsif b >= a and b >= c
+    return b
+  else
+    return c
+  end
+end
+
+puts "Maximum of 6,2,8 : " + max(6, 2, 8).to_s
