@@ -45,3 +45,27 @@ file = File.open("data.txt", "r")
 # We can perform all operations we did in the file blog
 # Remember to close the file when no longer used
 file.close()
+
+# Writing to a file
+# First step is to open the file this time eith the "w" flag for write. But this erase all existing content and create a new file if it doesnt exist
+# The better way is to append to the content of the file, if deletion is not an option. Use the flag "a" in that case
+File.open("data.txt", "a") do |file|
+  file.write("\nThe sun is brighter today")
+end
+
+# Creating a new File
+# It is as simplee as opening anew file with "w" flag
+# In this case as the file doesnt exist already, it will be created first and then opened
+File.open("new.txt", "w") do |file|
+  file.write("\nThe sun is brighter today")
+end
+
+# The read and write mode
+# So by using the "r+" flag we open the file with both read and wirte option. We start from the beginning of the file
+File.open("data.txt", "r+") do |file|
+  # Skip 2 lines
+  2.times do
+    file.readline()
+  end
+  file.write("Overwrite 3rd line")
+end
