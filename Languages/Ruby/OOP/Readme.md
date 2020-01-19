@@ -18,3 +18,26 @@ So we can think of class as a blueprint defining what variables and methods it s
 So now the class we have created becomes a custom type we can use to create as many objects as we want.
 
 To access the properties (methods and variable) of an object we use the dot (.) operator.
+
+By default we cannot access variables of a class from outside the object without using a method of the class. To tackle this we can create class methods for each varibale that too for reading and writing separately
+For reading the methods are called **getter** as they get the variable for us and for writing the variable values we have **setters**
+
+But Ruby provides and easier and simpler way to expose member variables and define the the getters and setters for them by itself
+
+1. attr_accesor :var1, :var2, ..
+
+   This construct will essentially take a list of variables of a calss we want to expose and it will by itself create getter and setter for each of them.
+
+2. attr_reader :var1, :var2, ..
+
+   If we only want to expose the getters to read values of variable we define them with **attr_reader**
+
+3. attr_writer :var1, :var2, ..
+
+   Similiar to attr_reader but used only for changing values of exposed variables. Doesn't allow reading operation
+
+Once we have defined aall the attributes of a class we can create an nobject and assign values to them all one by one. This approach is not recommended. Instead we can use a constructor, which we already use when creating object using new keyword.
+
+Now when we create a new object we can pass all the values of the varaibles as parameters to the special function "constructor" and it will set initial values to all those variables so we dont have to do it.
+
+The name of the constructor method is by default set to "initialize". it is defined itself if we dont create one. It can optionally take paramters. But beware that we can have only one constructor (initialize method) for a class
