@@ -4,7 +4,7 @@
 
 Head over to [Official Documentation of Ruby](https://www.ruby-lang.org/en/downloads/) to download Ruby for your system.
 
-USe [RVM](http://rvm.io/)/[rbenv](https://github.com/rbenv/rbenv#installation) CLI tool for Linux and macOS For windows head over to [Ruby Installer](https://rubyinstaller.org/) to download the stable/latest installer
+Use [RVM](http://rvm.io/)/[rbenv](https://github.com/rbenv/rbenv#installation) CLI tool for Linux and macOS For windows head over to [Ruby Installer](https://rubyinstaller.org/) to download the stable/latest installer
 
 ## References
 
