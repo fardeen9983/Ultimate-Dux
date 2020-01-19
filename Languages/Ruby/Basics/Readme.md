@@ -161,6 +161,12 @@ Hence this also acts like a dictionary, where key value pairs are stored
 
 Ruby has in-built features to read and write to file. We can read data from file as input and write data to files.
 
+## Error Handling
+
+Many a times we may write code mistakenly whcich results in an error and crashes our application. It is not only important to handle these errors but its also very crucial to performance of our application.
+
+Ruby has inbuilt feature fo cathcing errors where we enclose a block of code and catch all possible errors generated in it and handle them and let the code after the block resume execution thus also maintaining code execution
+
 ## References
 
 1. [Ruby Programming Language - Full Course](https://www.youtube.com/watch?v=t_ispmWmdjY)
