@@ -1,6 +1,6 @@
 # PyInstaller
 
-> Disclamer : The python code used in this section of the repository placed in the folders : **todo-cli & pygame-demo** - are not licensed to us and neither do we take credit for writing it. It is simply reproduced here for the sole purpose of demonstrating the functionality of above python package with no intention to misuse, discredit or falsify the claim of the author of the code. This article does not partake in monetary operations through the use of the copied code. All relevant authors and organisation are properly credited at the bottom of the document.
+> Disclamer : The python code used in this section of the repository placed in the folders : **todo-cli & spaceShooter** - are not licensed to us and neither do we take credit for writing it. It is simply reproduced here for the sole purpose of demonstrating the functionality of above python package with no intention to misuse, discredit or falsify the claim of the author of the code. This article does not partake in monetary operations through the use of the copied code. All relevant authors and organisation are properly credited at the bottom of the document.
 >
 > In case of any conflict or to report a mistake, please mail the same to the owner of this repository or raise an issue.
 
@@ -46,6 +46,14 @@ The --onefile flag makes sure that we only get one executable file and not a who
 1. **build** : It basically conatins a lot of mid development files of the application build, including the intermediate code, managed dependencies,etc. It is most of time not required
 2. **dist** : folder that contains the actual application.
 3. **spec file** : I dont know about and it is not reuqired as well
+
+## Creating an application from a GUI program
+
+Here in the spaceShooter/spaceShooter directory we have the code which will run the said GUI game built using PyGame. All the assets are same folder. We will create a similiar single file executable and make sure that the terminal window doesn't open up when we run the executable
+
+```bash
+py
+```
 
 ## Refrences
 
