@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -13,6 +14,8 @@ class DetailsPage extends StatefulWidget {
 }
 
 class _DetailsPageState extends State<DetailsPage> {
+  String selectedCard = "WEIGHT";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -177,13 +180,21 @@ class _DetailsPageState extends State<DetailsPage> {
                         ],
                       ),
                       SizedBox(
-                        height: 30,
+                        height: 45,
                       ),
                       Container(
                         height: 150,
                         child: ListView(
                           scrollDirection: Axis.horizontal,
-                          children: <Widget>[],
+                          children: <Widget>[
+                            _buildInfoCard("WEIGHT", "300", "G"),
+                            SizedBox(width: 15.0,),
+                            _buildInfoCard("CALORIES", "267", "CAL"),
+                            SizedBox(width: 15.0,),
+                            _buildInfoCard("VITAMINS", "A, B6", "VIT"),
+                            SizedBox(width: 15.0,),
+                            _buildInfoCard("AVAIL", "NO", "AV"),
+                          ],
                         ),
                       )
                     ],
@@ -195,5 +206,72 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 
-  Widget _buildInfoCard(String cardTitle)
+  Widget _buildInfoCard(String cardTitle, String info, String unit) {
+    return InkWell(
+      onTap: () => selectCard(cardTitle),
+      child: AnimatedContainer(
+        height: 100.0,
+        width: 100.0,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0, left: 15.0),
+              child: Text(
+                cardTitle,
+                style: TextStyle(
+                    color: selectedCard == cardTitle
+                        ? Colors.white
+                        : Colors.grey.withOpacity(0.5),
+                    fontFamily: 'Monteserrat',
+                    fontSize: 14),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0, left: 15.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    info,
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: selectedCard == cardTitle
+                            ? Colors.white
+                            : Colors.black,
+                        fontFamily: 'Monteserrat',
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    unit,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: selectedCard == cardTitle
+                          ? Colors.white
+                          : Colors.black,
+                      fontFamily: 'Monteserrat',
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+        duration: Duration(milliseconds: 500),
+        curve: Curves.easeIn,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.0),
+            color: selectedCard == cardTitle ? Color(0xFF7A9BEE) : Colors.white,
+            border: Border.all(
+                width: 0.75,
+                style: BorderStyle.solid,
+                color: selectedCard == cardTitle
+                    ? Colors.transparent
+                    : Colors.grey.withOpacity(0.3))),
+      ),
+    );
+  }
+
+  selectCard(String cardTitle) => this.setState(() => selectedCard = cardTitle);
 }
