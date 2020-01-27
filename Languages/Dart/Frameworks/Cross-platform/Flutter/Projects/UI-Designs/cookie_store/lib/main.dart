@@ -1,6 +1,8 @@
 import 'package:cookie_store/bottomAppBar.dart';
 import 'package:flutter/material.dart';
 
+import 'cookiePage.dart';
+
 void main() => runApp(MyApp());
 
 final orangeMaroonColor = Color(0xFFC88D67),
@@ -49,94 +51,90 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          leading: IconButton(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.grey,
+              size: 30,
+            ),
+            onPressed: () {}),
+        title: Text(
+          "Pickup",
+          style: TextStyle(
+              color: Theme
+                  .of(context)
+                  .textTheme
+                  .body1
+                  .color,
+              fontFamily: 'Varela',
+              fontSize: 22),
+        ),
+        centerTitle: true,
+        actions: <Widget>[
+          IconButton(
               icon: Icon(
-                Icons.arrow_back,
-                color: Colors.grey,
+                Icons.notifications_none,
+                color: Colors.orange,
                 size: 30,
               ),
-              onPressed: () {}),
-          title: Text(
-            "Pickup",
-            style: TextStyle(
-                color: Theme
-                    .of(context)
-                    .textTheme
-                    .body1
-                    .color,
-                fontFamily: 'Varela',
-                fontSize: 22),
+              onPressed: () {})
+        ],
+      ),
+      body: ListView(
+        padding: EdgeInsets.only(left: 20),
+        children: <Widget>[
+          SizedBox(
+            height: 15,
           ),
-          centerTitle: true,
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(
-                  Icons.notifications_none,
-                  color: Colors.orange,
-                  size: 30,
+          Text(
+            "Categories",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 42),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          TabBar(
+            indicatorColor: Colors.transparent,
+            tabs: [
+              Tab(
+                child: Text(
+                  "Cookies",
                 ),
-                onPressed: () {})
-          ],
-        ),
-        body: ListView(
-          padding: EdgeInsets.only(left: 20),
-          children: <Widget>[
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              "Categories",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 42),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            TabBar(
-              indicatorColor: Colors.transparent,
-              tabs: [
-                Tab(
-                  child: Text(
-                    "Cookies",
-                  ),
-                ),
-                Tab(
-                  child: Text("Cookie Cake"),
-                ),
-                Tab(
-                  child: Text("Ice Cream"),
-                ),
-              ],
-              isScrollable: true,
+              ),
+              Tab(
+                child: Text("Cookie Cake"),
+              ),
+              Tab(
+                child: Text("Ice Cream"),
+              ),
+            ],
+            isScrollable: true,
+            controller: _tabController,
+          ),
+          Container(
+            height: MediaQuery
+                .of(context)
+                .size
+                .height - 300,
+            width: double.infinity,
+            child: TabBarView(
+              children: [CookiePage(), CookiePage(), CookiePage()],
               controller: _tabController,
-            )
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          elevation: 9,
-          backgroundColor: orangeColor,
-          child: Icon(Icons.fastfood),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar:
-//      BottomNavigationBar(elevation: 0.0, items: [
-//        BottomNavigationBarItem(
-//            icon: Icon(
-//              Icons.home,
-//              color: orangeColor,
-//              size: 32,
-//            ),
-//            title: Container()),
-//        BottomNavigationBarItem(icon: Icon(Icons.add), title: Text("Add")),
-//        BottomNavigationBarItem(
-//            icon: Visibility(visible: false, child: Icon(Icons.add)),
-//            title: Text("")),
-//        BottomNavigationBarItem(icon: Icon(Icons.add), title: Text("Add")),
-//        BottomNavigationBarItem(icon: Icon(Icons.add), title: Text("Add")),
-//      ]
-        BottomBar());
+            ),
+          )
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        elevation: 9,
+        backgroundColor: orangeColor,
+        child: Icon(Icons.fastfood),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomBar(),
+    );
   }
 }
