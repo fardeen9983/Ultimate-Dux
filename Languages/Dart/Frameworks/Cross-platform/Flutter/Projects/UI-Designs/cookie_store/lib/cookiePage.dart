@@ -19,7 +19,7 @@ class CookiePage extends StatelessWidget {
                 crossAxisCount: 2,
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 15.0,
-                childAspectRatio: 0.8,
+                childAspectRatio: 0.7,
                 primary: false,
                 children: <Widget>[
                   _buildCard("Cookie Mint", "\$3.99", "assets/cookiemint.jpg",
@@ -29,7 +29,7 @@ class CookiePage extends StatelessWidget {
                   _buildCard("Cookie Classic", "\$1.99",
                       "assets/cookieclassic.jpg", false, true, context),
                   _buildCard("Cookie Choco", "\$3.99", "assets/cookiechoco.jpg",
-                      false, false, context),
+                      true, false, context),
                 ],
               ),
             ),
@@ -93,6 +93,48 @@ class CookiePage extends StatelessWidget {
                 name,
                 style: TextStyle(),
               ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 1,
+                  color: Colors.grey.withOpacity(0.5),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    if (!added) ...[
+                      Icon(
+                        Icons.shopping_basket,
+                        color: orangeColor,
+                        size: 18,
+                      ),
+                      Text(
+                        "Add to Cart",
+                        style: TextStyle(fontSize: 14),
+                      )
+                    ] else
+                      ...[
+                        Icon(
+                          Icons.remove_circle_outline,
+                          color: orangeColor,
+                          size: 18,
+                        ),
+                        Text(
+                          "3",
+                          style: TextStyle(color: orangeColor),
+                        ),
+                        Icon(
+                          Icons.add_circle_outline,
+                          color: orangeColor,
+                          size: 18,
+                        ),
+                      ]
+                  ],
+                ),
+              )
             ],
           ),
         )),
