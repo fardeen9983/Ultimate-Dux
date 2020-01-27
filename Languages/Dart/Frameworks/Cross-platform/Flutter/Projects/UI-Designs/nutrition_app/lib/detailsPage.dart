@@ -188,13 +188,47 @@ class _DetailsPageState extends State<DetailsPage> {
                           scrollDirection: Axis.horizontal,
                           children: <Widget>[
                             _buildInfoCard("WEIGHT", "300", "G"),
-                            SizedBox(width: 15.0,),
+                            SizedBox(
+                              width: 15.0,
+                            ),
                             _buildInfoCard("CALORIES", "267", "CAL"),
-                            SizedBox(width: 15.0,),
+                            SizedBox(
+                              width: 15.0,
+                            ),
                             _buildInfoCard("VITAMINS", "A, B6", "VIT"),
-                            SizedBox(width: 15.0,),
+                            SizedBox(
+                              width: 15.0,
+                            ),
                             _buildInfoCard("AVAIL", "NO", "AV"),
                           ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 45.0,
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            height: 90,
+                            child: Center(
+                              child: Text(
+                                widget.price,
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                    fontFamily: 'Monteserrat'),
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                                color: Color(0xFF1C1428),
+                                borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(25.0),
+                                    topLeft: Radius.circular(25.0),
+                                    bottomLeft: Radius.circular(55),
+                                    bottomRight: Radius.circular(55))),
+                          ),
                         ),
                       )
                     ],
