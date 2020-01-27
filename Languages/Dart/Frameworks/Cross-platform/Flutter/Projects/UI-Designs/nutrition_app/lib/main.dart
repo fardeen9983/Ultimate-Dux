@@ -41,45 +41,51 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   Container(
                     width: 125.0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        IconButton(
-                          icon: Icon(Icons.filter_list),
-                          onPressed: () {},
-                          color: Colors.white,
-                        ),
-                        IconButton(
-                          icon: Icon(Icons.menu),
-                          onPressed: () {},
-                          color: Colors.white,
-                        )
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 18.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          IconButton(
+                            icon: Icon(Icons.filter_list),
+                            onPressed: () {},
+                            color: Colors.white,
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.menu),
+                            onPressed: () {},
+                            color: Colors.white,
+                          )
+                        ],
+                      ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
             SizedBox(
               height: 25,
             ),
-            RichText(
-                text: TextSpan(children: [
-                  TextSpan(
-                      text: "Healthy",
-                      style: TextStyle(
-                          fontFamily: 'Monteserrat',
+            Padding(
+              padding: const EdgeInsets.only(left: 45.0),
+              child: RichText(
+                  text: TextSpan(children: [
+                    TextSpan(
+                        text: "Healthy",
+                        style: TextStyle(
+                            fontFamily: 'Monteserrat',
+                            color: Colors.white,
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold)),
+                    TextSpan(
+                        text: " Food",
+                        style: TextStyle(
                           color: Colors.white,
+                          fontFamily: 'Monteserrat',
                           fontSize: 25.0,
-                          fontWeight: FontWeight.bold)),
-                  TextSpan(
-                      text: " Food",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Monteserrat',
-                        fontSize: 25.0,
-                      ))
-                ])),
+                        ))
+                  ])),
+            ),
             SizedBox(
               height: 40.0,
             ),
@@ -102,10 +108,82 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: MediaQuery
                           .of(context)
                           .size
-                          .height - 300.0,
+                          .height - 320.0,
                       child: ListView(
-                        children: <Widget>[],
+                        children: <Widget>[
+                          _buildFoodItme(
+                              "assets/plate1.png", "Salmon Bowl", "\$24.00"),
+                          _buildFoodItme(
+                              "assets/plate2.png", "Salmon Bowl", "\$24.00"),
+                          _buildFoodItme(
+                              "assets/plate3.png", "Salmon Bowl", "\$24.00"),
+                          _buildFoodItme(
+                              "assets/plate4.png", "Salmon Bowl", "\$24.00"),
+                          _buildFoodItme(
+                              "assets/plate5.png", "Salmon Bowl", "\$24.00"),
+                          _buildFoodItme(
+                              "assets/plate6.png", "Salmon Bowl", "\$24.00"),
+                        ],
                       ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          height: 65.0,
+                          width: 60.0,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.grey,
+                                  style: BorderStyle.solid,
+                                  width: 1.0),
+                              borderRadius: BorderRadius.circular(15.0)),
+                          child: Center(
+                            child: Icon(
+                              Icons.search,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 65.0,
+                          width: 60.0,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.grey,
+                                  style: BorderStyle.solid,
+                                  width: 1.0),
+                              borderRadius: BorderRadius.circular(15.0)),
+                          child: Center(
+                            child: Icon(
+                              Icons.shopping_basket,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 65.0,
+                          width: 120.0,
+                          decoration: BoxDecoration(
+                              color: Color(0xFF1C1428),
+                              border: Border.all(
+                                  color: Colors.grey,
+                                  style: BorderStyle.solid,
+                                  width: 1.0),
+                              borderRadius: BorderRadius.circular(15.0)),
+                          child: Center(
+                            child: Text(
+                              "Checkout",
+                              style: TextStyle(
+                                  fontFamily: 'Monteserrat',
+                                  color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   )
                 ],
@@ -116,6 +194,59 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _buildFoodItme(String img, String foodName, String price) {
-
+    return Padding(
+      padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
+      child: InkWell(
+        onTap: () {},
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Hero(
+                    tag: img,
+                    child: Image.asset(
+                      img,
+                      height: 75.0,
+                      width: 75.0,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 25.0,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        foodName,
+                        style: TextStyle(
+                            fontFamily: 'Monteserrat',
+                            fontSize: 17.0,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        price,
+                        style: TextStyle(
+                            fontFamily: 'Monteserrat',
+                            fontSize: 15.0,
+                            color: Colors.grey),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () {},
+              color: Colors.black,
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
