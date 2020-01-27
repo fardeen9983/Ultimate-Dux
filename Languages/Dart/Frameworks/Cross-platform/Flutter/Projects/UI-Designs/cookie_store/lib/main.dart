@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage>
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 42),
           ),
           SizedBox(
-            height: 30,
+            height: 15,
           ),
           TabBar(
             indicatorColor: Colors.transparent,
