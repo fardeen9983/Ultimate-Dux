@@ -24,3 +24,17 @@ Calender cal = Calender.getInstance();
 System.out.println(cal);
 // output : java.util.GregorianCalender
 ```
+
+## Pitfalls
+1. Complexity
+2. Creation in subclass
+3. Refactoring
+
+## Contrast
+Same as described in [Singleton's Contrast]() 
+
+## Summary
+1. Parameter driven
+2. Solves complex creation
+3. Complex
+4. Opposite of Singleton
