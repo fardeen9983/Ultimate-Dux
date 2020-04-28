@@ -5,11 +5,14 @@ public class OrderBeanDemo {
         // Create Bean instance
         OrderBean bean = new OrderBean();
         
-        // set Bean properties
-        bean.setBread("Wheat");
-        bean.setCondiments("Lettuce");
-        bean.setDressing("Mustard");
-        bean.setMeat("Hame");
+        // // set Bean properties
+        // bean.setBread("Wheat");
+        // bean.setCondiments("Lettuce");
+        // bean.setDressing("Mustard");
+        // bean.setMeat("Hame");
+
+        // Use of Telescoping constructors
+        bean = new OrderBean("Wheat", "Lettuce", "Mustard", "Ham");
 
         // Bean getters
         System.out.println(bean.getBread());

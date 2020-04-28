@@ -29,3 +29,9 @@ System.out.println(builder.toString());
 **Notes - Beans**
 ___
 So a simple bean as referred to the Java Bean class [OrderBean]() has multiple getters and setter and also a default constructor. But despite this the object is still mutable and it does not specify a contract as to which member is to be set for the object to be in a state or be valid.
+
+Thus even if we do not set the properties of the object, it will still work but will be void of any state/validation
+
+We can avoid above situation using ***Telescopic constructors*** which are basically overloaded constructors that take different parameters to create different flavours of the class instance with varying number of properties set and unset. The difference is that the we use these contructors withtin their bodies to create a telescoping effect. Check out this example [OrderBean](). This allows the objects created as immutable.
+
+The main disadvantage of telescoping constructors is flexibility. We cannot pick out one property to add a custom combination of them as we see fit to create objects always.

@@ -12,6 +12,26 @@ public class OrderBean {
 
     }
 
+    // Example of Telescoping constructors
+    public OrderBean(String bread){
+        this.bread = bread;
+    }
+
+    public OrderBean(String bread, String condiments){
+        this(bread);
+        this.condiments = condiments;
+    }
+
+    public OrderBean(String bread, String condiments, String dressing){
+        this(bread,condiments);
+        this.dressing = dressing;
+    }
+
+    public OrderBean(String bread, String condiments,String dressing, String meat){
+        this(bread,condiments,dressing);
+        this.meat = meat;
+    }
+
     /**
      * @return the bead
      */
@@ -40,31 +60,5 @@ public class OrderBean {
         return meat;
     }
 
-    /**
-     * @param bead the bead to set
-     */
-    public void setBread(String bead) {
-        this.bread = bead;
-    }
-
-    /**
-     * @param condiments the condiments to set
-     */
-    public void setCondiments(String condiments) {
-        this.condiments = condiments;
-    }
-
-    /**
-     * @param dressing the dressing to set
-     */
-    public void setDressing(String dressing) {
-        this.dressing = dressing;
-    }
-
-    /**
-     * @param meat the meat to set
-     */
-    public void setMeat(String meat) {
-        this.meat = meat;
-    }
+   
 }
