@@ -2,17 +2,14 @@ package builder.beanexample;
 // A demonstration of use of Builder Pattern with a Bean class
 public class OrderBeanDemo {
     public static void main(String[] args) {
-        // Create Bean instance
-        OrderBean bean = new OrderBean();
-        
-        // // set Bean properties
-        // bean.setBread("Wheat");
-        // bean.setCondiments("Lettuce");
-        // bean.setDressing("Mustard");
-        // bean.setMeat("Hame");
+        // Create a builder instance for OrderBean
+        OrderBean.Builder builder = new OrderBean.Builder();
 
-        // Use of Telescoping constructors
-        bean = new OrderBean("Wheat", "Lettuce", "Mustard", "Ham");
+        // Set properties using builder
+        builder.bread("Wheat").condiments("Lettuce").dressing("Mustard").meat("Ham");
+
+        // Create Bean instance from builder
+        OrderBean bean = builder.build();
 
         // Bean getters
         System.out.println(bean.getBread());

@@ -50,12 +50,12 @@ ___
 
 ## Contrast
 
- **Singleton** | **Factory**
----|---|----
-Returns same instance |  Returns various instaces
-One constructor method with no args | Multiple constructors
-No Interface | Interface driven
--  | Adaptable to environment more easily
+ |**Singleton** | **Factory**|
+|---|---|
+|Returns same instance |  Returns various instaces|
+|One constructor method with no args | Multiple constructors|
+|No Interface | Interface driven|
+| | Adaptable to environment more easily|
 
 ## Summary
 1. Guarantee one instance

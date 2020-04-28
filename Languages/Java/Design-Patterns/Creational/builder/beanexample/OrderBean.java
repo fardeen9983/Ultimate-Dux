@@ -2,35 +2,59 @@ package builder.beanexample;
 
 // A simple bean example with members and respective getters-setters 
 public class OrderBean {
-    private String bread;
-    private String condiments;
-    private String dressing;
-    private String meat;
+    private final String bread;
+    private final String condiments;
+    private final String dressing;
+    private final String meat;
 
-    // Default constructor
-    public OrderBean(){
+    // Static inner class Builder
+    public static class Builder{
+        private String bread;
+        private String condiments;
+        private String dressing;
+        private String meat;
+        
+        // Default constructor
+        public Builder() {
+            
+        }
 
+        // Implementation of Builder that actually returns the Outer class instance
+        public OrderBean build(){
+            return new OrderBean(this);
+        }
+
+        // Different methods that return builder instances based on parameters passed
+        public Builder bread(String bread){
+            this.bread = bread;
+            return this;
+        }
+        
+        public Builder condiments(String condiments){
+            this.condiments = condiments;
+            return this;
+        }
+
+        public Builder dressing(String dressing){
+            this.dressing = dressing;
+            return this;
+        }
+    
+        public Builder meat(String meat){
+            this.meat = meat;
+            return this;
+        }
+    }
+    
+    // Builder constructor 
+    public OrderBean(Builder builder){
+        this.bread = builder.bread;
+        this.dressing = builder.dressing;
+        this.condiments = builder.condiments;
+        this.meat = builder.meat;
     }
 
-    // Example of Telescoping constructors
-    public OrderBean(String bread){
-        this.bread = bread;
-    }
-
-    public OrderBean(String bread, String condiments){
-        this(bread);
-        this.condiments = condiments;
-    }
-
-    public OrderBean(String bread, String condiments, String dressing){
-        this(bread,condiments);
-        this.dressing = dressing;
-    }
-
-    public OrderBean(String bread, String condiments,String dressing, String meat){
-        this(bread,condiments,dressing);
-        this.meat = meat;
-    }
+    
 
     /**
      * @return the bead
