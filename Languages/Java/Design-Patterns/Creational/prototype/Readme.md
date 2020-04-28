@@ -24,3 +24,24 @@ When createing an object is expensive but just cloning the members variables doe
 6. Option : Shallow VS Deep copy
 
 **Code Example:** [Statement.java]()
+
+In that example we use Shallow copy where we use the references to the members of the same object on which the Object#copy() method was called. Whereas in a Deep Copy all the object's memebers will be created anew.
+
+## Pitfalls
+1. Sometimes not clear when to use
+2. Used with another patterns
+3. Usese some type of registry
+4. Shallow vs Deep Copy
+
+## Contrast
+|**Prototype** | **Factory**|
+|---|---|
+|Lightweight Construction (copy/clone) |Flexible Objects (multiple constructors) |
+|Shallow Vs Deep copy | Concrete Instance|
+|Copy of Itself | Fresh Instance|
+
+## Summary
+1. Gaurantees unique instance
+2. Often Refactored in later
+3. Can help with peeformance issues
+4. Dont always jump to a factory
