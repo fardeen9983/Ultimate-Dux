@@ -1,4 +1,4 @@
-package adapter.demo;
+package adapter;
 
 public class EmployeeCSVAdapter implements Employee {
 

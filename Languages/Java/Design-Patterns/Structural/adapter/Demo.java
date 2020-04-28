@@ -1,4 +1,4 @@
-package adapter.demo;
+package adapter;
 
 import java.util.List;
 

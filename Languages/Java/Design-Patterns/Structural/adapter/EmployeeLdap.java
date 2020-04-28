@@ -1,4 +1,4 @@
-package adapter.demo;
+package adapter;
 
 // Legacy code for EmployeeDb and without use of interface
 public class EmployeeLdap {
