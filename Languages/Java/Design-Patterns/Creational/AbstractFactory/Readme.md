@@ -28,3 +28,27 @@ DocumentBuilder factory = abstractFactory.newDocumentBuilder();
 // interface class that holds the concrete implementation
 Document doc = factory.parse(param);
 ```
+
+## Pitfall
+1. Very Complex
+2. Difficult to implement
+3. Runtime Switch
+4. Pattern within pattern
+5. very problem specific
+6. Starts as Factory and then is refactored to be AbstractFactory
+
+## Constrast
+|**AbstractFactory** | **Factory**|
+|---|---|
+|Hides the factory  |Returns Various instaces|
+|Implemented with a Factory| Uses Multiple Constructors|
+|Abstracts Environment |Adaptable to environment more easily|
+|Builds through composition |Interface Driven|
+
+In the end we can say that all features of **Factory** applies to **AbstractFactory** with some added bonus
+
+## Summary
+1. Group of similar factories
+2. Complex
+3. Heavily abstracted
+4. Written as Framewrok Pattern
