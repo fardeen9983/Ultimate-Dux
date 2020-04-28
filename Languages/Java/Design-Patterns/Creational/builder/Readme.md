@@ -25,3 +25,7 @@ builder.append(42);
 
 System.out.println(builder.toString());
 ```
+
+**Notes - Beans**
+___
+So a simple bean as referred to the Java Bean class [OrderBean]() has multiple getters and setter and also a default constructor. But despite this the object is still mutable and it does not specify a contract as to which member is to be set for the object to be in a state or be valid.

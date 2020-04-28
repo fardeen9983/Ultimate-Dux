@@ -2,16 +2,21 @@ package builder.beanexample;
 
 // A simple bean example with members and respective getters-setters 
 public class OrderBean {
-    private String bead;
+    private String bread;
     private String condiments;
     private String dressing;
     private String meat;
 
+    // Default constructor
+    public OrderBean(){
+
+    }
+
     /**
      * @return the bead
      */
-    public String getBead() {
-        return bead;
+    public String getBread() {
+        return bread;
     }
 
     /**
@@ -38,8 +43,8 @@ public class OrderBean {
     /**
      * @param bead the bead to set
      */
-    public void setBead(String bead) {
-        this.bead = bead;
+    public void setBread(String bead) {
+        this.bread = bead;
     }
 
     /**
