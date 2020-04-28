@@ -50,7 +50,7 @@ ___
 
 ## Contrast
 
- |**Singleton** | **Factory**|
+|**Singleton** | **Factory**|
 |---|---|
 |Returns same instance |  Returns various instaces|
 |One constructor method with no args | Multiple constructors|

@@ -52,9 +52,15 @@ The Builder constructors can enforce which paramter should be required for it.
 4. Complexity
 
 ## Constrast
-**Builder** | **Prototype**
----|---|----
-Returns same instance |  Returns various instaces
-One constructor method with no args | Multiple constructors
-No Interface | Interface driven
--  | Adaptable to environment more easily
+|**Builder** | **Prototype**|
+|---|---|
+Handles complex constructor |  Implemented around the clone method|
+|No interface rquired. But can add one | Avoids calling complex constructor|
+|Can be separate class/a static inner class | Always defined in the same class|
+|Works with legacy code | Difficult to implement in legacy code|
+
+## Summary
+1. Creative way to deal with complexity
+2. Easy to implement
+3. Few Drawbacks
+4. can refactor in with separate class
