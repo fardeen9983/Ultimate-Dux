@@ -8,5 +8,3 @@ This deal with creating instances of classes
 3. Prototype
 4. Factory
 5. AbstractFactory 
-
-
