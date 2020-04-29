@@ -8,5 +8,7 @@ public class Demo {
     
         circle.applyColor();
         square.applyColor();
+
+        // Adding any more colored shape will require us to be build a concrete class for the same
     }
 }
