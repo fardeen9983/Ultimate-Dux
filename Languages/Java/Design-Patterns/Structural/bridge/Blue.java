@@ -1,6 +1,6 @@
 package bridge;
 
-public class BlueCircle extends Circle {
+public class Blue implements Color{
 
     @Override
     public void applyColor() {

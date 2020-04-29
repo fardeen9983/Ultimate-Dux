@@ -1,6 +1,6 @@
 package bridge;
 
-public class RedSquare extends Square {
+public class Red  implements Color{
 
     @Override
     public void applyColor() {

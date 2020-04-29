@@ -1,9 +1,10 @@
 package bridge;
 
 public abstract class Shape {
-    public Shape() {
-
+    protected Color color;
+    public Shape(Color color) {
+        this.color = color;
     }
 
-    public abstract void applyColor();
+    abstract public  void applyColor();
 }

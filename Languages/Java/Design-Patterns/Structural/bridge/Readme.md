@@ -32,3 +32,5 @@ Statement = conn.createStatement();
 ___
 In the example given in this [commit]() show a system for creating differnet concrete shapes and apply colors to them. The problem is for each new colored shape we have to create a new class definition and have concrete implementations for all the interfaces. this will work fine. But is cumbersome. This can be avoided with Bridge.
 ___
+
+With the code changed for the example at this [commit]() we can easily add new variants of Color class without having to deal with much changes
