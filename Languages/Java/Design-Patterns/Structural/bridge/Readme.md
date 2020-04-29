@@ -34,3 +34,18 @@ In the example given in this [commit]() show a system for creating differnet con
 ___
 
 With the code changed for the example at this [commit]() we can easily add new variants of Color class without having to deal with much changes
+
+## Pitfalls
+1. Increases Complexity
+2. Conceptually difficult to plan
+3. More than just OO
+4. Confusing as to what goes to where
+
+## Contrast
+As descibed for the contrast in [Adapter]()
+
+## Summary
+1. Designed for uncertainity
+2. Can be complex
+3. Provides flexibility
+4. More than composition

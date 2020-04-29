@@ -14,5 +14,10 @@ public class Demo {
 
         String moviePrint = moviePrinter.print(printFormatter);
         System.out.println(moviePrint);
+
+        // Example of HtmlFormatter
+        Formatter htmlFormatter = new HtmlFormatter();
+        moviePrint = moviePrinter.print(htmlFormatter);
+        System.out.println(moviePrint);
     }
 }
