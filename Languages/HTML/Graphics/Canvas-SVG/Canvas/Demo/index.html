@@ -54,13 +54,40 @@
         ctx.stroke();
         ctx.fill();
 
-        // Add Title text
-        const text = "Ultimate Custom Pie Maker";
-        ctx.font = '25px sans-serif';
-        // Get the estimated portion size of the canvas that the passed element will likely occupy
-        const dims = ctx.measureText(text);
-        ctx.fillStyle = "#a593c2"
-        ctx.fillText(text, 200 -dims.width / 2, 30);
+        // // Add Title text
+        // const text = "Ultimate Custom Pie Maker";
+        // ctx.font = '25px sans-serif';
+        // // Get the estimated portion size of the canvas that the passed element will likely occupy
+        // const dims = ctx.measureText(text);
+        // ctx.fillStyle = "#a593c2"
+        // ctx.fillText(text, 200 -dims.width / 2, 30);
+
+        const spans = [
+            {
+                font: "bold 25px sans-serif",
+                text : "Ultimate",
+                fillStyle : "#4dcfa8"
+            },
+            {
+                font: "25px sans-serif",
+                text : " Custom Pie Maker",
+                fillStyle : "#a593c2"
+            }
+        ];
+        let totalWidth = 0;
+        spans.forEach(span =>{
+            ctx.font = span.font;
+            span.dims = ctx.measureText(span.text);
+            totalWidth+= span.dims.width;
+        });
+
+        let currentX = 200 - totalWidth/2;
+        spans.forEach(span => {
+            ctx.font = span.font;
+            ctx.fillStyle = span.fillStyle;
+            ctx.fillText(span.text, currentX,30);
+            currentX+=span.dims.width;
+        });
 
         document.getElementById('options').addEventListener('change', e => {
             const options = {};
