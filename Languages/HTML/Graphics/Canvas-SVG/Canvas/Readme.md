@@ -57,3 +57,26 @@
     </script>
 </body>
 ```
+## Paths
+* `moveTo` is used to move thee drawing point to given position
+* `lineTo` is used for drawing line from current position to given coordinates
+* `closePath` will connect last draw point to initial draw point
+* `stroke` is used to draw outline border
+```js
+ctx.beginPath();
+ctx.moveTo(100,75);
+ctx.lineTo(150,175);
+ctx.lineTo(50,175);
+ctx.closePath();
+ctx.stroke();
+```
+
+We can still use SVG syntac to create the Path
+```js
+const p = new Path2D(
+  'M 100,75' +
+  'l 50,100' +
+  'h -100' +
+  'z');
+ctx.stroke(p);
+```

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Custom Pie Maker</title>
+    <style>
+        .options {
+            width: 300px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .animated {
+            transition: all 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <div class="options" id="options">
+        <fieldset>
+            <legend>Please Choose a crust</legend>
+            <input type="radio" name="crust" value="none" checked /> None<br />
+            <input type="radio" name="crust" value="pastry" /> Pastry<br />
+            <input type="radio" name="crust" value="graham" /> Graham<br />
+            <input type="radio" name="crust" value="chocolate" /> Chocoloate<br />
+        </fieldset>
+        <fieldset>
+            <legend>Please Choose a Filling</legend>
+            <input type="radio" name="filling" value="none" checked /> None<br />
+            <input type="radio" name="filling" value="keyline" /> Keyline<br />
+            <input type="radio" name="filling" value="pumpkin" /> Pumpkin<br />
+            <input type="radio" name="filling" value="lemon" /> Lemon<br />
+        </fieldset>
+        <fieldset>
+            <legend>Please Choose a Topping</legend>
+            <input type="radio" name="topping" value="none" checked /> None<br />
+            <input type="radio" name="topping" value="meringue" /> Meringue<br />
+        </fieldset>
+        <button id="animate">Explode!</button>
+    </div>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = "transparent";
+        ctx.strokeStyle = "black"
+        ctx.beginPath();
+        ctx.rect(0, 0, canvas.width, canvas.height);
+        ctx.stroke();
+        ctx.fill();
+
+        document.getElementById('options').addEventListener('change', e => {
+            const options = {};
+            document.querySelectorAll('[name=crust]').forEach(ele => {
+                if (ele.checked) {
+                    options.crust = ele.value;
+                }
+            });
+            document.querySelectorAll('[name=filling]').forEach(ele => {
+                if (ele.checked) {
+                    options.filling = ele.value;
+                }
+            });
+            document.querySelectorAll('[name=topping]').forEach(ele => {
+                if (ele.checked) {
+                    options.topping = ele.value;
+                }
+            });
+            render(options);
+        });
+
+        function render(options) {
+            console.log(options);
+            ctx.clearRect(1, 1, canvas.width - 2, canvas.height - 2);
+            let outerCrustColor, innerCrustColor, fillingColor, toppingColor;
+            switch (options.crust) {
+                case 'pastry':
+                    innerCrustColor = '#DECCBB';
+                    outerCrustColor = '#F2DFC9';
+                    break;
+                case 'graham':
+                    innerCrustColor = '#BA870D';
+                    outerCrustColor = '#DEA010';
+                    break;
+                case 'chocolate':
+                    innerCrustColor = '#2E1802';
+                    outerCrustColor = '#422303';
+                    break;
+                default:
+                    innerCrustColor = outerCrustColor = 'transparent';
+            }
+            switch (options.filling) {
+                case 'keyline':
+                    fillingColor = "#DFF5A2";
+                    break;
+                case 'pumpkin':
+                    fillingColor = "#BD7502";
+                    break;
+                case 'lemon':
+                    fillingColor = "#FFF4BD";
+                    break;
+                default:
+                    fillingColor = "transparent";
+            }
+            switch (options.topping) {
+                case 'meringue':
+                    break;
+                default:
+                    toppingColor = "transparent";
+            }
+            if (outerCrustColor && innerCrustColor) {
+                ctx.fillStyle = outerCrustColor;
+                ctx.beginPath();
+                ctx.ellipse(200, 200, 150, 150, 0, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.fillStyle = innerCrustColor;
+                ctx.beginPath();
+                ctx.ellipse(200, 200, 110, 110, 0, 0, 2 * Math.PI);
+                ctx.fill();
+            }
+            if(fillingColor){
+                ctx.fillStyle = fillingColor;
+                ctx.beginPath();
+                ctx.ellipse(200, 200, 140, 140, 0, 0, 2 * Math.PI);
+                ctx.fill();
+            }
+        }
+    </script>
+</body>
+
+</html>
