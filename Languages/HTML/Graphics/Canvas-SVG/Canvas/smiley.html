@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smiley using Canvas</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="500"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        ctx.fillStyle = "yellow";
+        ctx.ellipse(250, 250, 200, 200, 0, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(175, 275);
+        ctx.bezierCurveTo(185, 365, 315, 365, 325, 275);
+        ctx.stroke();
+        ctx.fillStyle = "black";
+        ctx.beginPath();
+        ctx.ellipse(175, 175, 20, 20, 0, 0, 2 * Math.PI);
+        ctx.ellipse(325, 175, 20, 20, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.fillText("Canvases are easy to use",200,500);
+    </script>
+</body>
+
+</html>
