@@ -86,3 +86,54 @@ ctx.stroke(p);
 * `restore` method is used to revert back to the saved transformation state
 ```js
 ```
+
+## Adding text
+* `font` attr can be used to set font style like : *bold 25px sans-sarif*
+* `measureText` methods returns the dimension of the said text string will occupy in the canvs
+* `fillText` method is used to render out text starting LTR at the give x-y position
+
+```js
+const text = "Ultimate Custom Pie Maker";
+ctx.font = '25px sans-serif';
+// Get the estimated portion size of the canvas that the passed element will likely occupy
+const dims = ctx.measureText(text);
+ctx.fillStyle = "#a593c2"
+ctx.fillText(text, 200 -dims.width / 2, 30);
+```
+
+## Adding Images
+* Create `Image` object in JS
+* Set the `src` attribute
+* When the image data is loaded then add the Image to canvas using `drawImage` method
+
+```js
+const image = new Image();
+image.src = "../../logo.png";
+image.addEventListener('load', () => {
+    ctx.drawImage(image, 320, 320, 70, 70);
+});
+```
+
+## Gradients
+* Created using method `createXGradient` where X can be linear, radient, etc
+* Stops are added using `addColorStop` method
+* Finally the gradient is applied as fill/stroke style
+
+```js
+// Linear Gradient
+let gradient = ctx.createLinearGradient(10,0,180,0);
+gradient.addColorStop(0,'rgb(240,90,40)');
+gradient.addColorStop(1,'rgb(42,159,188)');
+
+ctx.fillStyle = gradient;
+ctx.fillRect(10,0,180,180);
+
+// Radial Gradient
+gradient = ctx.createRadialGradient(100,100,0,100,100);
+gradient.addColorStop(0,'rgb(240,90,40)');
+gradient.addColorStop(1,'rgb(42,159,188)');
+
+ctx.fillStyle = gradient;
+ctx.fillRect(10,0,180,180);
+
+```
