@@ -80,3 +80,9 @@ const p = new Path2D(
   'z');
 ctx.stroke(p);
 ```
+
+## Transform
+* `save` method saves te current transformation state
+* `restore` method is used to revert back to the saved transformation state
+```js
+```

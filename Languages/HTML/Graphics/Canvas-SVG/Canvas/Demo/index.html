@@ -73,9 +73,8 @@
         });
 
         function render(options) {
-            console.log(options);
             ctx.clearRect(1, 1, canvas.width - 2, canvas.height - 2);
-            let outerCrustColor, innerCrustColor, fillingColor, toppingColor;
+            let outerCrustColor, innerCrustColor, fillingColor;
             switch (options.crust) {
                 case 'pastry':
                     innerCrustColor = '#DECCBB';
@@ -105,12 +104,6 @@
                 default:
                     fillingColor = "transparent";
             }
-            switch (options.topping) {
-                case 'meringue':
-                    break;
-                default:
-                    toppingColor = "transparent";
-            }
             if (outerCrustColor && innerCrustColor) {
                 ctx.fillStyle = outerCrustColor;
                 ctx.beginPath();
@@ -121,11 +114,30 @@
                 ctx.ellipse(200, 200, 110, 110, 0, 0, 2 * Math.PI);
                 ctx.fill();
             }
-            if(fillingColor){
+            if (fillingColor) {
                 ctx.fillStyle = fillingColor;
                 ctx.beginPath();
                 ctx.ellipse(200, 200, 140, 140, 0, 0, 2 * Math.PI);
                 ctx.fill();
+            }
+            switch (options.topping) {
+                case 'meringue':
+                    ctx.fillStyle = "white";
+                    ctx.strokeStyle = "#b3702d";
+                    ctx.beginPath();
+                    ctx.ellipse(200, 200, 130, 130, 0, 0, 2 * Math.PI);
+                    ctx.fill();
+                    ctx.stroke();
+                    for (let index = 0; index < 6; index++) {
+                        ctx.save();
+                        ctx.translate(200, 200);
+                        ctx.rotate(index / 6 * 2 * Math.PI);
+                        ctx.beginPath();
+                        ctx.moveTo(0, 0);
+                        ctx.quadraticCurveTo(65, -65, 0, -130);
+                        ctx.stroke();
+                        ctx.restore();
+                    }
             }
         }
     </script>
