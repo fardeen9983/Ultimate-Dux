@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Pie Maker</title>
+    <style>
+        .options {
+            width: 300px;
+            display: inline-block;
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <svg id="" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+        <rect x="0" y="0" width="400" height="400" fill="transparent" stroke="black" />
+        <circle id="crust-outer" cx="200" cy="200" r="150" fill="transparent" />
+        <circle id="crust-inner" cx="200" cy="200" r="110" fill="transparent" />
+    </svg>
+    <div class="options" id="options">
+        <fieldset>
+            <legend>Please Choose a crust</legend>
+            <input type="radio" name="crust" value="none" checked /> None<br />
+            <input type="radio" name="crust" value="pastry" /> Pastry<br />
+            <input type="radio" name="crust" value="graham" /> Graham<br />
+            <input type="radio" name="crust" value="chocolate" /> Chocoloate<br />
+        </fieldset>
+    </div>
+    <script>
+        const crustElements = document.querySelectorAll("[name=crust]");
+        const outerCrust = document.getElementById("crust-outer");
+        const innerCrust = document.getElementById("crust-inner");
+        document.getElementById('options').addEventListener("change", (e) => {
+            if (e.target.name === 'crust') {
+                let colors = [];
+                switch (e.target.value) {
+                    case 'pastry':
+                        colors = ['#DECCBB', '#F2DFC9'];
+                        break;
+                    case 'graham':
+                        colors = ['#BA870D', '#DEA010'];
+                        break;
+                    case 'chocolate':
+                        colors = ['#2E1802', '#422303'];
+                        break;
+                    default:
+                        colors = ['transparent', 'transparent'];
+                }
+                innerCrust.setAttribute('fill',colors[0]);
+                outerCrust.setAttribute('fill',colors[1]);
+            }
+
+        });
+    </script>
+</body>
+
+</html>

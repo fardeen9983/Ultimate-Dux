@@ -6,9 +6,9 @@
 
 **Example :**  Smiley Face
 ```xml
-<svg xmlns="http://www.w3.org/2000/svg" height="600" width="500"> 
+<svg xmlns="http://www.w3.org/2000/svg" height="600" width="500">
     <circle cx="250" cy="250" r="200" fill="rgb(255,255,0)" stroke-width="5"/>
-    <g fill="rgb(200,200,0)">
+    <g fill="rgb(200,240,0)">
         <circle cx="175" cy="175" r="20">
         <circle cx="325" cy="175" r="20">
     </g>
@@ -46,14 +46,14 @@
 ### Rectangle
 1. Outer `<svg>` tag
 2. To add Rectangle shape add `<rect>` tag
-3. Add 2D position for Rectangle's upper left corner 
+3. Add 2D position for Rectangle's upper left corner
 4. Add width and height of the shape
-7. Add stroke and fill color 
+7. Add stroke and fill color
 
 ```xml
-<svg xmlns="http://www.w3.org/2000/svg" height="200" width="200"> 
+<svg xmlns="http://www.w3.org/2000/svg" height="200" width="200">
     <!-- Rectangle Shape -->
-    <rect 
+    <rect
         x="10" y="10"
         width="50" height="50"
         stroke="black" stroke-width="5"
@@ -64,44 +64,44 @@
 
 ### Other shapes
 ```xml
-<svg xmlns="http://www.w3.org/2000/svg" height="200" width="200"> 
-    
+<svg xmlns="http://www.w3.org/2000/svg" height="200" width="200">
+
     <!-- Rectangle -->
-    <rect 
+    <rect
         x="10" y="10"
         width="100" height="100"
     />
-    
+
     <!-- Rectangle with rounded corner-->
-    <rect 
+    <rect
         x="10" y="10"
         width="100" height="100"
         rx="10" ry="10"
     />
 
     <!-- Circle -->
-    <circle 
+    <circle
         cx="50" cy="50" r="20"
     />
 
     <!-- Ellipse -->
     <ellipse
-        cx="50" cy="50" 
+        cx="50" cy="50"
         rx="50" ry="20"
     />
 
     <!-- Circle -->
-    <line 
+    <line
         x1="25" y1="25" x2="50" y2="50"
     />
 
     <!-- PolyLine -->
-    <polyline 
+    <polyline
         points="100,75 150,175 50,175"
     />
 
     <!-- Polygon -->
-    <polygon 
+    <polygon
         points="100 75 150 175 50 175"
     />
 </svg>
