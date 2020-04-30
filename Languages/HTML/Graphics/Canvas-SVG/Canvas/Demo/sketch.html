@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketcher</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        ctx.rect(0, 0, 600, 600);
+        ctx.stroke();
+
+        let prevX, prevY;
+        let isDrawing = false;
+        canvas.addEventListener("mousedown", () => {
+            isDrawing = true;
+        });
+        canvas.addEventListener("mouseup", () => {
+            isDrawing = false;
+        });
+        canvas.addEventListener("mousemove", ({
+            x,
+            y
+        }) => {
+            if (!isDrawing) {
+                prevX = prevY = null;
+            }
+            if (prevX && prevY) {
+                ctx.beginPath();
+                ctx.moveTo(prevX, prevY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+            }
+            prevX = x;
+            prevY = y;
+        });
+    </script>
+</body>
+
+</html>
