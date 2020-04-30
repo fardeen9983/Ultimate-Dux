@@ -35,6 +35,7 @@
 * Coloring of the sahpe in two possible methods - **stroke** and **fill**
 * **stroke** take cares of the outline color and **stroke-width** defines the width of the stroke
 * **fill** uses RGB value to fill the shape with color
+* The `<defs>` tag allow us to create resuable elements in the SVG
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" height="600" width="500">
@@ -133,5 +134,51 @@
               h -100
               z"
     />
+</svg>
+```
+
+## Text
+* Use tag `<text>` for placing text inside the SVG
+* Attributes : Other than normal x, y coordinates and fill attributes we have
+  * `text-anchor` : to align text position
+  * font controls : `font-family`, `font-size`, `font-weight`
+* We can further edit and apply attributes to sections of text using the `<tspan>` tag
+
+```xml
+<svg xmlns="http://www.w3.org/2000/svg" height="200" width="200">
+    <text x="100" y="100" text-anchor="middle" font-family="sans-serif" fill="#a593c2" font-size="25">
+           <tspan fill="#4dcfa8" font-weight="bold">Ultimate</tspan> Custom Pie Maker
+    </text>
+</svg>
+```
+
+## Gradients
+* Gradients are defined using the `<linear-gradient>` tag
+* Here in the example we have added the linear gradient element in the `<defs>` section as a reusable element
+* In linear gradients we have have stops on a linear path which define which color we have at those stops. The `<stop>` tag is used for that
+* The linear gradient is used to fill a rectangle in the SVG
+
+```xml
+<svg xmlns="http://www.w3.org/2000/svg" height="500" width="200">
+    <defs>
+        <linearGradient id="gradient1">
+            <stop offset="0%" stop-color="rgb(240,90,40)"/>
+             <stop offset="100%" stop-color="rgb(42,159,188)"/>
+        </linearGradient>
+    </defs>
+    <rect width="180" height="180" x="10" y="10" fill="url(#gradient1)"/>
+</svg>
+```
+
+Following example is for a Radial gradient. The color grows from center and spreads outward
+```xml
+<svg xmlns="http://www.w3.org/2000/svg" height="500" width="200">
+    <defs>
+        <radialGradient id="gradient1">
+            <stop offset="0%" stop-color="rgb(240,90,40)"/>
+             <stop offset="100%" stop-color="rgb(42,159,188)"/>
+        </radialGradient>
+    </defs>
+    <rect width="180" height="180" x="10" y="10" fill="url(#gradient1)"/>
 </svg>
 ```
