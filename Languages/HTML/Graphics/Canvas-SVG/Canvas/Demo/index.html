@@ -45,12 +45,22 @@
     <script>
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
+
+        // Add border
         ctx.fillStyle = "transparent";
         ctx.strokeStyle = "black"
         ctx.beginPath();
         ctx.rect(0, 0, canvas.width, canvas.height);
         ctx.stroke();
         ctx.fill();
+
+        // Add Title text
+        const text = "Ultimate Custom Pie Maker";
+        ctx.font = '25px sans-serif';
+        // Get the estimated portion size of the canvas that the passed element will likely occupy
+        const dims = ctx.measureText(text);
+        ctx.fillStyle = "#a593c2"
+        ctx.fillText(text, 200 -dims.width / 2, 30);
 
         document.getElementById('options').addEventListener('change', e => {
             const options = {};
