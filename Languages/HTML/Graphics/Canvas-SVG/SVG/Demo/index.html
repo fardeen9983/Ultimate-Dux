@@ -16,9 +16,42 @@
 
 <body>
     <svg id="" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+        <style>
+            #meringue path{
+                transform-origin: 200px 200px;
+            }
+            #meringue path:nth-of-type(1){
+                transform: rotate(0deg);
+            }
+            #meringue path:nth-of-type(2){
+                transform: rotate(60deg);
+            }
+            #meringue path:nth-of-type(3){
+                transform: rotate(120deg);
+            }
+            #meringue path:nth-of-type(4){
+                transform: rotate(180deg);
+            }
+            #meringue path:nth-of-type(5){
+                transform: rotate(240deg);
+            }
+            #meringue path:nth-of-type(6){
+                transform: rotate(300deg);
+            }
+        </style>
         <rect x="0" y="0" width="400" height="400" fill="transparent" stroke="black" />
         <circle id="crust-outer" cx="200" cy="200" r="150" fill="transparent" />
         <circle id="crust-inner" cx="200" cy="200" r="110" fill="transparent" />
+        <circle id="filling" cx="200" cy="200" r="140" fill="transparent" />
+        <g id="meringue" style="display: none;">
+            <circle cx="200" cy="200" r="130" fill="white" stroke="#b3702d" />
+            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent"/>
+            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent"/>
+            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent"/>
+            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent"/>
+            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent"/>
+            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent"/>
+        </g>
     </svg>
     <div class="options" id="options">
         <fieldset>
@@ -28,29 +61,70 @@
             <input type="radio" name="crust" value="graham" /> Graham<br />
             <input type="radio" name="crust" value="chocolate" /> Chocoloate<br />
         </fieldset>
+        <fieldset>
+            <legend>Please Choose a Filling</legend>
+            <input type="radio" name="filling" value="none" checked /> None<br />
+            <input type="radio" name="filling" value="keyline" /> Keyline<br />
+            <input type="radio" name="filling" value="pumpkin" /> Pumpkin<br />
+            <input type="radio" name="filling" value="lemon" /> Lemon<br />
+        </fieldset>
+        <fieldset>
+            <legend>Please Choose a Topping</legend>
+            <input type="radio" name="topping" value="none" checked /> None<br />
+            <input type="radio" name="topping" value="meringue" /> Meringue<br />
+        </fieldset>
     </div>
     <script>
         const crustElements = document.querySelectorAll("[name=crust]");
         const outerCrust = document.getElementById("crust-outer");
         const innerCrust = document.getElementById("crust-inner");
+        const fillings = document.getElementById("filling");
+        const toppings = document.getElementById("meringue");
         document.getElementById('options').addEventListener("change", (e) => {
-            if (e.target.name === 'crust') {
-                let colors = [];
-                switch (e.target.value) {
-                    case 'pastry':
-                        colors = ['#DECCBB', '#F2DFC9'];
-                        break;
-                    case 'graham':
-                        colors = ['#BA870D', '#DEA010'];
-                        break;
-                    case 'chocolate':
-                        colors = ['#2E1802', '#422303'];
-                        break;
-                    default:
-                        colors = ['transparent', 'transparent'];
-                }
-                innerCrust.setAttribute('fill',colors[0]);
-                outerCrust.setAttribute('fill',colors[1]);
+            let colors = [];
+            let filling = "";
+            switch (e.target.name) {
+                case "crust":
+                    switch (e.target.value) {
+                        case 'pastry':
+                            colors = ['#DECCBB', '#F2DFC9'];
+                            break;
+                        case 'graham':
+                            colors = ['#BA870D', '#DEA010'];
+                            break;
+                        case 'chocolate':
+                            colors = ['#2E1802', '#422303'];
+                            break;
+                        default:
+                            colors = ['transparent', 'transparent'];
+                    }
+                    innerCrust.setAttribute('fill', colors[0]);
+                    outerCrust.setAttribute('fill', colors[1]);
+                    break;
+                case 'filling':
+                    switch (e.target.value) {
+                        case 'keyline':
+                            filling = "#DFF5A2";
+                            break;
+                        case 'pumpkin':
+                            filling = "#BD7502";
+                            break;
+                        case 'lemon':
+                            filling = "#FFF4BD";
+                            break;
+                        default:
+                            filling = "transparent";
+                    }
+                    fillings.setAttribute('fill', filling);
+                    break;
+                case 'topping':
+                    switch (e.target.value) {
+                        case "meringue":
+                            toppings.style.display = '';
+                            break;
+                        default:
+                            toppings.style.display = 'none';
+                    }
             }
 
         });
