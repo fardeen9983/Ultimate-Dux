@@ -106,3 +106,32 @@
     />
 </svg>
 ```
+
+## Paths
+* `<path>` tag represents the Path element
+* `d` attribute represents the direction/trajectory the path needs to take
+* `M` or `m` : move
+* `L` or `l` : Draw line
+* `H` or `h` : Horizontal line
+* `V` or `v` : Vertical line
+* `C` or `c` : Bezier curve
+* `S` or `s` : Smooth adjacent Bezier curve
+* `Q` or `q` : Quadtric curve
+* `T` or `t` : Smooth adjacent quadtric curve
+* `A` or `a` : Curve
+* `Z` or `z` : Close curve
+* Arguemnts : 1st - Pixels to move right, 2nd - Pixels to move down
+* Negative values of arguments represent opposite directions
+* Learn more about the Path tag and it's attributes [here](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)
+```xml
+<svg xmlns="http://www.w3.org/2000/svg" height="200" width="200">
+
+    <!-- Path -->
+    <path
+        d = " M 100, 75
+              l 50, 100
+              h -100
+              z"
+    />
+</svg>
+```
