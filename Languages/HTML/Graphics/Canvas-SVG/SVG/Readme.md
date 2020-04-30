@@ -182,3 +182,9 @@ Following example is for a Radial gradient. The color grows from center and spre
     <rect width="180" height="180" x="10" y="10" fill="url(#gradient1)"/>
 </svg>
 ```
+
+## Animation
+We can apply the transfrom style attributes to animate SVG/it's elements like we do with normal HTML content
+
+## Further Reading
+Head over the [Mozilla Documentation](https://developer.mozilla.org/en-US/docs/Web/SVG) to learn more about SVG

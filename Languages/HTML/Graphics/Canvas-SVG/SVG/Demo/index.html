@@ -11,50 +11,60 @@
             display: inline-block;
             vertical-align: top;
         }
+
+        .animated {
+            transition: all 1s;
+        }
     </style>
 </head>
 
 <body>
     <svg id="" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
         <style>
-            #meringue path{
+            #meringue path {
                 transform-origin: 200px 200px;
             }
-            #meringue path:nth-of-type(1){
+
+            #meringue path:nth-of-type(1) {
                 transform: rotate(0deg);
             }
-            #meringue path:nth-of-type(2){
+
+            #meringue path:nth-of-type(2) {
                 transform: rotate(60deg);
             }
-            #meringue path:nth-of-type(3){
+
+            #meringue path:nth-of-type(3) {
                 transform: rotate(120deg);
             }
-            #meringue path:nth-of-type(4){
+
+            #meringue path:nth-of-type(4) {
                 transform: rotate(180deg);
             }
-            #meringue path:nth-of-type(5){
+
+            #meringue path:nth-of-type(5) {
                 transform: rotate(240deg);
             }
-            #meringue path:nth-of-type(6){
+
+            #meringue path:nth-of-type(6) {
                 transform: rotate(300deg);
             }
         </style>
         <rect x="0" y="0" width="400" height="400" fill="transparent" stroke="black" />
         <text x="200" y="30" text-anchor="middle" font-family="sans-serif" fill="#a593c2" font-size="25">
-           <tspan fill="#4dcfa8" font-weight="bold">Ultimate</tspan> Custom Pie Maker
+            <tspan fill="#4dcfa8" font-weight="bold">Ultimate</tspan> Custom Pie Maker
         </text>
         <image x="320" y="320" width="50" height="50" href="logo.png"></image>
-        <circle id="crust-outer" cx="200" cy="200" r="150" fill="transparent" />
-        <circle id="crust-inner" cx="200" cy="200" r="110" fill="transparent" />
-        <circle id="filling" cx="200" cy="200" r="140" fill="transparent" />
-        <g id="meringue" style="display: none;">
+        <circle id="crust-outer" class="animated" cx="200" cy="200" r="150" fill="transparent" />
+        <circle id="crust-inner" class="animated" cx="200" cy="200" r="110" fill="transparent" />
+        <circle id="filling" class="animated" cx="200" cy="200" r="140" fill="transparent" />
+        <g id="meringue" class="animated" style="display: none;">
             <circle cx="200" cy="200" r="130" fill="white" stroke="#b3702d" />
-            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent"/>
-            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent"/>
-            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent"/>
-            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent"/>
-            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent"/>
-            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent"/>
+            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent" />
+            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent" />
+            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent" />
+            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent" />
+            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent" />
+            <path d="M 200,200 q 65,-65 0,-130" stroke="#b3702d" fill="transparent" />
         </g>
     </svg>
     <div class="options" id="options">
@@ -77,6 +87,7 @@
             <input type="radio" name="topping" value="none" checked /> None<br />
             <input type="radio" name="topping" value="meringue" /> Meringue<br />
         </fieldset>
+        <button id="animate">Explode!</button>
     </div>
     <script>
         const crustElements = document.querySelectorAll("[name=crust]");
@@ -131,6 +142,24 @@
                     }
             }
 
+        });
+        const animateButton = document.getElementById('animate');
+        let isExploded = false;
+        animateButton.addEventListener("click", () => {
+            if (isExploded) {
+                animateButton.innerHTML = "Explode!"
+                outerCrust.style.transform = 'translate(0,0) scale(1)';
+                innerCrust.style.transform = 'translate(0,0) scale(1)';
+                filling.style.transform = 'translate(0,0) scale(1)';
+                toppings.style.transform = 'translate(0,0) scale(1)';
+            } else {
+                animateButton.innerHTML = "Reassemble"
+                outerCrust.style.transform = 'translate(-20px,20px) scale(0.6)';
+                innerCrust.style.transform = 'translate(-20px,20px) scale(0.6)';
+                filling.style.transform = 'translate(180px,20px) scale(0.6)';
+                toppings.style.transform = 'translate(80px,180px) scale(0.6)';
+            }
+            isExploded = !isExploded;
         });
     </script>
 </body>
