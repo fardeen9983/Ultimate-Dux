@@ -1,7 +1,7 @@
 # R programming language
 
-It is a free and open source programming language.
-R is the language most popular programming language for the field of data science. It has over 9000+ packages provided by 3rd party contributors
+It is a free and open-source programming language.
+R is the language most popular programming language for the field of data science. It has over 9000+ packages provided by 3rd party contributors.
 
 ## Installation
 

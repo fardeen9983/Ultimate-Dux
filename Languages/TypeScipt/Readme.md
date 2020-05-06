@@ -1,6 +1,6 @@
 # Typescript: The stricter sibling of JavaScript
 
-Typescript, a language developed by Microsoft, is a fully typed language which starts and ends on Javascript much like it's sibling but is also friends with other languages like Java and C++, reminding you always to write code in good practices.
+Typescript, a language developed by Microsoft, is a fully typed language that starts and ends on Javascript, much like it's sibling, but is also friends with other languages like Java and C++, reminding you always to write code in good practices.
 
 > Always keep your types in check and don't forget your dose of semi-colons, or I might throw some errors your way
 
@@ -12,7 +12,7 @@ Or you can install Typescript as a package using `npm` or `yarn`. So it's a no-b
 
 You can do so on Linux based platform from your terminal itself using your package manager. On Windows, we are not fortunate enough to have a good package manager already installed if you have `choco` installed, good for you.
 
-Or you can use the following [link](https://nodejs.org/en/download/) and select your OS and download option. My advice will be to go with the LTS version (mostly used in organisation for stability).
+Or you can use the following [link](https://nodejs.org/en/download/) and select your OS and download option. My advice will be to go with the LTS version (mostly used in organization for stability).
 
 Using NPM :
 
@@ -33,13 +33,13 @@ To install the typescript language locally, do the following:
 Using NPM :
 
 ```bash
-npm install typescript --save-dev
+npm install Typescript --save-dev
 ```
 
 Using Yarn:
 
 ```bash
-yarn add typescript --dev
+yarn add Typescript --dev
 ```
 
 ## Compile
@@ -75,7 +75,7 @@ npx tsc --init
 
 **tslint** is lint or a linter for TS language.
 
-A linter is a tool that analyses the code as you write it and highlights syntax errors, issues, bad practises and pushes you as a programmer to write better code. It would be best if you always used good linter whenever possible. Writing optimal code is the first step to good programming.
+A linter is a tool that analyses the code as you write it and highlights syntax errors, issues, bad practices, and pushes you as a programmer to write better code. It would be best if you always used good linter whenever possible. Writing optimal code is the first step to good programming.
 
 > More details on "[Benefits of using a Linter](https://sourcelevel.io/blog/what-is-a-linter-and-why-your-team-should-use-it)"
 

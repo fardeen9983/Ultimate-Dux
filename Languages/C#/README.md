@@ -2,9 +2,9 @@
 
 Getting started with learning C# fundamentals by creating a C# Console application based on the .NET core framework
 
-C# files have ' cs ' extension.
+C# files have a ' cs ' extension.
 
-Program.cs is the main entry point for our console app. Adding any other C# program with the main method will throw an error on project execution as there will be two different entry points
+Program.cs is the main entry point for our console app. Adding any other C# program with the main method will throw an error on project execution as there will be two different entry points.
 Hence it is always advised to keep one Main method or specify the desired entry point in the ' .csproj ' file:
 
 To do so, add the following tag in Project/Project-Group :

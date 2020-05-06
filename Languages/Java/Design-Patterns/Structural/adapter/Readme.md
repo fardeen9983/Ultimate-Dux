@@ -1,6 +1,6 @@
 # Adapter Pattern
 
-Useful when connecting new code to legacy code without having to change the working contract that produced by the legacy code.
+Useful when connecting new code to legacy code without having to change the working contract produced by the legacy code.
 
 ## Concepts
 1. Plug Adaptor
@@ -9,10 +9,10 @@ Useful when connecting new code to legacy code without having to change the work
 4. Translating requests from the client to the code we are adapting to
 5. Client --> Adapter --> Adaptee
 
-**Examples :** Arrays -> List (methods in Collections API to adopt Arrays into Lists), Stream classes have adpater to work with other streams or readers.
+**Examples:** Arrays -> List (methods in Collections API to adopt Arrays into Lists), Stream classes have an adapter to work with other streams or readers.
 
 ## Design
-1. Client Centric
+1. Client-Centric
 2. Integrate new to Old
 3. Can use interface but no required
 4. Adaptee can be the (new) implementation
@@ -31,9 +31,9 @@ list = Arrays.asList(array);
 
 ## Pitfalls
 1. Not a Lot
-2. Dont complicate it
+2. Don't complicate it
 3. Multiple adapters
-4. Dont add Functionality (It will become a Decorator otherwise)
+4. Don't add Functionality (It will become a Decorator otherwise)
 
 ## Contrast
 |**Adapter**|**Bridge**|
@@ -41,7 +41,7 @@ list = Arrays.asList(array);
 |Works after code is designed| Designed Upfront |
 |Deals with Legacy code|Abstraction and implementation may vary |
 |Retrofitted to make unrelated classes work together|Built in advance |
-|Provide different interface to legacy code than which was initially intended| |
+|Provide a different interface to legacy code than which was initially intended| |
 
 
 ## Summary

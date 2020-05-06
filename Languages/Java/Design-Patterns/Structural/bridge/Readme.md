@@ -1,14 +1,14 @@
 # Bridge Pattern
 
-Similiar to Adapter pattern whereas it works with new code rather than legacy code
+Similar to the Adapter pattern whereas it works with new code rather than legacy code
 
 ## Concepts
 1. Decouple abstraction and implementation
-2. Use encapsulation, composition and inheritance
-3. Changes in abstraction wont affect the client
-4. Details wont be right to begin with
+2. Use encapsulation, composition, and inheritance
+3. Changes in abstraction won't affect the client
+4. The details won't be right, to begin with
 
-**Example :** Driver
+**Example:** Driver
 
 ## Design
 1. Utilises Interface and Abstract classes
@@ -30,10 +30,10 @@ Statement = conn.createStatement();
 
 ## Note
 ___
-In the example given in this [commit]() show a system for creating differnet concrete shapes and apply colors to them. The problem is for each new colored shape we have to create a new class definition and have concrete implementations for all the interfaces. this will work fine. But is cumbersome. This can be avoided with Bridge.
+In the Example given in this [commit]() show a system for creating different concrete shapes and apply colors to them. The problem is for each new colored shape; we have to create a new class definition and have concrete implementations for all the interfaces. This will work fine. But it is cumbersome. This can be avoided with Bridge.
 ___
 
-With the code changed for the example at this [commit]() we can easily add new variants of Color class without having to deal with much changes
+With the code changed for the Example at this [commit]() we can easily add new variants of Color class without having to deal with many changes
 
 ## Pitfalls
 1. Increases Complexity
@@ -42,10 +42,10 @@ With the code changed for the example at this [commit]() we can easily add new v
 4. Confusing as to what goes to where
 
 ## Contrast
-As descibed for the contrast in [Adapter]()
+As described for the contrast in [Adapter]()
 
 ## Summary
-1. Designed for uncertainity
+1. Designed for uncertainty
 2. Can be complex
 3. Provides flexibility
 4. More than composition

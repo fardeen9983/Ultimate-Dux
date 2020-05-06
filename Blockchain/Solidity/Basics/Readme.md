@@ -1,8 +1,8 @@
-# Solidity : Basics
+# Solidity: Basics
 
-Solidity files end with the extension **.sol**. We can directly convert them to byte code using the original C++ based **solc** compiler or through it JS based cousing **solcjs**. Smart Contracts are run from **binary (.bin)** files. SO we need to convert these files to bi format and then execute as smart contracts.
+Solidity files end with the extension **.sol**. We can directly convert them to byte code using the original C++ based **solc** compiler or through it JS-based compiler **solcjs**. Smart Contracts are run from **binary (.bin)** files. SO we need to convert these files to bi format and then execute as smart contracts.
 
-Alternatively we can use the Remix IDE for all the above task through a GUI editor. Instructions to install are available on the main Readme.md file of Solidity.
+Alternatively, we can use the Remix IDE for all the above tasks through a GUI editor. Instructions to install are available on the main Readme.md file of Solidity.
 
 ## References
 

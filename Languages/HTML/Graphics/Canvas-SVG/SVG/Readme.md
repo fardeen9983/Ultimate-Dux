@@ -1,8 +1,8 @@
 # Scalable Vector Graphics
 
-* SVG uses an XML-based language that is similiar to HTML
+* SVG uses an XML-based language that is similar to HTML
 * Integrate well with HTML and CSS
-* Consitent quality, regardless of rendered size
+* Consistent quality, regardless of rendered size
 
 **Example :**  Smiley Face
 ```xml
@@ -28,14 +28,14 @@
 
 
 ## Basics
-* All SVG elements are warpped in `<svg>` tags
-* We define XML namesapce at the top `<svg>` tag to define it's vocabulary i.e "[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"
+* All SVG elements are wrapped in `<svg>` tags
+* We define XML namespace at the top `<svg>` tag to define it's vocabulary i.e "[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"
 * Set height and width of the element
 * All measurements are made in pixels (px)
-* Coloring of the sahpe in two possible methods - **stroke** and **fill**
+* Coloring of the shape in two possible methods - **stroke** and **fill**
 * **stroke** take cares of the outline color and **stroke-width** defines the width of the stroke
 * **fill** uses RGB value to fill the shape with color
-* The `<defs>` tag allow us to create resuable elements in the SVG
+* The `<defs>` tag allow us to create reusable elements in the SVG
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" height="600" width="500">
@@ -155,7 +155,7 @@
 ## Gradients
 * Gradients are defined using the `<linear-gradient>` tag
 * Here in the example we have added the linear gradient element in the `<defs>` section as a reusable element
-* In linear gradients we have have stops on a linear path which define which color we have at those stops. The `<stop>` tag is used for that
+* In linear gradients, we have stops on a linear path that define which color we have at those stops. The `<stop>` tag is used for that
 * The linear gradient is used to fill a rectangle in the SVG
 
 ```xml
@@ -184,7 +184,7 @@ Following example is for a Radial gradient. The color grows from center and spre
 ```
 
 ## Animation
-We can apply the transfrom style attributes to animate SVG/it's elements like we do with normal HTML content
+We can apply the transform style attributes to animate SVG/it's elements like we do with standard HTML content
 
 ## Further Reading
 Head over the [Mozilla Documentation](https://developer.mozilla.org/en-US/docs/Web/SVG) to learn more about SVG

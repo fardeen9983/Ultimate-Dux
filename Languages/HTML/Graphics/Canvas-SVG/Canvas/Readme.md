@@ -5,12 +5,12 @@
 * Only revolves around the use of `<canvas>` tag
 * It uses **Context** for drawing everything. Context Types :
   * 2d
-  * webgl
+  * WebGL
   * webgl2
   * bitmaprenderer, etc
-* Consitent quality, regardless of rendered size
+* Consistent quality, regardless of rendered size
 * Can be used to create 2D and 3D rasterized images
-* Good choice for animation, game graphics and image manipulation
+* Good choice for animation, game graphics, and image manipulation
 * Imperative nature of code
 
 **Example :**  [Smiley Face]()
@@ -83,13 +83,13 @@ ctx.stroke(p);
 
 ## Transform
 * `save` method saves te current transformation state
-* `restore` method is used to revert back to the saved transformation state
+* `restore` method is used to revert to the saved transformation state
 ```js
 ```
 
 ## Adding text
 * `font` attr can be used to set font style like : *bold 25px sans-sarif*
-* `measureText` methods returns the dimension of the said text string will occupy in the canvs
+* `measureText` methods returns the dimension of the said text string will occupy in the canvas
 * `fillText` method is used to render out text starting LTR at the give x-y position
 
 ```js
@@ -104,7 +104,7 @@ ctx.fillText(text, 200 -dims.width / 2, 30);
 ## Adding Images
 * Create `Image` object in JS
 * Set the `src` attribute
-* When the image data is loaded then add the Image to canvas using `drawImage` method
+* When the image data is loaded then add the image to the canvas using `drawImage` method
 
 ```js
 const image = new Image();
@@ -115,7 +115,7 @@ image.addEventListener('load', () => {
 ```
 
 ## Gradients
-* Created using method `createXGradient` where X can be linear, radient, etc
+* Created using method `createXGradient` where X can be linear, radiant, etc
 * Stops are added using `addColorStop` method
 * Finally the gradient is applied as fill/stroke style
 

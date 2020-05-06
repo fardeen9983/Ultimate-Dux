@@ -5,21 +5,21 @@ Opposite of the Singleton pattern and the second most used Creational Design pat
 ## Concepts
 1. It doesn't expose Instantiation logic
 2. Defer the above logic to subclass
-3.  Common interface it exposes
-4. Specified by Architecture implemented by user
+3.  The common interface it exposes
+4. Specified by Architecture implemented by the user
 
 **Example :**  Calendar, ResourceBundle, NumberFormat, etc
 
 ## Design
-1. Factory is responsible for not only creating objects but also managing their lifecycles
-2. Created objects are accessed through common interface
-3. Refer multiple concrete classes/implementations, but the client is unaware of this
+1. The factory is responsible for not only creating objects but also for managing their lifecycles
+2. Created objects are accessed through a common interface
+3. Refer to multiple concrete classes/implementations, but the client is unaware of this
 4. Parameterized create method
 
 **Code Example:**
 ```java
 // This call looks like a singleton implementation
-// But in fact the method return concrete implementation of the Calendar class based on parameter passed.
+// But the method return concrete implementation of the Calendar class based on the parameter passed.
 Calender cal = Calender.getInstance();
 System.out.println(cal);
 // output : java.util.GregorianCalender
@@ -31,7 +31,7 @@ System.out.println(cal);
 3. Refactoring
 
 ## Contrast
-Same as described in [Singleton's Contrast]() 
+Same as described in [Singleton's Contrast]()
 
 ## Summary
 1. Parameter driven

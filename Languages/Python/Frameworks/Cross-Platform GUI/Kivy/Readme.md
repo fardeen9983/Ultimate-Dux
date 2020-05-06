@@ -2,9 +2,9 @@
 
 [YouTube link - Tech with Tim](https://www.youtube.com/watch?v=bMHK6NDVlCM&list=PLzMcBGfZo4-kSJVMyYeOQ8CXJ3z1k7gHn)
 
-A cross-platform GUI kit in Python which supports application development for Windows, macOS, Linux, Android and iOS as well, making it a handy framework to learn.
+A cross-platform GUI kit in Python that supports application development for Windows, macOS, Linux, Android, and iOS as well, making it a handy framework to learn.
 
-Kivy's competitors are PyQT or QT with Python, Tkinter and a few others, where QT with Python (formerly PySide 2) is the most widely used and popular framework of them all.
+Kivy's competitors are PyQT or QT with Python, Tkinter, and a few others, where QT with Python (formerly PySide 2) is the most widely used and popular framework of them all.
 
 ## Resources
 
@@ -16,7 +16,7 @@ Kivy, being a Python library, leverages the benefit of being available on any sy
 
 So, first of all, you need to install Python on your system. The latest version available at the time of writing this doc is 3.8.1 (available [here](https://www.python.org/downloads/)).
 
-Check if pip tool is accessible through terminal/cmd/PowerShell. If you are using Anaconda package manager then simply install the desired package.
+Check if the pip tool is accessible through terminal/cmd/PowerShell. If you are using Anaconda package manager, then simply install the desired package.
 
 ```bash
 conda install kivy -c conda-forge
@@ -28,7 +28,7 @@ For installation through pip, first, update packages.
 python -m pip install --upgrade pip wheel setuptools virtualenv
 ```
 
-Next, we can simply pip install the package, but the advised way is to create a virtual env and install all dependencies locally
+Next, we can simply pip install the package, but the advised way is to create a virtual env and install all dependencies locally.
 
 In your project root dir, do the following:
 
@@ -59,7 +59,7 @@ If you have installed the Kivy examples too, then you can directly run a Kivy ex
 python venv\share\kivy-examples\demo\showcase\main.py
 ```
 
-All these dependencies are available in the `Requirements.txt` file which you can use to install all the above dependencies directly.
+All these dependencies are available in the `Requirements.txt` file, which you can use to install all the above dependencies directly.
 
 You can also refer to this [documentation](https://kivy.org/doc/stable/installation/installation-windows.html) to install the developer version of Kivy with Visual C Build tools and MingwPY. Or you can build and edit Kivy from the source too, but it is not required for simple development.
 
@@ -79,23 +79,23 @@ We can create complicated UI designs using layouts and combining them further. W
 
 ## **KV design language**
 
-KV is a design specification used for styling Kivy applications much like we usee CSS in HTML applications. Just like CSS, we create a separate `.kv` file which holds our design to be used in Kivy app.
+KV is a design specification used for styling Kivy applications, much like we usee CSS in HTML applications. Just like CSS, we create a separate `.kv` file, which holds our design to be used in the Kivy app.
 
 - ### **File structure**
 
-  An important thing to note is that the name of the kv file has to be the same as the Kivy app class name with the App (if present), removed. So for `MyApp` class, kv file will have the name `main.kv`.
+  An important thing to note is that the name of the kv file has to be the same as the Kivy app class name with the App (if present), removed. So for the `MyApp` class, the kv file will have the name `main.kv`.
 
-  While using `kv` files, we need to make sure not to use in-built widgets directly like `Label/TextInput`. Instead, we will use the generic parent of these classes, the `Widget` class; which will be styled in the `kv` file.
+  While using `kv` files, we need to make sure not to use in-built widgets directly like `Label/TextInput`. Instead, we will use the generic parent of these classes, the `Widget` class, which will be styled in the `kv` file.
 
 - ### **kv basics**
 
   The beginning of the `kv` file should contain the line `#: kv !` where ! should be replaced by minimum supported `Kivy` version.
 
-  So whenever we need to style/customise a custom widget defined in the python file in the kv file, we refer to its class name enclosed in HTML like tags and use indented YAML like structure to define and add properties to it.
+  So whenever we need to style/customize a custom widget defined in the python file in the kv file, we refer to its class name enclosed in HTML like tags and use indented YAML like structure to define and add properties to it.
 
 - ### **Combining Design with Logic**
 
-  Now to connect our design with logic, such as collecting data from the widgets, we cannot use the same methods we used in our python code. Instead, we have created member variables inside the kv design and use their values. The variables will then point to ids which are associated with widgets like TextInput.
+  Now to connect our design with logic, such as collecting data from the widgets, we cannot use the same methods we used in our python code. Instead, we have created member variables inside the kv design and use their values. The variables will then point to ids that are associated with widgets like TextInput.
 
 - ### **Properties in Kivy**
 
@@ -103,7 +103,7 @@ KV is a design specification used for styling Kivy applications much like we use
 
 - ### **Global Styling**
 
-  Another thing to note down is that just like CSS global styling of tags, we can also define global properties for custom elements like we did for specific CustomGrid. The point is that when we define this in our main kv file, all occurrences of the widget modified in style, will be applied everywhere it occurs, irrespective of their hierarchy.
+  Another thing to note down is that just like CSS global styling of tags, we can also define global properties for custom elements like we did for specific CustomGrid. The point is that when we define this in our main kv file, all occurrences of the widget modified in style will be applied everywhere it occurs, irrespective of their hierarchy.
 
   So if you define some properties for the button tag like this:
 
@@ -159,23 +159,23 @@ Each takes a `self` and a `touch` param with information of touch position. If y
 
 The `touch` param returns the position of the touch with `spos` giving relative and `pos` giving the absolute position of the motion event.
 
-**Note**: Not returning the super method in these callbacks would result in the default motion event action being disabled. But it also enables you to modify default behaviour too, like the change in colour when the button is pressed.
+**Note**: Not returning the super method in these callbacks would result in the default motion event action being disabled. But it also enables you to modify default behavior too, like the change in color when the button is pressed.
 
 ### **Notes**
 
 - **Coloring** :
 
-  Colours in Kivy widgets are based on RGBA scheme with values for Red, Green and Blue colours ranging between `-1.0 to 1.0`. For Alpha, we have range `0 to 1.`
+  Colors in Kivy widgets are based on the RGBA scheme with values for Red, Green, and Blue colors ranging between `-1.0 to 1.0`. For Alpha, we have range `0 to 1.`
 
 - **Positioning** :
 
-  It is important to note that while you can give specific positions in X and Y axis for widgets in your Layout, you cannot do the same for global styling. In that case, we have to use `pos_hint` in place of `pos`.
+  It is important to note that while you can give specific positions in the X and Y axis for widgets in your Layout, you cannot do the same for global styling. In that case, we have to use `pos_hint` in place of `pos`.
 
 - **States** :
 
   Widgets like Button have states which can be accessed through the `state` property of the widget.
 
-  For Example, The Button widget has two states
+  For Example, The Button widget has two states.
 
   | State  | Meaning              |
   | ------ | -------------------- |

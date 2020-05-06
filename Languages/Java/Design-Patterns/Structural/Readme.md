@@ -1,6 +1,6 @@
 # Structural Design Pattern
 
-Focused on how to use/utilise objects like performance, refactoring or memory utilization 
+Focused on how to use/utilize objects like performance, refactoring or memory utilization
 
 ## Types
 1. Adapter
