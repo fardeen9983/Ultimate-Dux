@@ -1,0 +1,204 @@
+# React
+* React was created by Facebook in 2011
+* Used on Instagram in 2012
+* Open-sourced by 2013
+* 2015 - React native is released to build apps
+* React 15 was released in 2016
+
+## Why React
+* Flexibility
+  * Less opinionated
+  * A library, not a framework
+  * You can use it to create
+    * Web apps
+    * Static sites
+    * VR experiences
+    * Mobile apps
+    * Desktop apps
+    * Server rendered apps
+  * Learn React once and write applications everywhere
+  * The flexibility of React comes from its separation of renderer from React itself
+    * For web-app : react-dom
+    * For react-native: react-native
+    * For React in VR: react-vr
+    * [Other renderers](https://www.github.com/chentsulin/awesome-react-renderer)
+    * For server-side rendering (also used for static site generation) use :
+      * Gatsby
+      * Next.js
+      * Phenomic
+    * Broad Browser Support
+* Developer experience
+  * Simply APi, easy to use. No need tor refer docs too much
+  * Uses JSX to create HTML elements using JS
+  * ALso gives power to JS rather than creating syntax in HTML to control elements
+  * Simple Project creation method using `create-react-app` command
+  * Each component is atomic and can be modified individually
+  * Uses hot reload to reflects changes quickly
+* Corporate investment
+  * Created and maintained by Facebook and used in its platform
+  * Active development
+  * Provides `react-codemod` to bring over changes from legacy to new versions in case of breaking changes
+* Community support
+  * Huge active community
+  * Popular in the developer community
+  * High usage statistics
+  * Online React community [Reactiflux](https://www.Reactiflux.com)
+  * Many respected companies worldwide use React
+  * Ready-made component libraries
+    * [Microsoft Office UI Fabric React](https://developer.microsoft.com/en-us/fluentui)
+    * [Material UI](https://material-ui.com)
+    * [React Bootstrap](https://react-bootstrap.github.com)
+    * [Other libs](https://www.github.com/enaqx/awesome-react)
+  * Ecosystem
+    * React Router
+    * Redux
+    * Mobx
+    * Jest
+    * GraphQL
+    * NExt.js
+* Performance
+  * Uses Virtual Dom
+    * Updating the DOM is expensive
+    * React minimizes DOM changes
+    * Without Virtual DOM, websites blindly updated the DOM using new states even for minor changes
+    * Virtual DOM compares existing DOM state and the changes and finds the least expensive way to update it
+    * This avoids layout thrashing (recalculating all element positions when DOM changes)
+    * Saves battery and CPU usage
+    * Enables simple programming model
+  * When minified React and React DOM is sized up to be around 35 KB only
+    * Alternative to this with the smaller size - Inferno, Preact
+* Testability
+  * Little to no configuration is required for setting up UI testing
+  * Testing is already configured out of the box using the `create-react-app` command
+  * Can be tested in memory via Node
+  * Fast testing
+  * Can write reliable, deterministic tests
+  * Tests can be written and updated quickly
+  * Majority of the components can be written as plain Pure functions (always return the same output for a given input)
+  * Testing frameworks to use: Mocha, Jasmine, Tape, Ava, Jest, QUnit, React Testing  Library
+
+## Tradeoffs
+* Framework Vs. Library
+  * Frameworks
+    * are more opinionated
+    * cause less decision fatigue
+    * useless setup overhead
+    * have more cross-term consistency
+  * Libraries
+    * are lightweight
+    * use in existing apps
+    * follows pick what you need an approach
+    * are free to pick the best technologies. But
+    * popular boilerplates do exist like `create-react-app`
+* Concise vs. Explicit
+  * React trades off concise nature for being more explicit where we have to spend more time wiring up code to get the desired feature but this helps achieve better predictability of code behavior
+  * Example: React uses one-way binding (that requires an explicit change handler) in place of two-way binding (less coding, automatic). This allows us to have more control over what happens at every event. It is more explicit and easier to debug. Though this does require more coding.
+* Template-centric vs. JS-centric
+  * Uses JS as a tool to create and manage conditions instead of creating unique syntaxes powering JS in HTML
+  * So it uses plain javascript when handling conditionals, loops, events, etc. making its library smaller
+  * Template approach
+    * requires less JS knowledge
+    * avoids confusion with JS binding
+    * Uses Rule of least power (limits language feature that can be used)
+  * JS-centric approach
+    * Little framework-specific syntax
+    * Fewer component to learn
+    * Less code
+    * Easy to read and debug
+    * Encourages improving JS skills (modern)
+* Separate template vs. Single File
+  * Traditionally we follow MVC approach for separation of business login (JS) and UI (HTML)
+  * React brings them together in a cohesive component using JSX & JS
+  * React treats every component as a separate concern
+  * On another hand, handling intertwined concerns in separate files can hinder debugging and slows feedback
+  * With React we can handle styling in separate files
+* Standard vs. Non-standard
+  * Standard web applications implement the **Web Component Standard**
+  * It is composed of four core technologies
+    * Templates: Inert, reusable markup
+    * Custom Elements: Define our elements
+    * Shadow DOM: Encapsulated styling
+    * Imports : Bundle HTML,JS and CSS
+  * It isn't much used because of
+    * Spotty browser support - for that to work we need to polyfills
+    * Don't enable anything new
+    * JS libs keep improving
+    * Only runs in Browser
+  * |Web component features|React|
+    |----------------------|-----|
+    |Templates|JSX, JS|
+    |Custom Elements| React components|
+    |Shadow DOM|CSS Modules, CSS in JS, "inline"|
+    |Bundle into Inports|One component per file|
+* Community vs. Corporate backing
+  * Driven by Facebook's needs
+  * Full-time development staff
+  * Over 1000 contributors
+  * 50,000 components in production
+
+
+## Why not React?
+* JSX differs from HTML
+  * JSX compiles to JS
+  * Differs in tags and attributes
+  * Inline css is used as JSON
+  * Comments made in JS style
+  * Convert HTML to JSX
+    * Find/Replace
+    * Use Online compiler
+    * `htmltojsx` node package
+* React requires build step
+  * Mostly required for most JS frameworks
+    * To minify code
+    * Transpile to use latest features in unsupported platforms
+    * Test and Lint
+    * Popular transpilers - Babel, TypeScript
+* Potential version conflicts
+  * Runtime leads to potential version conflicts
+  * Need to keep react components on the same version in the same page
+  * Check for version compatibility of ecosystem libs
+  * Avoiding conficts
+    * Select a Standardize React version to work on
+    * Upgrade React when upgrading librraies
+    * Ugrade as a team
+* Old features appear in searches
+  * Some content is outdated
+  * This may be because the features are extracted from React Core
+  * Example:
+    * `react` DOM package changed to `react-dom`
+    * `React.createClass` moved to `create-react-class` package
+    * `PropTypes` removed from `react` package and added to separate package `prop-types`
+    * Mixins are replaced by concepts like Higher order components, render props, etc
+* Decision fatigue
+  * React is light weight and unopinionated which leaves the decision of choosing aditional deatures to us
+  * This leads to having may options making it difficult to choose from
+  * Decisions factor
+    * Dev environment
+      * Choose popular dev env like `create-react-app` or create one such by yourself
+      * Collection of [React Startet Project](http://www.javascriptstuff.com/react-starter-projects)
+    * ES class or createClass
+      * ES class is more popular as it avoids importing an extra library `create-react-class`. But the later is more popular for new devs
+    * Types
+      * Can be handled by
+        * Flow
+          * Project by Facebook
+          * Its a static type checker for JS
+          * Uses `type` to define JS ptopTypes
+          * Uses annotation
+          * Types are checked whenever flow changes
+        * PropTypes (recomended)
+          * Types are checked only during runtime and development cycle
+          * Uses maps to define Props type
+        * TypeScript
+          * Stricter JS
+          * Used interfaces to define prop types
+          * Checked during compilation
+    * State
+      * Defined as App data
+      * State management methods
+        * Plain React - component state
+        * Flux - Centralised state
+        * Redux - Most popular, centralised state
+        * Mobx = Observalble data sructure
+    * Styles
+      * Recommended method - Plain CSS, Sass, Load
