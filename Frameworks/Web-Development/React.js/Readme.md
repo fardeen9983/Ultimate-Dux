@@ -262,14 +262,96 @@ ReactDOM.render(
   ```js
     React.createElement(Hello,null)
   ```
-## useState
+## useState : Simple React Hook
 Each React componnet maintains its internal state and provides mthods to modify it. These can be accessed using the `useState` method provided in the main `react` package.
 ```js
 const [state, setState] = React.useState(initialValue);
 ```
 `state` can be any valid JS type and `setState` is a function that sets the state. `useState` takes an `initalValue` for the `state`.
 
-`useState` is an example of React Hook where we simply bind a Component with its state
+The `state` of a React component can only be accessed internally by itself.
+
+`useState` is an example of React Hook where we simply bind a Component with its state.
+
+## Multiple Components
+It is imperative in React that only one component can be passed to the `render` method, because that is basically a function call/ But sometimes a situation may arise when we want to render multiple components in the same page. We can do this using follwoings methods
+
+1. Enclose the components in a single `div`
+    ```js
+    ReactDOM.render(
+        <div>
+            <Button />
+            <Display />
+        </div>,
+        document.getElementById('main')
+    );
+    ```
+    This does introduce a new DOM element and hence is not that much used
+2. Pass an array of components to the render method
+    ```js
+    ReactDOM.render(
+        [<Button />,<Display />],
+        document.getElementById('main')
+    );
+    ```
+3. Another method is to use a special component called `React.Fragment` to group them together without introducing a new DOM element
+    ```js
+    ReactDOM.render(
+      <React.Fragment>
+          <Button />
+          <Display />
+      </React.Fragment>,
+      document.getElementById('main')
+    );
+    ```
+    This method is so much in use that a shortcut was introduced rewritting it as follows
+    ```js
+    ReactDOM.render(
+        <>
+            <Button />
+            <Display />
+        </>,
+        document.getElementById('main')
+    );
+    ```
+4. Or we can simply create another component to place them as child elements
+    ```js
+    // Main app
+    function App(){
+        return (
+            <div>
+                <Button />
+                <Display />
+            </div>
+        )
+    }
+    ReactDOM.render(
+        <App />,
+        document.getElementById('main')
+    );
+    ```
+## Props
+These are basically what attributes are to HTML elements. Using props we can pass objects like attributes in form a JS object (Key value pairs) to the Component.
+
+Each Function Compone may recieve props as a function paramater. These are immutable fields. We can also pass references to methods as props
+
+```js
+function App(){
+    const [counter, setCounter] = React.useState(0);
+    return (
+        // Defining custom prop
+        <Display message={counter} />
+    )
+}
+
+function Display(props){
+    // Using the props
+    return (
+        <div>{props.message}</div>
+    );
+}
+```
+
 ## Resources
 1. Book : [Begginning JS](http://www.jscomplete.com/beginning-js)
 2. Labs : [JS Labs](http://www.jscomplete.com/js-labs)

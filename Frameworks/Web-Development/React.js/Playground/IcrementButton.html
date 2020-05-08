@@ -13,13 +13,41 @@
 <body>
     <div id="main"></div>
     <script type="text/babel">
-        function Button(){
-            const [counter, setCounter] = React.useState(0);
-            return <button onClick={() => setCounter(counter+1)}> {counter} </button>;
+        // Increment Button
+        function Button(props){
+            const handleClick = () => props.clickHandler(props.increment);
+            return (
+                <button onClick={handleClick}>
+                    +{props.increment}
+                </button>
+            );
+        }
+
+        // Display Counter
+        function Display(props){
+            return (
+                <div>{props.message}</div>
+            );
+        }
+
+        // Main app
+        function App(){
+            const [counter, setCounter] = React.useState(42);
+            const incrementCounter = (incrementValue) => setCounter(counter + incrementValue);
+            return (
+                <div>
+                    <Button clickHandler = {incrementCounter} increment={1}/>
+                    <Button clickHandler = {incrementCounter} increment={5}/>
+                    <Button clickHandler = {incrementCounter} increment={10}/>
+                    <Button clickHandler = {incrementCounter} increment={50}/>
+                    <Button clickHandler = {incrementCounter} increment={100}/>
+                    <Display message={counter} />
+                </div>
+            )
         }
 
         ReactDOM.render(
-            <Button />,
+            <App />,
             document.getElementById('main')
         );
     </script>
