@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Increment Button</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="main"></div>
+    <script type="text/babel">
+        function Button(){
+            const [counter, setCounter] = React.useState(0);
+            return <button onClick={() => setCounter(counter+1)}> {counter} </button>;
+        }
+
+        ReactDOM.render(
+            <Button />,
+            document.getElementById('main')
+        );
+    </script>
+</body>
+
+</html>

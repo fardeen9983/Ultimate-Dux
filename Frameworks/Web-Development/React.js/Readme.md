@@ -75,7 +75,7 @@ A Javascript library for building User interfaces
   * Fast testing
   * Can write reliable, deterministic tests
   * Tests can be written and updated quickly
-  * Majority of the components can be written as plain Pure functions (always return the same output for a given input)
+  * Majority of the components can be written as Pure plain functions (always return the same output for a given input)
   * Testing frameworks to use: Mocha, Jasmine, Tape, Ava, Jest, QUnit, React Testing  Library
 * Declarative for Dynamic HTML
   * Uses declarative language (model UI and state)
@@ -87,8 +87,8 @@ A Javascript library for building User interfaces
     * cause less decision fatigue
     * useless setup overhead
     * have more cross-term consistency
-    * Limimted flexibility : Hard to deviate from and forces you to do things in a certain way
-    * Large and full of features : Hard to customize and use the whole thing
+    * Limited flexibility: Hard to deviate from and forces you to do things in a certain way
+    * Large and full of features: Hard to customize and use the whole thing
   * Libraries
     * are lightweight
     * use in existing apps
@@ -134,7 +134,7 @@ A Javascript library for building User interfaces
   | Templates           | JSX, JS                          |
   | Custom Elements     | React components                 |
   | Shadow DOM          | CSS Modules, CSS in JS, "inline" |
-  | Bundle into Inports | One component per file           |
+  | Bundle into Imports | One component per file           |
 * Community vs. Corporate backing
   * Driven by Facebook's needs
   * Full-time development staff
@@ -204,17 +204,17 @@ A Javascript library for building User interfaces
         * Plain React - component state
         * Flux - Centralised state
         * Redux - Most popular, centralised state
-        * Mobx = Observalble data sructure
+        * Mobx - Observalble data sructure
     * Styles
       * Recommended method - Plain CSS, Sass, Load
 
 # Basic concepts :
 * Components
   * Are basically like functions that produce custom HTML elements
-  * Take input props and state and produce User interface as output
+  * Take input props and state and produce User interface as the output
   * Reusable and composable
   * No need to invoke. Rather states as an HTML element : `<Component/>`
-  * Can managea a private state
+  * Can manage a private state
   * Components can be either Function or Class based
   * They can be stateful and have side effect or be purely presentational
   * Props are akin to the list of attributes HTML element posses
@@ -223,11 +223,53 @@ A Javascript library for building User interfaces
 * Reactive Updates
   * When the state of a component changes, the corresponding UI changes as well
   * React will take care of how and where the changes are to be reflected itself
-* Virtual representation of views in Memory
+* Virtual representation of views in memory
   * Generates HTML using JavaScript
   * Does not use any HTML template language
   * So no extra step needed to parse this HTML template
   * Helps manages Virtual DOM
+
+## Simple example:
+```js
+function Hello() {
+  return <div> Hello World </div>;
+}
+
+ReactDOM.render(
+  <Hello/> ,
+  document.getElementById('node')
+);
+```
+* The components can  be created using a function which basically return a HTML element written in JSX
+* The ReactDOM uses the render function to place the given React component into an exisiting HTML element which acts as the entry point for our app
+* The Hello function returns a JSX element which is converted to browser compatible code using JSX extensions provided by Babel library. So the converted format for line 2 of JSX code in above example will be
+
+  ```js
+  "use strict"
+
+  React.createElement(
+    'div',
+    null,
+    "Hello World"
+  );
+  ```
+  The above code is actually executed by the browser. The arguments are as follows
+  1. The element to be created
+  2. Attributes placed in JS map
+  3. Child/Inner HTML content
+
+  The line `<Hello/>` is equivalent to the following JS code:
+  ```js
+    React.createElement(Hello,null)
+  ```
+## useState
+Each React componnet maintains its internal state and provides mthods to modify it. These can be accessed using the `useState` method provided in the main `react` package.
+```js
+const [state, setState] = React.useState(initialValue);
+```
+`state` can be any valid JS type and `setState` is a function that sets the state. `useState` takes an `initalValue` for the `state`.
+
+`useState` is an example of React Hook where we simply bind a Component with its state
 ## Resources
 1. Book : [Begginning JS](http://www.jscomplete.com/beginning-js)
 2. Labs : [JS Labs](http://www.jscomplete.com/js-labs)
