@@ -1,4 +1,5 @@
 # React
+A Javascript library for building User interfaces
 * React was created by Facebook in 2011
 * Used on Instagram in 2012
 * Open-sourced by 2013
@@ -76,6 +77,8 @@
   * Tests can be written and updated quickly
   * Majority of the components can be written as plain Pure functions (always return the same output for a given input)
   * Testing frameworks to use: Mocha, Jasmine, Tape, Ava, Jest, QUnit, React Testing  Library
+* Declarative for Dynamic HTML
+  * Uses declarative language (model UI and state)
 
 ## Tradeoffs
 * Framework Vs. Library
@@ -84,6 +87,8 @@
     * cause less decision fatigue
     * useless setup overhead
     * have more cross-term consistency
+    * Limimted flexibility : Hard to deviate from and forces you to do things in a certain way
+    * Large and full of features : Hard to customize and use the whole thing
   * Libraries
     * are lightweight
     * use in existing apps
@@ -124,12 +129,12 @@
     * Don't enable anything new
     * JS libs keep improving
     * Only runs in Browser
-  * |Web component features|React|
-    |----------------------|-----|
-    |Templates|JSX, JS|
-    |Custom Elements| React components|
-    |Shadow DOM|CSS Modules, CSS in JS, "inline"|
-    |Bundle into Inports|One component per file|
+  | *                   | Web component features           | React |
+  | ------------------- | -------------------------------- |
+  | Templates           | JSX, JS                          |
+  | Custom Elements     | React components                 |
+  | Shadow DOM          | CSS Modules, CSS in JS, "inline" |
+  | Bundle into Inports | One component per file           |
 * Community vs. Corporate backing
   * Driven by Facebook's needs
   * Full-time development staff
@@ -202,3 +207,30 @@
         * Mobx = Observalble data sructure
     * Styles
       * Recommended method - Plain CSS, Sass, Load
+
+# Basic concepts :
+* Components
+  * Are basically like functions that produce custom HTML elements
+  * Take input props and state and produce User interface as output
+  * Reusable and composable
+  * No need to invoke. Rather states as an HTML element : `<Component/>`
+  * Can managea a private state
+  * Components can be either Function or Class based
+  * They can be stateful and have side effect or be purely presentational
+  * Props are akin to the list of attributes HTML element posses
+  * State manages internal field
+  * State object can be changed while the prop fields remain fixed
+* Reactive Updates
+  * When the state of a component changes, the corresponding UI changes as well
+  * React will take care of how and where the changes are to be reflected itself
+* Virtual representation of views in Memory
+  * Generates HTML using JavaScript
+  * Does not use any HTML template language
+  * So no extra step needed to parse this HTML template
+  * Helps manages Virtual DOM
+## Resources
+1. Book : [Begginning JS](http://www.jscomplete.com/beginning-js)
+2. Labs : [JS Labs](http://www.jscomplete.com/js-labs)
+3. Commonly faced problems in React : [Link](http://www.jscomplete.com/react-cfp)
+4. Blog : [Why React](http://www.jscomplete.com/why-react)
+5. [JavaScript Playground](http://www.jscomplete.com/playground)

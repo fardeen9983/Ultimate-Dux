@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="node"></div>
+    <script type="text/babel">
+        function Hello() {
+            return <div> Hello World </div>;
+        }
+
+        ReactDOM.render(
+            <Hello/> ,
+            document.getElementById('node')
+        );
+    </script>
+</body>
+
+</html>
