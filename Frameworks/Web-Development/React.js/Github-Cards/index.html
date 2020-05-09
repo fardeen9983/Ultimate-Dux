@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Cards</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        /* Nerdy secret: You can use "less" below! Don't tell anybody... */
+        .github-profile img {
+            width: 75px;
+        }
+
+        .info {
+            display: inline-block;
+            margin-left: 12px;
+        }
+
+        .name {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .github-profile {
+            margin: 1rem;
+        }
+
+        form {
+            border: thin solid #ddd;
+            background-color: #fbfbfb;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .header {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main"></div>
+    <script type="text/babel">
+
+
+        const CardList = (props)=>(
+            <div>
+                {props.profiles.map(profile => <Card key={profile.id} {...profile}/>)}
+            </div>
+        )
+
+        class Card extends React.Component {
+            render() {
+                const profile = this.props;
+                return (
+                    <div className="github-profile" style={{margin : '1rem'}}>
+                        <img src={profile.avatar_url}/>
+                        <div className="info" style={{display:"inline-block",marginLeft:10}}>
+                            <div className="name" style={{fontSize:'125%', fontWeight:"bold"}}>{profile.name}</div>
+                            <div className="company">{profile.company}</div>
+                        </div>
+                    </div>
+                );
+            }
+        }
+
+        class Form extends React.Component {
+            state = { userName : ''};
+            handleSubmit = async (event) =>{
+                // Prevent Defualt Event submit
+                event.preventDefault();
+
+                // Axios HTTP call to Github API to fetch user based on username
+                const resp = await axios.get(`https://api.github.com/users/${this.state.userName}`);
+                this.props.onSubmit(resp.data);
+                this.setState({userName : ''});
+
+            }
+            render() {
+                return (
+                    <form onSubmit={this.handleSubmit}>
+                        <input
+                            type="text"
+                            placeholder="Github Username"
+                            value={this.state.userName}
+                            onChange = {event => this.setState({userName : event.target.value})}
+                            required
+                        />
+                        <button>Add Card</button>
+                    </form>
+                );
+            }
+        }
+
+        class App extends React.Component{
+
+            state = {
+                profiles :[]
+            }
+            addNewProfile = profile => {
+                const {name,avatar_url,company} = profile;
+                this.setState(prevState => ({
+                    profiles : [...prevState.profiles, profile]
+                }));
+            }
+            render(){
+                return (
+                    <div>
+                        <div className="header">{this.props.title}</div>
+                        <Form onSubmit={this.addNewProfile}/>
+                        <CardList profiles={this.state.profiles}/>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <App title="The Github Cards App"/> ,
+            document.getElementById('main')
+        );
+    </script>
+</body>
+
+</html>

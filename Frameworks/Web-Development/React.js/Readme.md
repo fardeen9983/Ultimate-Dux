@@ -351,10 +351,117 @@ function Display(props){
     );
 }
 ```
+## Class Components
+* Another method for creating React components is by creating classes that extend the `React.Component` class and the return statement of thee JSX element in the function is placed in a special function called `render`.
+* The render method is called when the component is executed by the React DOM.
+* The `props` for such comppnents are actually placed insise the class as memeber variables.
+Example
+```js
+class App extends React.Component{
+  render(){
+    return (
+      <div>
+        Hello {this.props.title}
+      </div>
+    );
+  }
+}
 
+ReactDOM.render(
+  <App title="Ultimate-Dux"/>,
+  document.getElementById("main")
+);
+```
+The next important thing in the Class Component is the State of the component which is managed by the Class as an instance variable. We can access it in the class scope using the `this` keyword. It is best to initialise it in the class constructor
+```js
+class App extends React.Component{
+
+  constructor(props){
+    super(props);
+    this.state = {
+      profiles : testData
+    };
+  }
+  // Other way ti do the above is thorugh class filed syntax
+  // state = { profiles : testData }
+
+  render(){
+    return (
+        <div>
+            <div className="header">{this.props.title}</div>
+            <Form/>
+            <CardList profiles={this.state.profiles}/>
+        </div>
+    );
+  }
+}
+```
+## Styling
+We can irectly use Global CSS stylesheets to style our React web app but we can also use special JS based styling as well
+```js
+function App(){
+  return (
+    <div className="info" style={{ color : Math.random() < 0.5 ? "red":"green">}}>How do you like this?</div>
+  );
+}
+```
+* In the above exMple we use global and inline css both
+* `className` is used to add css classes just like HTML `class` attribute
+* `style` attribute is a bit special. It actually taks a JS literal (an onject), with camelCased style attributes and strings as their values
+
+## User Input
+* Using the HTML Form elements we can easily create User forms with added JSX features
+* `action` attribute can be replaced by `onSubmit` method
+* We can also create special JSX references to Elements similar to ids in HTML using `React.createRef` method
+```js
+class Form extends React.Component {
+    userInputUsername = React.createRef();
+    handleSubmit = (event) =>{
+        // Prevent Defualt Event submit
+        event.preventDefault();
+        // Access the reference elemet's value
+         console.log(this.UserNameInput.current.value);
+    }
+    render() {
+        return (
+            <form onSubmit={handleSubmit}>
+                <input type="text" placeholder="Github Username" ref={this.userInputUsername} required/>
+                <button>Add Card</button>
+            </form>
+        );
+    }
+}
+```
+The other way around is to use controlled components with the state. This is a bit more verbose but also makes react handle all input changes.
+```js
+class Form extends React.Component {
+    state = { userName : ''};
+    handleSubmit = (event) =>{
+        // Prevent Defualt Event submit
+        event.preventDefault();
+        console.log(this.state.userName)
+    }
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <input
+                    type="text"
+                    placeholder="Github Username"
+                    value={this.state.userName}
+                    onChange = {event => this.setState({userName : event.target.value})}
+                    required
+                />
+                <button>Add Card</button>
+            </form>
+        );
+    }
+}
+```
+The `setState` function is predefined and takes an object literal which is merged with the existing state to update the Component. The `input` filed with only value attribute based on state will be a read only field. We have to attach a callbakc for the `onChange` event for it to work. Next we can access the current value from the state  object itself.
 ## Resources
 1. Book : [Begginning JS](http://www.jscomplete.com/beginning-js)
 2. Labs : [JS Labs](http://www.jscomplete.com/js-labs)
 3. Commonly faced problems in React : [Link](http://www.jscomplete.com/react-cfp)
 4. Blog : [Why React](http://www.jscomplete.com/why-react)
-5. [JavaScript Playground](http://www.jscomplete.com/playground)
+5. Code Playground : [JavaScript Playground](http://www.jscomplete.com/playground)
+6. Articel : [CSS in JS](https://github.com/MicheleBertoli/css-in-js)
