@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Matching Game</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+    <style>
+        .game {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .body {
+            display: flex;
+        }
+
+        .help {
+            color: #666;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .left {
+            text-align: center;
+            width: 50%;
+            border: thin solid #ddd;
+        }
+
+        .right {
+            text-align: center;
+            padding: 10px;
+            width: 50%;
+            border: thin solid #ddd;
+        }
+
+        .star {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        .star:after {
+            content: "\2605";
+            font-size: 45px;
+        }
+
+        .number {
+            background-color: #eee;
+            border: thin solid #ddd;
+            width: 45px;
+            height: 45px;
+            margin: 10px;
+            font-size: 25px;
+        }
+
+        .number:focus,
+        .number:active {
+            outline: none;
+            border: thin solid #ddd;
+        }
+
+        .timer {
+            color: #666;
+            margin-top: 3px;
+            margin-left: 3px;
+        }
+
+        .game-done .message {
+            font-size: 250%;
+            font-weight: bold;
+            margin: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main"></div>
+    <script type="text/babel">
+        // Color Theme
+        const colors = {
+        available: 'lightgray',
+        used: 'lightgreen',
+        wrong: 'lightcoral',
+        candidate: 'deepskyblue',
+        };
+
+        // Math science
+        const utils = {
+            // Sum an array
+            sum: arr => arr.reduce((acc, curr) => acc + curr, 0),
+
+            // create an array of numbers between min and max (edges included)
+            range: (min, max) => Array.from({ length: max - min + 1 }, (_, i) => min + i),
+
+            // pick a random number between min and max (edges included)
+            random: (min, max) => min + Math.floor(Math.random() * (max - min + 1)),
+
+            // Given an array of numbers and a max...
+            // Pick a random sum (< max) from the set of all available sums in arr
+            randomSumIn: (arr, max) => {
+                const sets = [[]];
+                const sums = [];
+                for (let i = 0; i < arr.length; i++) {
+                    for (let j = 0, len = sets.length; j < len; j++) {
+                        const candidateSet = sets[j].concat(arr[i]);
+                        const candidateSum = utils.sum(candidateSet);
+                        if (candidateSum <= max) {
+                        sets.push(candidateSet);
+                        sums.push(candidateSum);
+                        }
+                    }
+                }
+                return sums[utils.random(0, sums.length - 1)];
+            },
+        };
+        const StarsDisplay = props =>(
+            <>
+                {utils.range(1,props.count).map(starId =>
+                    <div className="star" key={starId}/>
+                )}
+            </>
+        );
+        const PlayNumber = (props) =>{
+            return (
+                <button
+                    className="number"
+                    onClick={()=> props.onClick(props.number,props.status)}
+                    style={{backgroundColor:colors[props.status]}}
+                >
+                    {props.number}
+                </button>
+            );
+        };
+        const onNumberClick = (number,currentStatus) =>{
+            if(currentStatus=="used"){
+                return;
+            }
+        }
+
+        const App = props =>{
+            const [stars,setStars] = React.useState(utils.random(1,9));
+            const [candidateNums,setCandidateNums] = React.useState(utils.range(1,9));
+            const [availableNums,setAvailableNums] = React.useState([]);
+
+            const candidatesAreWrong = utils.sum(candidateNums) > stars
+            const numberStatus = number =>{
+                if(!availableNums.includes(number)){
+                    return 'used';
+                }
+                if(candidateNums.includes(number)){
+                    return candidatesAreWrong ? "wrong" : "candidate";
+                }
+                return 'available';
+            };
+
+            return (
+                <div className="game">
+                    <div className="help">
+                        Pick 1 or more numbers that sum to the number of stars
+                    </div>
+                    <div className="body">
+                        <div className="left">
+                            <StarsDisplay count={stars}/>
+                        </div>
+                        <div className="right">
+                            {utils.range(1,9).map(number =>
+                                <PlayNumber
+                                    key={number}
+                                    number={number}
+                                    status={numberStatus(number)}
+                                    onClick={onNumberClick}
+                                />
+                            )}
+                        </div>
+                    </div>
+                    <div className="timer">Time Remaining: 10</div>
+                </div>
+            );
+        }
+        ReactDOM.render(
+            <App />,
+            document.getElementById("main")
+        );
+    </script>
+</body>
+
+</html>

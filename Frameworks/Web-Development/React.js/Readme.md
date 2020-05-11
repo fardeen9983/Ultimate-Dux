@@ -464,4 +464,4 @@ The `setState` function is predefined and takes an object literal which is merge
 3. Commonly faced problems in React : [Link](http://www.jscomplete.com/react-cfp)
 4. Blog : [Why React](http://www.jscomplete.com/why-react)
 5. Code Playground : [JavaScript Playground](http://www.jscomplete.com/playground)
-6. Articel : [CSS in JS](https://github.com/MicheleBertoli/css-in-js)
+6. Article : [CSS in JS](https://github.com/MicheleBertoli/css-in-js)
