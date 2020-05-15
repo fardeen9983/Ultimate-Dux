@@ -117,17 +117,18 @@
             },
         };
         const StarsDisplay = props =>(
-            <>
+            <React.Fragment>
                 {utils.range(1,props.count).map(starId =>
                     <div className="star" key={starId}/>
                 )}
-            </>
+            </React.Fragment>
         );
         const PlayNumber = (props) =>{
+            console.log(props);
             return (
                 <button
                     className="number"
-                    onClick={()=> props.onClick(props.number,props.status)}
+                    // onClick={()=> props.onClick(props.number,props.status)}
                     style={{backgroundColor:colors[props.status]}}
                 >
                     {props.number}
@@ -138,6 +139,16 @@
             if(currentStatus=="used"){
                 return;
             }
+
+            const newCandidatesNums = candidateNums.concat(number);
+            if(utils.sum(newCandidatesNums)!== stars){
+                setCandidateNums(newCandidatesNums);
+            }else {
+                const newAvailableNums = availableNums.filter(num => !newCandidatesNums.includes(num));
+                setStars(utils.randomSumIn(newAvailableNums,9))
+                setAvailableNums(newAvailableNums);
+                setCandidateNums([]);
+            }
         }
 
         const App = props =>{
@@ -145,13 +156,14 @@
             const [candidateNums,setCandidateNums] = React.useState(utils.range(1,9));
             const [availableNums,setAvailableNums] = React.useState([]);
 
-            const candidatesAreWrong = utils.sum(candidateNums) > stars
+            const candidatesAreWrong = utils.sum(candidateNums) > stars;
             const numberStatus = number =>{
-                if(!availableNums.includes(number)){
-                    return 'used';
-                }
+
                 if(candidateNums.includes(number)){
                     return candidatesAreWrong ? "wrong" : "candidate";
+                }
+                if(!availableNums.includes(number)){
+                    return 'used';
                 }
                 return 'available';
             };
