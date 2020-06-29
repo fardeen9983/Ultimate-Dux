@@ -2,7 +2,17 @@
 
 Typescript, a language developed by Microsoft, is a fully typed language that starts and ends on Javascript, much like it's sibling, but is also friends with other languages like Java and C++, reminding you always to write code in good practices.
 
+Features:
+* Alternative to JavaScript (a Superset language)
+* Is more stricter and type safe.
+* Supports ES6/mordern web syntac (like arrow functions, let, const)
+* Extra featues added (generics, interfaces, tuples, etc).
+
+
 > Always keep your types in check and don't forget your dose of semi-colons, or I might throw some errors your way
+
+>Typescript is not browser compatible. It has to be converted to JavaScript to be running on the browser
+
 
 ## Installation
 
