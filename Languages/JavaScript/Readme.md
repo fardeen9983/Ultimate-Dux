@@ -18,4 +18,4 @@ An [Awesome List of Javascipt Frameworks and tools](https://github.com/sorrycc/a
 
 ## Getting Started
 
-### Hello World
+Adding JS scripts to HTML file is fairly simple. `<script>` tags are used for embedding/refering to JS scripts. We can add the script tag in both `<head>` and `<body>` tags.
