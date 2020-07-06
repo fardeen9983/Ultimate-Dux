@@ -67,7 +67,7 @@ Attributes
 <!-- Dead Link -->
 <a href="#">Nowhere to go</a>
 ```
-Output
+**Output**
 
 <a href="https://www.google.com"> Go to Google</a>
 
@@ -115,7 +115,7 @@ With Square
 
 ```
 
-Output
+**Output**
 
 Default List with Disc bullet
 <ul>
@@ -136,3 +136,79 @@ With Square
   <li>First</li>
   <li>Second</li>
 </ul>
+
+### Ordered Lists
+These are also called numbered lists with characters/numbers in sequences for index in the list. The tag that we use for this is `<ol>`
+
+Types : 
+* armenian
+* cjk-ideographic
+* decimal
+* decimal-leading-zero
+* georgian
+* hebrew
+* hiragana
+* hiragana-iroha
+* katakana
+* katakana-iroha
+* lower-alpha
+* lower-greek
+* lower-latin
+* lower-roman
+* upper-alpha
+* upper-latin
+* upper-roman
+* none
+* inherit
+
+**Attributes**
+* reversed - start the numbered list in decreasing order
+* start - Replace the starting number/letter
+* type - Specifies kind of marker to use in list. Directly takes the value example
+
+**Example**
+```html
+<ol>
+  <li>First</li>
+  <li>Second</li>
+  <li>Third</li>
+  <li>Fourth</li>
+</ol>
+```
+**Output**
+
+<ol>
+  <li>First</li>
+  <li>Second</li>
+  <li>Third</li>
+  <li>Fourth</li>
+</ol>
+
+### Nesting of Lists
+We can nest a combination of ordered and unordered list to any degree. In this case a list item in the list contains another list
+
+**Example**
+```html
+<ol>
+  <li>Coffee</li>
+  <li>Tea
+    <ul>
+      <li>Black tea</li>
+      <li>Green tea</li>
+    </ul>
+  </li>
+  <li>Milk</li>
+</ol>
+```
+
+**Output**
+<ol>
+  <li>Coffee</li>
+  <li>Tea
+    <ul>
+      <li>Black tea</li>
+      <li>Green tea</li>
+    </ul>
+  </li>
+  <li>Milk</li>
+</ol>
