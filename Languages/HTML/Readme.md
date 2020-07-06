@@ -13,3 +13,37 @@ This is simple HTML text.<br> Now this is break line  to go to next line
 
 ## HTML Page structure
 ---
+
+## Commenting
+A popular tool for a developer to describe the intention of the code they have written as well provide human readability of what is going on, is **comments**. Comments are lines of code in programming which are ignored and not included in actual code execution. They only serve a descriptive purpose as stated above.
+
+* Comments start with `<!--` and end with `-->`
+* They are not executed
+* They can span single/multiple lines
+
+Example
+```html
+<p>This is a paragraph</p>
+<!--This is a single line comment-->
+<!-- This is a multiline comment
+     It can include actual HTML code too
+    <p> Such as the P tag </p>
+-->
+```
+
+## HTML 5
+There are various tags added in the HTML 5 release which add greater functionality to the language.
+
+These tags give a descriptive structure to your HTML, make your HTML easier to read, and help with Search Engine Optimization (SEO) and accessibility. 
+
+### main
+The main HTML5 tag helps search engines and other developers find the main content of your page.
+
+```html
+<main> 
+  <h1>Hello World</h1>
+  <p>Hello Paragraph</p>
+</main>
+```
+
+
