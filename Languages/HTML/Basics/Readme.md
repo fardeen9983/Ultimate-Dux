@@ -20,8 +20,6 @@ Output
 
 ---
 
-## Lists
----
 ## Images
 Images are integral part of web and are found almost everywhere for may different use cases. HTML allows embedding of images locally or from any location on the internet. For this we use the `<img>` tag
 
@@ -29,6 +27,7 @@ Attributes
 * src - Refers to the source of image. Can be 0file path/URL
 * alt - Alternate text to be displayed in case the image doesn't load
 * height & width - These values can be set to screen percentage, pixels, ems, and other sizing standards
+  
 ```html
 <img src="demo.png" alt="Some Alternate Text" width="50%" height="50%">
 ```
@@ -48,6 +47,11 @@ Attributes
 * href - Reference to the same page position/URL 
 * target - Describes the behavior of clicking on the anchor tag
   * _blank - opens the content in a new page
+  * _self - opens linked doc within the same frame
+  * _parent - opens the linked doc in parent frame
+  * _top - opens the linked doc in the full body of window
+
+
 ```html
 <a href="https://www.google.com"> Go to Google</a>
 
@@ -64,6 +68,7 @@ Attributes
 <a href="#">Nowhere to go</a>
 ```
 Output
+
 <a href="https://www.google.com"> Go to Google</a>
 
 <!--Internal links -->
@@ -75,3 +80,59 @@ Output
 <p>This is simple text, but <a href="https://www.google.com">this</a> is a link </p>
 
 <a href="#">Nowhere to go</a>
+
+----
+## Lists
+
+### Unordered lists
+Lists that do not have indexed entries are called unordered lists. They have bullets for each item in the list and the options are
+* Circle
+* Disc
+* Square
+
+To start such a list we use `<ul>` tag. Each List item is enclosed within `<li>` tags
+
+```html
+Default List with Disc bullet
+<ul>
+  <li>First</li>
+  <li>Second</li>
+  <li>Third</li>
+  <li>Fourth</li>
+</ul>
+
+With Disc
+<ul style="list-style-type:disc">
+  <li>First</li>
+  <li>Second</li>
+</ul>
+
+With Square
+<ul style="list-style-type:square">
+  <li>First</li>
+  <li>Second</li>
+</ul>
+
+```
+
+Output
+
+Default List with Disc bullet
+<ul>
+  <li>First</li>
+  <li>Second</li>
+  <li>Third</li>
+  <li>Fourth</li>
+</ul>
+
+With Disc
+<ul style="list-style-type:circle">
+  <li>First</li>
+  <li>Second</li>
+</ul>
+
+With Square
+<ul style="list-style-type:square">
+  <li>First</li>
+  <li>Second</li>
+</ul>
