@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Marked in the browser</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div id="content"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    function readFile(file){
+      var raw = new XMLHttpRequest();
+      raw.open("GET",file,false);
+      raw.onreadystatechange = function (){
+        if(raw.readyState === 4){
+          if(raw.status == 200 || raw.status == 0){
+            var text = raw.responseText;
+            document.getElementById("content").innerHTML = text;
+          }
+        }
+      }
+      raw.send(null);
+    }
+    readFile("file:///home/fardeen/Documents/GitHub/Ultimate-Dux/Languages/HTML/Basics/Readme.md")
+  </script>
+</body>
+</html>

@@ -212,3 +212,26 @@ We can nest a combination of ordered and unordered list to any degree. In this c
   </li>
   <li>Milk</li>
 </ol>
+
+----
+
+## Input
+Inputs create user interaction to pass values into desired elements. 
+
+Such tags are denoted by `<input>` tag that takes values from user
+
+**Attributes**
+* type : Refers to the type of input to be taken
+  * Radio 
+  * Text
+  * Date
+  * Checkbox
+  * Dropdown (select)
+* placeholder : Example values held by the input field. Vanishes when user interacts
+* value : The actual value assigned to the field
+* required : optional attribute to set this as a mandatory field if used in a form
+
+**Example**
+```html
+
+```
