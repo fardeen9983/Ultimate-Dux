@@ -54,7 +54,7 @@ So the engineers at Google wanted to create a solution to a problem which all th
   * Generally faster cycles of testing while development continues
 * Fully Compiled
   * Makes better use of Resources
-  * More performant
+  * More performance
 * Garbage collector
   * More aggressive design of garbage collection to not interfere with real time application
 * Concurrent by default
@@ -74,3 +74,6 @@ So the engineers at Google wanted to create a solution to a problem which all th
   * Machine Learning, etc
 * Experimental
   * GUI/Thick-client
+
+
+
