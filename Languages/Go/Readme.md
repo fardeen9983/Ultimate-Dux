@@ -75,5 +75,37 @@ So the engineers at Google wanted to create a solution to a problem which all th
 * Experimental
   * GUI/Thick-client
 
+## Installation 
+To setup a go environment you need
+* The Go CLI tools
+* An editor of your choice
+
+Thats all that's needed. For smaller code snippet/practise you can directly use the online Go editor : [Go Playground](https://play.golang.org/)
+
+
+## Go CLI
+The CLI tools for setting up GO environment on your systems can be downloaded from the [Official Go Website](https://golang.org/).
+
+Distributaries for major operating systems with latest/previous releases are all available there
+
+`go` command is used to access the CLI tools from terminal/cmd. It has a lot of commands to perform a variety of tasks such as getting all go packages, building the project, executing a file, etc
+
+`go help <command>` prints all the ways we can use the command 
+
+`go doc <topic>` prints all the documentation comments for the said command's source code. The `topic` can be an entire module, a class or even a method in it.
+
+To run a file we use the command `go run /path/to/file.go`
+
+## Creating a project (module)
+1. Create the module directory
+2. Run `go mod init <module-name>` command in the directory
+3. This creates a **go.mod** file which is basically the configuration for Go project initialization. Example go.mod file:
+    ```mod
+    module demo
+
+    go 1.14
+    ```
+4. Create the main entry point to the module like a HelloWorld program
+5. Now to run the module code we can simply use `go run <module-name>`
 
 
