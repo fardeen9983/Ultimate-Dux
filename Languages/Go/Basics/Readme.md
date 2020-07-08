@@ -183,3 +183,61 @@ const G = 6.674
 // Cant change value. Will raise compile time error
 G = 1.3
 ```
+
+### Constant Blocks
+
+Just like import blocks where are all packages to be imported are placed in a single block we can also define a constant block that holds all the constant definitions at the package level
+```go
+const (
+    one = 1
+    two = "two"
+)
+
+func main(){
+    fmt.Println(one,two)
+}
+```
+
+### iota
+
+Instead of assigning direct values to these constant declarations we can use the keyword **iota** which basically assigns a series of constant values as it is used. It starts from 0, goes on to 1,2,3, etc.
+```go
+const (
+    one = iota // 0
+    two = iota // 1
+)
+```
+We can also use operators on iota turning them into **constant expressions**
+
+```go
+const (
+    one = iota + 10 // 10
+    two = 3 << iota // 6
+)
+```
+
+If we are following a pattern of constant expression like `iota + 6` then we dont need to repeat the assignment for all constants in the block. Once written for the first constant the expression will be reused for all the following constants
+
+```go
+const (
+    one = iota + 5 // 0 + 5
+    two  // 1 + 5
+    three // 2 + 5
+)
+```
+
+The scope of an `iota` is limited to constant block its used in. It is reset to 0 on other constant blocks
+
+```go
+const (
+    one = iota // 0
+    two        // 1
+    three      // 2
+)
+
+const (
+    four = iota // 0
+    five        // 1
+)
+```
+
