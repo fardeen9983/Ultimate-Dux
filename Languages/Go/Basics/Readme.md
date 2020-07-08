@@ -107,3 +107,79 @@ Primitive Types in Go
 ---
 
 ## Pointers
+The primitive variables are also known as value types as they hold certain value of specific type. Pointers on the other hand hold the address of such values stored in the memory
+
+### Declaration
+The operator `*` is used with a data type to define a pointer. It is also called the referencing/dereferencing operator
+```go
+var name *string
+
+fmt.Println(name)
+// output <nil>
+```
+Uninitialized pointers return the **nil** data type which is associated with empty pointer - a pointer that doesn't point to a memory location (ghost terminology)
+
+Pointers in Go are stripped down for simplicity and as a result some concepts like pointer arithmetics are not allowed but this also removes some backdrops
+
+### Initialization
+
+Pointers cannot hold primitive value types. They as described hold the memory locations of such value types.
+```go
+var name *string
+
+// This will lead to error
+name = "Robert"
+
+// This is the correct method. But will still lead to error as pointer is not pointing to a valid location in memory yet
+*name = "Robert"
+
+// The correct method
+name = new(string)
+*name = "Robert"
+```
+
+* Remember the actual value that a point holds is a memory location so no other type of value can be accepted. But by using the dereferencing  operator we can modify/access the value stored at the memory location held by the pointer.
+
+* But before this can happen the pointer should be initialized, i.e it should point to a valid memory location. 
+
+* For that we use the `new` operator. It dynamically allocates memory to hold the value type passed to it and now the pointer is pointing to this memory location
+
+Another method of initialization - point to existing variable using the addressOf operator `&` to get the target variable's address in memory
+```go
+// Simple variable
+name := "Robert"
+
+// A pointer pointing to name variable
+ptr := &name
+```
+* A point to remember is that if the variable's value changes the it will be reflected when we access it using the pointer. But the said address never changes actually
+* Also making any changes to value stored at the address pointed by the pointer will also reflect onto the variable which has that address
+
+
+### Using a pointer value
+Again at the time of printing the actual value we need to use dereferencing first
+```go
+// Will print the memory address it hold. eg 0x40c124
+fmt.Println(name)
+
+// WIll print the actual value stored at the said memory address
+fmt.Println(*name)
+```
+
+----
+
+## Constants
+Some variables need to have a fixed value that cant be changed after initialization. These are called as constants and in place of the keyword `var` we use `const` to declare constants variables
+
+* Do note that constant variables are initialized on declaration itself. 
+* Once assigned the value of the constant cannot be changed anymore
+* Also the value assigned to the constant should be determinable at compile time. 
+* So we cant assign function return value to it at times if the return value cant be acquired during compile time
+
+```go
+// A constant variable
+const G = 6.674
+
+// Cant change value. Will raise compile time error
+G = 1.3
+```
