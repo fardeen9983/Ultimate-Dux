@@ -42,9 +42,9 @@
     ```
 ----
 
-## Components
 
-### 1. Comments
+
+## Comments
 The purpose of comments are to provide description for the code written in a program so that it's purpose and intent can be readily understood from the developer's explanation from the comments.
 
 Comments may include actual go code but they are skipped by the compiler and not actually executed
@@ -61,3 +61,49 @@ Comments may include actual go code but they are skipped by the compiler and not
 * Multi Line comments
     
     As the name suggests these comments span through more than one lines. Theses comment blocks are enclosed in `/* ....  */` symbols.
+
+---
+## Variables
+
+### Primitives
+These are the fundamental data types analogous to other languages like integer, floating point (Decimal) values, strings, boolean values, etc
+
+Primitive Types in Go
+* Integers : (int, int8/byte, int16, int32/rune, int64)
+* Unsigned integers : (unit, uint8, uint16, uint32, uint64, uintpr)
+* Floating point numbers : (float32, float64)
+* Complex Number (a+ib) : (complex64, complex128) -> complex(a,b) 
+* Boolean : true, false
+* Strings : "asdfasdf"
+
+### Declaration
+
+* A verbose method
+
+    ```go
+    var i int
+    i = 40
+    fmt.Println(i)
+    ```
+    The var keyword is used for variable declaration followed by its name and finally it's type. We can assign the needed value to it. But this is verbose method
+
+    We can use a shorthand to combine declaration and initialization
+    ```go
+    var f float32 = 20.0
+    ```
+ * Implicit Inference
+
+    Go includes type inference from initialized value
+    ```go
+    name := "My Name is Khan"
+    ```
+* Multiple Assignment
+    
+    Just like in Python we can use comma separated values assigned to number of variables
+    ```go
+    c := complex(3,5)
+    a,b := real(c), imag(c)
+    ```
+---
+
+## Pointers
