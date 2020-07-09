@@ -4,7 +4,26 @@ Go (or Golang) is an open-source project, a highly reliable, efficient and a lig
 
 Combines the performance and type safety of languages like C++, Java with developer friendliness and near instant compile time of scripting languages such as Python, JS.
 
+Go is a weakly Object Oriented Programming language. It has implemented some concepts of OOP but not all like other counterparts (python, java, etc)
+* Go doesn't uses keyword `class` for encapsulation. It uses `struct`
+* Has no inheritance, constructors, generics
 
+Concurrency in Go : GO is very effective in achieving concurrency. 
+* Concurrency is the management of multiple tasks at the same time. The processes may be simply alive or even executing at the same time. Its responsible for
+  * Management of task execution
+  * Communication b/w tasks
+  * Synchronization between tasks
+* Generally speaking concurrency is achieved at hardware level using the concept of parallelism - Multiple tasks are performed at same time but on different cores of the same processor, increasing the throughput. 
+* This comes with a disadvantage of managing the program flow and resource control by the software:
+  * When do tasks start or stop?
+  * Conflicts and dependencies between tasks
+
+Go tackles concurrency problems by including concurrency primitives
+* **Goroutines** represent concurrent tasks
+* **Channels** are used for communication b/w tasks/routines
+* **Select** enables task synchronization
+  
+This makes concurrency easy to achieve and efficient
 ## Development
 
 Go was developed by a team of three very experienced and capable developers working in Google. At te point the 3 major languages used by Google were C++, Java & Python
@@ -55,8 +74,10 @@ So the engineers at Google wanted to create a solution to a problem which all th
 * Fully Compiled
   * Makes better use of Resources
   * More performance
-* Garbage collector
+* Garbage collection
+  * Automatic memory management
   * More aggressive design of garbage collection to not interfere with real time application
+  * Note that garbage collection is not a major feature of fast compiled language, but rather belongs to most of the interpreted languages. Hence it's addition slows down Go execution a bit but not significantly
 * Concurrent by default
   * Designed in mind to perform better for concurrent tasks
 * Simplicity as a core value
@@ -95,6 +116,38 @@ Distributaries for major operating systems with latest/previous releases are all
 `go doc <topic>` prints all the documentation comments for the said command's source code. The `topic` can be an entire module, a class or even a method in it.
 
 To run a file we use the command `go run /path/to/file.go`
+
+## Workspaces & Packages
+A workspace is a simple directory in which all the Go code and various packages reside. It exists as a hierarchy of directories to store Go codes of various uses. This allows for common organization of code for easy sharing.
+
+The various subdirectories are :
+* src - Contains source code files
+* pkg - Contains packages (libraries)
+* bin - Contains executable
+
+One workspace can be used for creating multiple packages. This level of hierarchy is not necessary. A default workspace created by Go itself is stored as an environment variable `GOPATH`
+
+## Packages
+* Packages are group of related source files
+* Each package can be imported by other packages
+* First line of the file names the package
+  ```go
+  // Package 1
+  package demo
+
+  // Package 2
+  package demo2
+  ```
+* We can import these packages in any other package/Go source file
+  ```go
+  import (
+    "demo"
+    "demo1"
+  )
+  ```
+* There must be one package called `main`
+* Building the main package generates the executable program 
+* The main package must also contain a `main` function, which acts as the entry point for the program
 
 ## Creating a project (module)
 1. Create the module directory

@@ -240,4 +240,71 @@ const (
     five        // 1
 )
 ```
+----
 
+## Collections
+
+These are data types that are hold more than one type/collection of data types. 
+
+### Array
+An array is a fixed size collection of similar data types. So we can have an array of booleans, integers,etc. But no mixing is allowed
+
+#### Declaration
+Size of the array is defined in `[ ]` followed by the data type of element it holds
+```go
+var array [i]int
+```
+All elements are given indexes, starting from 0 to n-1, where n is the size of the array/
+
+Each element in the array is a simple Go variable so assigning it a value is of the similar fashion but will be accessed using the array name and the member index
+```go
+array[0] = 24
+array[1] = 2
+array[2] = 4
+
+fmt.Println(array)
+// Output : [24,2,4]
+
+fmt.Println(array[1])
+// Output : 2
+```
+
+
+The shorthand (implicit) initialization of array is as follows:
+```go
+array := [4]int{1,2,3,4}
+```
+
+
+### Slices
+
+These are basically dynamically sized arrays/ Meaning we can change it's size as needed. Since it is based on Array we can create a slice from an existing array
+```go
+array := [3]int{1,2,3}
+slice := array[:]
+
+fmt.Println(array, slice)
+// Output : [1,2,3] [1,2,3]
+```
+So in the above example we are using the `[]` index operator with the slicing operator `:` to slice the given array (collection in general) from a beginning to end index (if not give it will take the extreme index values, hence the same values)
+
+Note that any changes made to either of the collections will be reflected on both as slice will point to the same memory address held by the array
+
+#### Declaring
+We don't always need an existing array of fixed size to create a slice from. We can do so without one as well.
+```go
+slice := []int{1,2,3,4,5}
+```
+It is very similar to shorthand array declaration but without any notation of fixed size. What happens here is that the compiler will automatically create a 3 element array and populate it with this value and make the slice point to that
+
+#### Adding/Removing to the slides
+Since slices don't have fixed size we can add or remove elements easily
+
+* Adding an element
+  
+    We use the method `append` for this. It takes the existing slice object, and a list of new values to be added
+    ```go
+    slice = append(slice,6)
+    slice = append(slice,7,8,9)
+    ```
+    It returns the new slice with the added values
