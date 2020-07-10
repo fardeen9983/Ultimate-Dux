@@ -63,18 +63,51 @@ Comments may include actual go code but they are skipped by the compiler and not
     As the name suggests these comments span through more than one lines. Theses comment blocks are enclosed in `/* ....  */` symbols.
 
 ---
+
+## Naming Rules
+* Names also called identifiers are used to reference all the variables and functions
+* They are case sensitive
+* Must start with a letter. Digits not allowed
+* Followed by first character we can have any number of letters, digits, and only special character allowed - underscore
+* Keywords like `if`, `switch`, etc cannot be used
+
 ## Variables
+* Variables are data stored in the memory
+* Must have a **name** and  **type**
+* All variables must have declarations
+* Declared variables cant be left unused or they will raise compilation errors
 
-### Primitives
-These are the fundamental data types analogous to other languages like integer, floating point (Decimal) values, strings, boolean values, etc
 
-Primitive Types in Go
+
+### Types
+ALl variables are types which are defines the value the variable may take and the operations that can be performed on it
+
+**Primitive Types in Go :**
 * Integers : (int, int8/byte, int16, int32/rune, int64)
 * Unsigned integers : (unit, uint8, uint16, uint32, uint64, uintpr)
 * Floating point numbers : (float32, float64)
 * Complex Number (a+ib) : (complex64, complex128) -> complex(a,b) 
 * Boolean : true, false
 * Strings : "asdfasdf"
+
+### Type Declaration
+* It allows or defining an alias (alternate name) for a type
+* May improve clarity
+* Example
+    ```go
+    type alias type-name
+
+    type Celsius float64
+    type IDnum int
+    ```
+* Can declare variables using the type alias
+    ```go
+    var temp Celsius
+    var pid **IDnum**
+    ```
+
+### Primitives
+These are the fundamental data types analogous to other languages like integer, floating point (Decimal) values, strings, boolean values, etc
 
 ### Declaration
 
@@ -90,6 +123,12 @@ Primitive Types in Go
     We can use a shorthand to combine declaration and initialization
     ```go
     var f float32 = 20.0
+    ```
+* Multiple declaration
+    
+    We can declare multiple variables in the same line using a single `var` keyword
+    ```go
+    var a,b int
     ```
  * Implicit Inference
 
@@ -308,3 +347,27 @@ Since slices don't have fixed size we can add or remove elements easily
     slice = append(slice,7,8,9)
     ```
     It returns the new slice with the added values
+
+## Scopes
+All variables, pointers included, have scope - which means the code sections where it can be accessed. It defines how a variable reference is resolved in code. The variable scope is achieved using blocks
+
+### Blocks
+* Blocks sequence of declarations and statements nesting within matching curly brackets `{ }`
+* Blocks can be nested and can be maintained in hierarchial fashion
+* Types 
+  * **Explicit** - where we ourselves define a block by placing code in `{ }`. Example function definitions
+  * **Implicit** - Blocks that are implicitly defined without the `{ }` . For example : 
+    * The Universe block - all Go source
+    * Package Block - all sources in a package
+    * File Block - all source in file
+    * `if`, `for`, `switch` - all code inside the statement
+    * Clauses in `switch` and `select` - individual clauses get a block
+
+### Lexical Scoping
+* Go is a lexically scoped language using blocks
+* This defines how variable references are resolved
+> Scoping rule: "bᵢ >= bⱼ if bⱼ is defined inside bᵢ"
+
+Hence a variable is accessible from bⱼ if
+1. Variable is declared inside bᵢ and 
+2. bᵢ >= bⱼ
