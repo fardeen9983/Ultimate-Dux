@@ -384,3 +384,46 @@ All variables, pointers included, have scope - which means the code sections whe
 Hence a variable is accessible from bⱼ if
 1. Variable is declared inside bᵢ and 
 2. bᵢ >= bⱼ
+
+
+## Strings & Unicode
+The ASCII standard allows 8 bit character representation from the English language. But is severely limited in representing the world of characters and emojis, etc from all around the globe. 
+
+To tackle this scenario Unicode standard was introduced, the default being UTF-32 standard, allowing use of 32 bits to represent a single character from any dialect; the first 8 bits are reserved for ASCII characters
+
+The 8bit character representation in Unicode are called `code point` and in GO we call them `Runes`. SO effectively a string can be broken down into a sequence of 8-bit runes
+
+### Unicode Package
+* Runes in GO are divided into many categories
+* The unicode package provides us a set of functions w can use to evaluate the properties of different runes of our string
+* Example
+  * IsDigit(r rune)
+  * IsSpace(r rune)
+  * IsLetter(r rune)
+  * IsLower(r rune)
+  * IsPunct(r rune)
+* Some of these functions perform conversions between runes
+  * ToUpper(r rune)
+  * ToLower(r rune)
+
+### String package
+Instead of focusing and applying operations on individual runes, the string package's method aim to manipulate entire UTF-8 encoded strings
+
+Search functions
+* **Compare(a,b)** - returns an integer comparing two strings. 0 if a == b, -1 if a < b and +1 if a > b 
+* **Contains(s, substr)** - returns true if substr is part of s string
+* **HasPrefix(s,prefix)** - returns true if the string s begins with the prefix
+* **Index(s,substr)** - returns the index of the first occurrence of substr in string s
+
+String manipulation - returns modified string
+* **Replace(s, old, new, n)** - returns a copy of s with first n instances of old replaced with new
+* **ToLower(s), ToUpper(s)** - return the string with modified sentence case
+* **TrimSpace(s)** - returns a new string with all leading and trailing white space removed
+
+### Strconv package
+This package provides functionality for conversions to and from string to basic data types
+* **Atoi(s)**  - converts string s to int
+* **Itoa(s)** - converts int (base 10) to string 
+* **FormatFloat(f. fmt, prec, bitSize)** - converts floating point number to size
+* **ParseFloat(s, bitSize)** - Converts a string to a floating point number
+ 
