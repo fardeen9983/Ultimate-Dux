@@ -64,19 +64,19 @@ Comments may include actual go code but they are skipped by the compiler and not
 
 ---
 
-## Naming Rules
-* Names also called identifiers are used to reference all the variables and functions
-* They are case sensitive
-* Must start with a letter. Digits not allowed
-* Followed by first character we can have any number of letters, digits, and only special character allowed - underscore
-* Keywords like `if`, `switch`, etc cannot be used
-
 ## Variables
 * Variables are data stored in the memory
 * Must have a **name** and  **type**
 * All variables must have declarations
 * Declared variables cant be left unused or they will raise compilation errors
 
+
+### Naming Rules
+* Names also called identifiers are used to reference all the variables and functions
+* They are case sensitive
+* Must start with a letter. Digits not allowed
+* Followed by first character we can have any number of letters, digits, and only special character allowed - underscore
+* Keywords like `if`, `switch`, etc cannot be used
 
 
 ### Types
@@ -105,9 +105,6 @@ ALl variables are types which are defines the value the variable may take and th
     var temp Celsius
     var pid **IDnum**
     ```
-
-### Primitives
-These are the fundamental data types analogous to other languages like integer, floating point (Decimal) values, strings, boolean values, etc
 
 ### Declaration
 
@@ -143,6 +140,22 @@ These are the fundamental data types analogous to other languages like integer, 
     c := complex(3,5)
     a,b := real(c), imag(c)
     ```
+
+### Type conversion
+Most of the binary operations in Go need both the operands to be of the same type. Even between the various primitive type families like that of integers, different sizes mean different types. For example int32 is not equal to int16 despite both been integers but because of size difference
+```go
+var x int32 = 10
+var y int16 = 8
+x = y // not possible
+
+// Use type conversion of smaller type to big
+x = int32(y)
+```
+As you can see from the example type casting is achieved by using `T()` method. Where T is the target type and we pass the variable we want to convert
+
+> Keep in mind that not all conversions are possible
+
+
 ---
 
 ## Pointers
