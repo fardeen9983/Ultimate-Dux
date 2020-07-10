@@ -186,3 +186,36 @@ In general Programming
 * Heap is persistent region of memory doesn't go away implicitly. We have to explicitly deallocate it. This is manually done in languages like C.
 
 * Manually deallocating memory is fast but error prone
+
+## Garbage Collection
+Manually managing memory is hard and error prone. It is difficult to know when a variable may be in use or not. Example :
+```go
+func foo() *int {
+  x := 1 // Local variable
+  return &x // returns address of x
+  // x is deleted
+}
+
+func main(){
+  var y *int 
+  y = foo()
+  // y holds the address of x which is deallocated now
+  fmt.Println("%d",*y) // Cant access x's value, as it doesn't exist
+}
+```
+This behavior is actually not raising any errors in Go as the pointer to X will be alive because it is to be used in main. But it is not a good practise
+
+This all can e automated by the use of garbage collection (mainly found in interpreted languages like JAVA, Python)
+
+It will automatically jump in from time to time and remove all variables and pointers which are not referenced anywhere in the program, thus freeing the wasted memory. To do this it has to track all the pointers to an object and only deallocate it when no pointers exist anymore. This makes the programmers task easy.
+
+The downside is that it requires an interpreter and hence is slow in general. Also because of this they cant be achieved in compiler based languages like C/C++. 
+
+But Go is an exception. 
+* Go is a compiled language which has garbage collection
+* Implementation is still fast
+* Compiler has the determination power over heap and stack allocations
+* Garbage collection runs in the background
+* Although this does put a performance hit, the implementation is very good.
+
+ 
