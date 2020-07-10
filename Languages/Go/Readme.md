@@ -161,4 +161,28 @@ One workspace can be used for creating multiple packages. This level of hierarch
 4. Create the main entry point to the module like a HelloWorld program
 5. Now to run the module code we can simply use `go run <module-name>`
 
+## Memory Management
+Whenever we declare a variable, certain memory units are allocated to hold it's value as per it's type. But the variable may not be in use forever and when it is not in use it will waste the occupied memory space. Hence we need to deallocate the associated memory and hence free it for further use
 
+If we don't do this the code will be subject to program leaks and might run out of memory at a point
+
+### Memory Types
+
+The two main memory types are **Stack** and **Heap**
+```go
+var a = 10 // heap memory
+
+func main(){
+  fmt.Println("a: %d",a)
+
+  var b=20 // Stack memory
+  fmt.Println("b: %d",b)
+}
+```
+
+In general Programming
+* Stack is an area of memory dedicated to function call. SO it stores local variables declared inside a function. This memory is automatically deallocated on function exit.
+
+* Heap is persistent region of memory doesn't go away implicitly. We have to explicitly deallocate it. This is manually done in languages like C.
+
+* Manually deallocating memory is fast but error prone
