@@ -223,6 +223,8 @@ fmt.Println(*name)
 ## Constants
 Some variables need to have a fixed value that cant be changed after initialization. These are called as constants and in place of the keyword `var` we use `const` to declare constants variables
 
+**Constants** are expressions whose values are known at compile time and they hold this value for as long as the program is running
+
 * Do note that constant variables are initialized on declaration itself. 
 * Once assigned the value of the constant cannot be changed anymore
 * Also the value assigned to the constant should be determinable at compile time. 
@@ -253,6 +255,9 @@ func main(){
 ### iota
 
 Instead of assigning direct values to these constant declarations we can use the keyword **iota** which basically assigns a series of constant values as it is used. It starts from 0, goes on to 1,2,3, etc.
+
+>**iota** generates a set of related but distinct constants
+
 ```go
 const (
     one = iota // 0
@@ -426,4 +431,133 @@ This package provides functionality for conversions to and from string to basic 
 * **Itoa(s)** - converts int (base 10) to string 
 * **FormatFloat(f. fmt, prec, bitSize)** - converts floating point number to size
 * **ParseFloat(s, bitSize)** - Converts a string to a floating point number
- 
+  
+## Control Structures
+Control flow dictates the order in which the statements are executed in the program
+
+Control Structures are statements which alter the control flow
+
+#### if condition
+Evaluates a condition (expression) and executes a bunch of statement (block) following it if the expression is evaluated to true, else the subsequent block is skipped
+
+```go
+if y > 10{
+    fmt.Printf("y > 10")
+}
+```
+
+To execute another set of statements in case the **if** condition fails we use the **else** keyword 
+```go
+if y > 10{
+    fmt.Printf("y > 10")
+} else {
+    fmt.Printf("y <= 10")
+}
+```
+
+#### For Loops
+Loops in general execute a block of statements repeatedly based on a condition. As long as the condition evaluates to true the loop iterates. It may have an initialization and update operation
+
+```go
+for init; cond; update{
+    statements
+}
+```
+* init (optional) - executed only ones at the start of loop. Mostly used to initialize the loop control variable
+* cond - the condition which is evaluated each time after a iteration. The next iteration only happens if the condition evaluates to true
+* update (optional) - the operation applied on loop variables at the start of each next iteration. It is mainly used to change the loop variables such that the condition  fails after certain no of iterations
+
+Types of for loop
+```go
+for i:=0; i<10; i++{
+    fmt.Printf("%d",i)
+}
+
+i:=0
+for i<10{
+    fmt.Printf("%d",i)
+    i++
+}
+
+for {
+    fmt.Printf("Yup")
+}
+```
+
+#### Switch
+It is  a multi-case if statement. It takes a value (**tag**) and compares it with a bunch of listed **cases** and whichever has the match will get it's associated code block executed
+
+It is a better way than writing if-else ladders     
+```go
+switch x {
+    case 1:
+        fmt.Printf("Winner")
+    case 2:
+        fmt.Printf("Looser")
+    default:
+        fmt.Printf("Confused Pikachu face")
+}
+```
+
+Unlink other languages that use switch, Go automatically breaks a switch after a case match. So no breakthrough in switch is allowed
+
+#### Tagless Switch
+
+* It is basically a switch statement without a tag to compare with cases
+* Each case instead of having a value, has a boolean expression
+* First case to evaluate to true is executed
+
+```go
+switch {
+    case a < b:
+        fmt.Printf("B is bigger")
+    case a == b:
+        fmt.Printf("Equals")
+    default:
+        fmt.Printf("A is bigger")
+}
+```
+
+#### Break
+Exits the most closest loop it is placed in and moves the control flow to the next following statement
+```go
+for i:=0; i<10; i++{
+    if i == 5 { break }
+    fmt.Printf("%d",i)
+}
+
+// Output : 0 1 2 3 4
+```
+
+#### Continue
+The continue statement skips the remaining function body statements and skips to the next iteration
+
+```go
+for i:=0; i<6; i++{
+    fmt.Printf("i_")
+    if i == 3 { continue }
+    fmt.Printf("%d ",i)
+}
+
+// Output : i_0 i_1 i_2 i_ i_4
+```
+
+## User Input
+The most basic method of getting input from user is to fetch it from the console like the keyboard input.
+
+### Scan
+* It is a method to read user input
+* Present in te **fmt** package
+* Takes a pointer as an argument
+* The typed data is written to the passed pointer
+* The program usually is blocked until the user enters so that the scan call can be completed
+* It returns the number of items scanned, and if there is an error, it will be returned else nill
+
+```go
+var num int
+
+fmt.Printf("Enter a number: ")
+items, err := fmt.Scan(&num)
+
+fmt.Printf("Entered num is : %d", num)
+```
