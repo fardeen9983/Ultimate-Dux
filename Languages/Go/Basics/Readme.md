@@ -541,7 +541,7 @@ Most basic operation of an array is to iterate through it's values to perform so
 ```go
 array := [...]{1,2,3,4,5}
 
-for i,v range array {
+for i,v := range array {
     fmt.Printf("index %d, value : %d",i,v)
 }
 ```
@@ -613,3 +613,67 @@ Since slices don't have fixed size we can add or remove elements easily
     slice = append(slice,7,8,9)
     ```
     It returns the new slice with the added values at the end
+
+### Hash Map
+* Data structure that holds key/value pairs
+* All the values are associated and can be accessed via their unique keys
+* Allows accessing large size structures very quickly
+* A hash function is used to compute a slot for a key. This function is called implicitly and manages the connection of keys to values and their organization in the hash table
+* Hash Tables boast of faster lookup time than lists (constant vs linear time) and use of arbitrary and meaningful keys rather than simple indices
+* But the tradeoff is that key/value pairs may have collisions (rarely) when the hash value generated for them is the same (they have the same slot)
+
+Hash Tables are not actually a data type in Go. They are implemented as **Map** in Go
+
+#### Map
+* The Go version of Hash Table
+* Can use **make** to create a Map
+    ```go
+    var demo map[string][int]
+    demo = make(map[string][int])
+    ```
+    Here string is the type for the key and int is the type for the value
+* Map Literal declaration 
+    ```go
+    demo := map[string]int {
+        "one" : 1, "two" : 2
+    }
+    ``` 
+* Accessing a map is similar to how we do in array/slices but the indices there are replaced by keys and hence we get their corresponding value
+    ```go
+    fmt.Printf("one : %d", demo["one"])
+    ```
+* Adding a key/value pair is again similar to arrays/slice by just replacing the new index with key
+    ```go
+    demo["three"] = 3
+    ```
+    This will update any value if any existing key is passed
+    ```go
+    demo["one"] = 4
+    ```
+* Deleting a key/value pair from map is achieved via the **delete** keyword
+    ```go
+    delete(demo,"two")
+    ```
+**Map Operations**
+* Two value assignment
+  * Tests for existence of a key value pair in the map
+
+    ```go
+    val, exists := demo["two"]
+    ```
+  * `val` refers to the value of map key `two`
+  * The second value `exists` as the name suggests is a boolean value that is true only if the key exists in the map
+* Length of the map
+  * Returns the count of key/value pairs
+    ```go
+    fmt.Printf(len(demo))
+    ``` 
+* Iterating through the map
+  * Very similar output achieved from **for-range** like in array/slice
+  * The index returned will be changed to the key
+
+    ```go
+    for key, value := range demo {
+        fmt.Printf("Key : %s, Value : %d",key,value)
+    }
+    ```
