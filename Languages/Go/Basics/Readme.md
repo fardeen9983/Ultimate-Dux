@@ -299,72 +299,6 @@ const (
 ```
 ----
 
-## Collections
-
-These are data types that are hold more than one type/collection of data types. 
-
-### Array
-An array is a fixed size collection of similar data types. So we can have an array of booleans, integers,etc. But no mixing is allowed
-
-#### Declaration
-Size of the array is defined in `[ ]` followed by the data type of element it holds
-```go
-var array [i]int
-```
-All elements are given indexes, starting from 0 to n-1, where n is the size of the array/
-
-Each element in the array is a simple Go variable so assigning it a value is of the similar fashion but will be accessed using the array name and the member index
-```go
-array[0] = 24
-array[1] = 2
-array[2] = 4
-
-fmt.Println(array)
-// Output : [24,2,4]
-
-fmt.Println(array[1])
-// Output : 2
-```
-
-
-The shorthand (implicit) initialization of array is as follows:
-```go
-array := [4]int{1,2,3,4}
-```
-
-
-### Slices
-
-These are basically dynamically sized arrays/ Meaning we can change it's size as needed. Since it is based on Array we can create a slice from an existing array
-```go
-array := [3]int{1,2,3}
-slice := array[:]
-
-fmt.Println(array, slice)
-// Output : [1,2,3] [1,2,3]
-```
-So in the above example we are using the `[]` index operator with the slicing operator `:` to slice the given array (collection in general) from a beginning to end index (if not give it will take the extreme index values, hence the same values)
-
-Note that any changes made to either of the collections will be reflected on both as slice will point to the same memory address held by the array
-
-#### Declaring
-We don't always need an existing array of fixed size to create a slice from. We can do so without one as well.
-```go
-slice := []int{1,2,3,4,5}
-```
-It is very similar to shorthand array declaration but without any notation of fixed size. What happens here is that the compiler will automatically create a 3 element array and populate it with this value and make the slice point to that
-
-#### Adding/Removing to the slides
-Since slices don't have fixed size we can add or remove elements easily
-
-* Adding an element
-  
-    We use the method `append` for this. It takes the existing slice object, and a list of new values to be added
-    ```go
-    slice = append(slice,6)
-    slice = append(slice,7,8,9)
-    ```
-    It returns the new slice with the added values
 
 ## Scopes
 All variables, pointers included, have scope - which means the code sections where it can be accessed. It defines how a variable reference is resolved in code. The variable scope is achieved using blocks
@@ -561,3 +495,121 @@ items, err := fmt.Scan(&num)
 
 fmt.Printf("Entered num is : %d", num)
 ```
+
+## Collections
+
+These are data types that are hold more than one type/collection of data types. 
+
+### Array
+An array is a fixed size collection of similar data types. So we can have an array of booleans, integers,etc. But no mixing is allowed
+
+#### Declaration
+Size of the array is defined in `[ ]` followed by the data type of element it holds
+```go
+var array [i]int
+```
+All elements are given indexes, starting from 0 to n-1, where n is the size of the array. All the elements are initialized to default value like 0
+
+Each element in the array is a simple Go variable so assigning it a value is of the similar fashion but will be accessed using the array name and the member index
+```go
+array[0] = 24
+array[1] = 2
+array[2] = 4
+
+fmt.Println(array)
+// Output : [24,2,4]
+
+fmt.Println(array[1])
+// Output : 2
+```
+
+
+The shorthand (implicit) initialization of array also known as **array literal** is as follows:
+```go
+array := [4]int{1,2,3,4}
+
+// You can skip the data type
+array2 := [5]{1,5,6,7,3}
+
+// You can also skip the size of the array literal
+array3 = [...]{1,2,3,4} // size will be set to 4
+```
+
+#### Iteration
+Most basic operation of an array is to iterate through it's values to perform some operation. This can be achieved through loops but is easier when combined with **range** keyword
+
+```go
+array := [...]{1,2,3,4,5}
+
+for i,v range array {
+    fmt.Printf("index %d, value : %d",i,v)
+}
+```
+The range for each iteration returns the index and the value at the index in the array
+
+
+### Slices
+
+> Slice is a window on an underlying array
+
+These are basically dynamically sized arrays/ Meaning we can change it's size as needed. Since it is based on Array we can create a slice from an existing array
+
+```go
+array := [3]int{1,2,3}
+slice := array[:]
+
+fmt.Println(array, slice)
+// Output : [1,2,3] [1,2,3]
+```
+So in the above example we are using the `[]` index operator with the slicing operator `:` to slice the given array (collection in general) from a beginning to end index (if not give it will take the extreme index values, hence the same values)
+
+Note that any changes made to either of the collections will be reflected on both as slice will point to the same memory address held by the array
+
+#### Properties
+* A pointer to the start of the slice. Points to the index in underlying array from where the slice begins
+* Length: No of elements in the slice. **len()**
+* Capacity : Maximum number of elements in the slice. **cap()**
+* 
+#### Declaring
+We don't always need an existing array of fixed size to create a slice from. We can do so without one as well.
+```go
+slice := []int{1,2,3,4,5}
+```
+It is very similar to shorthand array declaration but without any notation of fixed size. This is called a Slice Literal.
+
+What happens here is that the compiler will automatically create a 3 element array and populate it with this value and make the slice point to that. The slice created like this will always point to the start of created array, and the array length will be it's capacity
+
+Example
+```go
+array := [...]{"a","b","c","d","e","f","g"}
+
+// Slices
+s1 := array[1:3] // [b,c]
+s2 := array[2:5] // [c,d,e]
+```
+Overlapping slices refer to the same elements in the array
+
+#### Make
+Make is another way of creating slices in case we do not want to initialize them.
+
+Its takes 3 arguments
+* Type of the collection of the slice
+* The length of the size. In case of slice the length will match the capacity
+* Capacity (optional) - In case we want the slice to have more capacity then it's length then we can pass the capacity separately 
+
+```go
+slice1 = make([]int, 10)
+slice2 = make([]float32, 10, 25)
+```
+
+#### Adding/Removing to the slides
+Since slices don't have fixed size we can add or remove elements easily
+
+* Adding an element
+  
+    We use the method `append` for this. It takes the existing slice object, and a list of new values to be added
+    ```go
+    slice = append(slice,6)
+    slice = append(slice,7,8,9)
+    ```
+    It returns the new slice with the added values at the end
