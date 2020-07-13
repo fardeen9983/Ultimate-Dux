@@ -684,7 +684,7 @@ Hash Tables are not actually a data type in Go. They are implemented as **Map** 
 
 ### Declaration
 ```go
-type struct Person{
+type Person struct {
     name string
     address string
     age int
