@@ -857,3 +857,75 @@ func main(){
     fmt.Printf("Sum : %d",sum(a))
 }
 ```
+
+### Functions as First Class Value
+Functions in Go can be treated as any other data type. Allowing it to
+* Used as a type for a variable
+    ```go
+    func  sum(a,b int) int {
+        return a + b
+    }
+
+    // Function variable
+    var funcVar func(int) int
+
+    func main(){
+        // assign the funVar variable
+        funcVar = sum
+        fmt.Printf("Sum : %d",funcVar(1,4))
+    }
+    ```
+* Be created dynamically
+* Can be used in other functions as arguments and return values. Functions as return type can be used for creating customized functions with controllable parameter
+    ```go
+    func execute(op func(int) int, val int) int {
+        return op(val)
+    }
+    
+    func inc(x int) int { return x+1 }
+    func dec(x int) int { return x-1 } 
+    
+    func main(){
+        fmt.Printf("Increment : %d",execute(inc,3))
+        fmt.Printf("Decrement : %d",execute(dec,3))
+    }
+    ```
+    For return value
+    ```go
+    func CreateMultiplier(x int) func (int) int{
+        return func (num int){ return x*num}
+    }
+
+    func main(){
+        fives := CreateMultiplier(5)
+        tens := CreateMultiplier(10)
+
+        fmt.Printf("Five times 6 : %d \n",fives(6))
+
+        fmt.Printf("Ten times 6 : %d \n",tens(6))
+    }
+    ```
+* Can be stored in data structures like slice, array, struct
+
+### Anonymous functions
+Such functions do not have a name. Mostly are used for one time functions which are generally passed to function as argument
+```go
+func execute(op func(int) int, val int) int {
+    return op(val)
+}
+
+func main(){
+   
+   fmt.Printf("Increment : %d",execute(func (x int) int {return x + 1 },3))
+   
+   fmt.Printf("Decrement : %d",execute(func (x int) int {return x - 1 },3))
+}
+```
+
+### Function Environment
+* A Function environment is the set of all names that are valid inside a function
+* Names are defined locally in the function
+* As per lexical scoping, the environment includes names defined in the block where the function is defined
+* **Closure** The term used to describe a function and it's environment collectively
+* When functions are passed/returned their environments are passed with them
+
