@@ -324,7 +324,7 @@ Hence a variable is accessible from bⱼ if
 1. Variable is declared inside bᵢ and 
 2. bᵢ >= bⱼ
 
-
+___
 ## Strings & Unicode
 The ASCII standard allows 8 bit character representation from the English language. But is severely limited in representing the world of characters and emojis, etc from all around the globe. 
 
@@ -366,6 +366,7 @@ This package provides functionality for conversions to and from string to basic 
 * **FormatFloat(f. fmt, prec, bitSize)** - converts floating point number to size
 * **ParseFloat(s, bitSize)** - Converts a string to a floating point number
   
+___
 ## Control Structures
 Control flow dictates the order in which the statements are executed in the program
 
@@ -475,7 +476,7 @@ for i:=0; i<6; i++{
 
 // Output : i_0 i_1 i_2 i_ i_4
 ```
-
+___
 ## User Input
 The most basic method of getting input from user is to fetch it from the console like the keyboard input.
 
@@ -495,7 +496,7 @@ items, err := fmt.Scan(&num)
 
 fmt.Printf("Entered num is : %d", num)
 ```
-
+___
 ## Collections
 
 These are data types that are hold more than one type/collection of data types. 
@@ -677,7 +678,7 @@ Hash Tables are not actually a data type in Go. They are implemented as **Map** 
         fmt.Printf("Key : %s, Value : %d",key,value)
     }
     ```
-
+___
 ## Struct
 * Struct is an aggregate data type that groups together objects of other/arbitrary types into one object
 * Example: Student Struct can have 3 member variables: string name, address and int age
@@ -717,4 +718,142 @@ All the fields of the struct are accessed using the **dot (.)** notation. This c
 p1.name = "Agatha"
 
 add  = p1.address
+```
+____
+## Functions
+* Functions are named set of instructions that can be invoked at any point in the program within their scope any number of times. Improves reusability and are good for commonly used operations.
+* Functions implement abstraction - hide the implementation and improve understandability
+* In case of anonymous functions the name is optional. 
+* Functions are defined using the `func` keyword
+* Each function takes an optional list of parameters  which are places inside `( )` following the function name
+* Functions have a return type which is the type of value it returns on completion
+* Functions can call other functions in their body if the scope permits
+* A function calling itself is called a recursive function.These usually have a termination condition to exit from the function stack
+
+### Parameters
+* Functions may need input data to perform their operations
+* This input data is passed to the function in the form of parameters
+* **Parameters** are listed in the parenthesis following the function name
+* The input data itself which is passed from the program to the function through the function call are called **arguments**
+* Parameters are completely optional. In that empty parenthesis are used
+
+```go
+func main(){
+    foo(18,"four") // Function invocation/call
+    // 18 , "four" - arguments
+}
+
+func foo(x int, y string){ // parameters
+    fmt.Print(x,y)
+}
+```
+
+### Function Return 
+The return values of function are basically the output of the function. The type of the return value has to be stated in the function definition after the parameter list. We use the `return` keyword for returning the value. This also marks as the end of the function. All statements following this if executed will be ignored. The call statement of the function in this case can be used for assignment operation too
+```go
+func sum(x, y int) int {
+    return  x + y
+}
+
+result := sum(10,12)
+```
+
+We can also have multiple return values from a single function
+```go
+func next(x int) (int, int) {
+    return x + 1, x + 2
+}
+
+a,b := next(3)
+```
+
+### Passing Parameters
+There are two ways we can pass arguments to the function 
+* Call by Value
+* Call by pointer
+
+**In call by value method**, the function creates it's own copy of variables from the values of the arguments. This means that changes made to the parameters inside the function have no effect on the arguments
+```go
+func foo(y int){
+    y = y + 1 // y=3, x=2 no change in argument
+    fmt.Print(y)
+}
+
+func main(){
+    x := 2
+    foo(x)
+    fmt.Print(x) // x = 2
+}
+```
+
+**Advantage**: Data encapsulation - Prevents propagation of error, and protects the calling environment from any unlikely changes from the function
+
+**Disadvantage**: Copying time - large objects will take longer to be copied
+
+It is opposite in call by pointer where we pass the pointer to the argument instead of making a copy of it. The called function has direct access to the variable in memory. This allows the change in the parameters in the function body to be reflected on the actual arguments also
+
+```go
+func foo(y *int){
+    *y = *y + 1 // y= x = 3, change in argument
+    fmt.Print(*y)
+}
+
+func main(){
+    x := 2
+    foo(&x) // Pass pointer to x instead of value
+    fmt.Print(x) // x = 3
+}
+```
+**Advantage**: Copying time - no need to copy arguments
+
+**Disadvantage**: Data encapsulation - Propagation of errors from function to calling environment, may lead to unsafe or unexpected effect
+
+### Passing Array as arguments
+Example :
+```go
+func sum(x [3]int) int {
+    sum := 0
+    for _,v := range x{
+        sum = sum + v
+    }
+    return sum
+}
+
+func main(){
+    a:= [3]int{1,2,3}
+    fmt.Printf("Sum : %d",sum(a))
+}
+```
+Copying an entire array over for can be problematic if the size of array is big enough. This can be avoided by passing a pointer to array (call by pointer)
+```go
+func sum(x *[3]int) int {
+    sum := 0
+    for i,v := range (*x) {
+        (*x)[i] = v + sum
+        sum = sum + v
+    }
+    return sum
+}
+
+func main(){
+    a := [3]int{1,2,3}
+    fmt.Printf("Sum : %d",sum(a))
+}
+```
+Although this may solve this problem for the instant, the better way is to pass a slice of the array. This is because the slice already contains an pointer to the array. This means passing a slice is actually passing a pointer to the array
+
+```go
+func sum(x []int) int {
+    sum := 0
+    for i,v := range x {
+        x[i] = v + sum
+        sum = sum + v
+    }
+    return sum
+}
+
+func main(){
+    a := []int{1,2,3}
+    fmt.Printf("Sum : %d",sum(a))
+}
 ```
