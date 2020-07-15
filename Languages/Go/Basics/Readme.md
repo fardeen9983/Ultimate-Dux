@@ -678,47 +678,6 @@ Hash Tables are not actually a data type in Go. They are implemented as **Map** 
         fmt.Printf("Key : %s, Value : %d",key,value)
     }
     ```
-___
-## Struct
-* Struct is an aggregate data type that groups together objects of other/arbitrary types into one object
-* Example: Student Struct can have 3 member variables: string name, address and int age
-
-### Declaration
-```go
-type Person struct {
-    name string
-    address string
-    age int
-}
-```
-### Initialization
-* We can use the struct name as a type to declare its instance (variable of it's type/kind)
-
-* To assign values to this newly created object we use the **new** method. This will initialize all the fields to their 0 value
-
-* The other method is to use a struct literal where we pass in all the field values on initialization
-
-```go
-// Creating an object from this struct
-var p1, p2 Person
-
-// Initialize
-p1 := new(Person)
-
-// Literal method
-p2 := Person(
-    name: "Agatha",
-    address: "221B Baker Street, London",
-    age: 45
-)
-```
-### Accessing members
-All the fields of the struct are accessed using the **dot (.)** notation. This can be used to assign/access/modify the field values
-```go
-p1.name = "Agatha"
-
-add  = p1.address
-```
 ____
 ## Functions
 * Functions are named set of instructions that can be invoked at any point in the program within their scope any number of times. Improves reusability and are good for commonly used operations.
@@ -807,6 +766,31 @@ func main(){
 **Advantage**: Copying time - no need to copy arguments
 
 **Disadvantage**: Data encapsulation - Propagation of errors from function to calling environment, may lead to unsafe or unexpected effect
+
+### Variable arguments (varag/variadic)
+
+* Functions in Go can be made to take any variable number of arguments by replacing the parameter list in parenthesis with `...` (ellipsis). 
+* The arguments are treated as if placed in a slice. 
+* Also instead of sending a comma separated list of values we can send in a slice
+
+```go
+func max(vals ...int) int {
+    result :=-1
+    for _,v := range vals {
+        if v > result{
+            result = v
+        }
+    }
+    return result
+}
+
+func main(){
+    fmt.Printf("Max : %d", max(1,2,3,4,5))
+    // Another method
+    slice := []int{3,5,2,55,8,6}
+    fmt.Printf("Max : %d",max(slice...))
+}
+```
 
 ### Passing Array as arguments
 Example :
@@ -907,6 +891,15 @@ Functions in Go can be treated as any other data type. Allowing it to
     ```
 * Can be stored in data structures like slice, array, struct
 
+
+### Function Environment
+* A Function environment is the set of all names that are valid inside a function
+* Names are defined locally in the function
+* As per lexical scoping, the environment includes names defined in the block where the function is defined
+* **Closure** The term used to describe a function and it's environment collectively
+* When functions are passed/returned their environments are passed with them
+
+
 ### Anonymous functions
 Such functions do not have a name. Mostly are used for one time functions which are generally passed to function as argument
 ```go
@@ -921,11 +914,28 @@ func main(){
    fmt.Printf("Decrement : %d",execute(func (x int) int {return x - 1 },3))
 }
 ```
+(
+### Deferred functions
+* These kind of functions are executed after some time when the call is invoked.
+* The call can be deferred until the surrounding function completes. That is the until the enclosing/surrounding functions are all completed
+* Typically used for cleanup activities like closing all file connections in the end 
+```go
+func main(){
+    defer fmt.Println("Hello!")
+    func.Println("World")
+}
 
-### Function Environment
-* A Function environment is the set of all names that are valid inside a function
-* Names are defined locally in the function
-* As per lexical scoping, the environment includes names defined in the block where the function is defined
-* **Closure** The term used to describe a function and it's environment collectively
-* When functions are passed/returned their environments are passed with them
-
+// output :
+World
+Hello!
+```
+* The arguments passed to the deferred functions are evaluated immediately just not the call
+```go 
+func main(){
+    i := 10
+    defer fmt.Println(i*2) // Will print 20
+    i = i*2
+    fmt.Println(i*2) // 40 
+}
+```
+In the above example the value of i evaluated at the moment it is passed to the deferred function even though it will called later
