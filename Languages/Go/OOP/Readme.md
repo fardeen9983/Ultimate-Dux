@@ -12,6 +12,15 @@ Objects are instantiation of the class. If a class is thought to be a blueprint 
 ### Encapsulation
 Data in a class can be protected from outside influence by allowing access to it through it's own methods
 
+### Polymorphism
+Ability of an object to have different forms depending on the context. These forms are identical at a high level of abstraction but are different at a low level of abstraction
+
+### Inheritance
+Enables code reusability of existing classes by creating new classes from previous ones with/or without additional functionalities and perhaps different implementation of inherited behavior. The  inherited class is called the superclass and the inheriting class is called subclass
+
+Subclass may/may not redefine a method inherited from the superclass. This is called **overriding**. The overridden superclass method of the superclass is thus polymorphic in nature as the signature is same but the implementing the member is different
+
+
 
 # OOP Support in Go
 * Most Object oriented languages have the class keyword. Data fields and methods are defined inside the class block to create a class type
@@ -111,6 +120,8 @@ func main(){
 }
 ```
 
+* All methods for a type have pointer receivers, or All methods for a type have non-pointer receivers 
+* Mixing them together can be confusing
 ## Controlling access
 The main object behind forming classes in OOP is to implement the concept of encapsulation and so only allow access to the data fields through some selected methods of the same class
 
@@ -164,4 +175,95 @@ func main(){
 }
 ```
 
+## Interface 
 
+* Interfaces in Go are a method to implement Polymorphism in the absence of inheritance.
+* Interfaces are set of method signatures (without any function definition, which is left to the implementing type)
+* Used to express conceptual similarities between types implementing the same interface. 
+* A type satisfies an interface when it defines all the methods specified in the interface with the same signatures
+* Additional methods and member defined in the structure are irrelevant in the context of interfaces
+* This has a similar effect of implementing inheritance with overriding
+
+### Declaring
+INterfaces can be defined in the same manner sas struct but replacing the data fields for method signature
+```go
+type Shape interface{
+    Area() float64
+    Perimeter() float64
+}
+
+type Triangle struct {
+    base, height float64
+}
+
+func (t Triangle) Area() float64 {
+    return 0.5 * base * height
+}
+
+func (t Triangle) Perimeter() float64 {
+    return 2 * (base + height)
+}
+```
+
+To satisfy the interface we simply make receiver type functions for all the interface methods. It is no need to explicitly specify that the interface is satisfied by the type
+
+### Difference from Concrete Types
+* Concrete types
+  * Specifies the exact representation of the data and methods
+  * Complete method implementation is included
+* Interface types 
+  * Specifies some method signatures
+  * Implementations are abstracted
+
+### Interface values
+Interfaces can be treated as any other value type. The can assigned to variables and passed to & returned from functions. 
+
+Interfaces have two components:
+1. Dynamic type : Concrete type which it is assigned to
+2. Dynamic value : Value of the dynamic type
+
+Interface value is actually a pair : (dynamic type, dynamic value)
+
+```go
+type Speaker interface { Speak() }
+type Dog struct { name string }
+
+func (d Dog) Speak(){
+    fmt.Println(d.name)
+}
+
+func main(){
+    var s1 Speaker
+    var d1 Dog{ "Brian" }
+    s1 = d1
+    s1.Speak()
+}
+```
+
+Here the dynamic type is `Dog` and the dynamic value is `d1`
+
+It is legal to have a nil dynamic value for an interface
+```go
+var s1 Speaker
+var d1 *Dog
+s1 = d1
+```
+Here d1 has no actual value
+> An interface can have a dynamic type with a nil dynamic value
+
+We can still make a call to the interface methods if we have a dynamic type but no dynamic value associated with the interface value. This cannot be achieved with a nil dynamic type as we cannot resolve the method to be called and this will lead to runtime error
+
+
+### Empty interface
+* Such Interfaces specify no methods. 
+* As a result all types satisfy the empty 
+interface
+* We can use it in a function to accept any type of parameter
+```go
+func something(obj interface {}){
+    fmt.Print(obj)
+}
+```
+### When to use Interface
+* When we need to define a function which takes multiple types of parameter.
+* For ex if the function either needs X or Y type of parameter then we can first make X, Y satisfy an interface and pass the parameter as an interface vale rather than actual object
