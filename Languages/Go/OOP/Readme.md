@@ -184,6 +184,7 @@ func main(){
 * Additional methods and member defined in the structure are irrelevant in the context of interfaces
 * This has a similar effect of implementing inheritance with overriding
 
+
 ### Declaring
 INterfaces can be defined in the same manner sas struct but replacing the data fields for method signature
 ```go
@@ -267,3 +268,45 @@ func something(obj interface {}){
 ### When to use Interface
 * When we need to define a function which takes multiple types of parameter.
 * For ex if the function either needs X or Y type of parameter then we can first make X, Y satisfy an interface and pass the parameter as an interface vale rather than actual object
+
+### Type Assertions
+* Interfaces hide the differences between types
+* But sometimes is needed to exposing the type difference
+* Interfaces provide mechanism to extract the dynamic type from the interface value for disambiguation of type differences
+
+```go
+func DrawShape(s Shape) {
+    rect, noErr := s.(Rectangle)
+    if noErr {
+        DrawRect(rect)
+    }
+
+    tri, noErr := s.(Triangle)
+    if noErr {
+        DrawTriangle(tri)
+    }
+}
+```
+
+So we can extract concrete types from the interface which returns 2 values. the second value is set to true if the dynamic type matches else returns zero for the type value
+
+This can be improved by using a switch statement with a case for each type
+
+```go
+func DrawShape(s Shape) {
+    switch := shape := s.(type){
+        case Rectangle:
+            DrawRectangle(shape)
+        case Triangle:
+            DrawTriangle(shape)
+    }
+}
+```
+
+## Error handling
+Go programs handle errors by returning error interface objects. This object has an `Error` method  that returns a error message. It is nil in case no error occurs. For ex:
+```go
+type error interface{
+    Error() string
+}
+```
