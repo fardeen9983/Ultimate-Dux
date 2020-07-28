@@ -31,6 +31,8 @@ c = conn.cursor()
 # c.executemany("INSERT INTO customers VALUES(?,?,?)",rows) 
 
 # Query data
+# Note - keep in mind that running a fetch commond moves the cursor position in the table and already fetched rows are omitted from being fetched again from the same cursor
+
 # c.execute("SELECT * FROM customers")
 
 # # Returns first record
@@ -52,13 +54,17 @@ c = conn.cursor()
 # for item in items:
 #     print(item)
 
-# Where clause
-c.execute("SELECT * FROM customers where last_name = 'Khan'")
-print(c.fetchall())
+# # Where clause
+# c.execute("SELECT * FROM customers where last_name = 'Khan'")
+# print(c.fetchall())
 
-c.execute("SELECT * FROM customers where last_name LIKE '%b%'")
-print(c.fetchall())
-# Note - keep in mind that running a fetch commond moves the cursor position in the table and already fetched rows are omitted from being fetched again from the same cursor
+# c.execute("SELECT * FROM customers where last_name LIKE '%b%'")
+# print(c.fetchall())
+
+# # Update Records
+# c.execute("""UPDATE customers SET first_name = 'Peble' 
+#             WHERE last_name LIKE 'Esc%'
+#         """)
 
 # Commit your changes
 conn.commit()
