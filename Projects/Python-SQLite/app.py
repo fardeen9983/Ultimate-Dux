@@ -66,6 +66,11 @@ c = conn.cursor()
 #             WHERE last_name LIKE 'Esc%'
 #         """)
 
+# # Delete records
+# c.execute("DELETE FROM customers where rowid=3")
+
+
+
 # Commit your changes
 conn.commit()
 
