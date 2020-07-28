@@ -45,6 +45,14 @@ c = conn.cursor()
 # all = c.fetchall()
 # print(all)
 
+# Query data with default primary key
+c.execute("SELECT rowid,* FROM customers")
+items = c.fetchall()
+
+
+for item in items:
+    print(item)
+
 # Note - keep in mind that running a fetch commond moves the cursor position in the table and already fetched rows are omitted from being fetched again from the same cursor
 
 # Commit your changes
