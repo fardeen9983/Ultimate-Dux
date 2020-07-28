@@ -11,12 +11,24 @@ mem_conn = sqlite3.connect(":memory:")
 c = conn.cursor()
 
 # Create a table
-c.execute("""CREATE TABLE customers(
-    first_name text,
-    last_name text,
-    email text
-    )
-    """)
+# c.execute("""CREATE TABLE customers(
+#     first_name text,
+#     last_name text,
+#     email text
+#     )
+#     """)
+
+# Add data one row at a time
+# c.execute("INSERT INTO customers VALUES('Fardeen', 'Khan', 'ezio@gmail.com')")
+
+# Add multiple records at once
+rows = [
+            ('Pablo','Escobar','pablo@gmail.com'),
+            ('Diablo','Senu','diablo@gmail.com'),
+            ('Boss','Baby','baby@gmail.com')
+       ]
+# Execute many inert commands together
+c.executemany("INSERT INTO customers VALUES(?,?,?)",rows)
 conn.commit()
 
 # Closing the connection
