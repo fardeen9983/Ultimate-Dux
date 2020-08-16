@@ -28,7 +28,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.pluralsight</groupId>
     <artifactId>FitnessTracker</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</ version>
     <name>HelloWorld</name>
 </project>
 ```
@@ -78,6 +78,47 @@ Code example
 * Has a steeper leraning curve
 * Forces convention over configration
 
+## Getting Started
+We can use IDE or text ediotr like Eclipse, Intellij or even notepad to get started
+
+**Project Strucuture**
+Project > src > java > **.java
+        > pom.xml
+
+**Instructions**
+1. Paste the following code in pom.xml to get started
+    ```xml
+    <project>
+        <groupId>com.pluralsight</groupId>
+        <artifactId>HelloWorld</artifactId>
+        <version>1.0-SNAPSOT</version>
+        <modelVersion>4.0.0</modelVersion>
+        <packaging>jar</packaging>
+    </project>
+    ```
+2. Run `mvn clean` in the root directory of the project. This downloads a bunch of dependencies at first (initailly the project structure) and clean builds if any.
+3. Running `mvn compile` will compile our source code to generate builds
+4. In case the build fails and states that 
+    ```cmd
+    Source option 5 is no longer supported. Use 7 or later.
+    ```
+    It means we have to update the build configuration for Java 10+ . To do this simply modify the `pom.xml` file and add the following snippet inside the `<project>` tag
+    ```xml
+    <build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<release>14</release>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+    ```
+
+The first time we do this Maven downloads a lot of plugins to the Local Repo which are later on only referred to by subsequent projects
 ## Reference
 1. Bryan Hansen - [Website](http://completeprogrammer.com), [Twitter](https://twitter.com/completeprog)
 2. Pluralsight - [Maven Fundamentals](https://app.pluralsight.com/library/courses/9819e2ce-def3-415c-8e86-da693fd33748/table-of-contents)
