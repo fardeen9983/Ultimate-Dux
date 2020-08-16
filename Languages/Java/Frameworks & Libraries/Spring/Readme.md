@@ -2,7 +2,15 @@
 
 When people refer to Spring they are actually referring to the family of Projects under the Spring Framework
 
-The origin of Spring dates back to the release of the Spring Framewrok which was a solution to the then complex, time consuming and complex development of Enterprise applications using Java's EE framework. Spring Framework aims at reducing the efforts for web development and data access in applications adn reduce boiler plate code
+The origin of Spring dates back to the release of the Spring Framewrok which was a solution to the then complex, time consuming and complex development of Enterprise applications using Java's EE framework. Spring Framework aims at reducing the efforts for web development and data access in applications adn reduce boiler plate code. It is POJO based entirely
+
+Main problems that Spring is tackling
+* Testing
+* Maintainability
+* Scalability
+* Complexity 
+* Business Focus
+* Configurations
 
 Success of Spring Framework resulted in creation of numerous Spring Projects built on top of the Spring Framework. Some are listed below
 * Spring Kafka
